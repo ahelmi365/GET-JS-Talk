@@ -437,14 +437,14 @@ let promise = new Promise(function (resolve, reject) {
 
 - We can see two things by running the code above:
 
-  1. The executor is called automatically and immediately (by new Promise).
+  - The executor is called automatically and immediately (by new Promise).
 
-  2. The executor receives two arguments: `resolve` and `reject`. These functions are pre-defined by the JavaScript engine, so we don’t need to create them. We should only call one of them when ready.
+  - The executor receives two arguments: `resolve` and `reject`. These functions are pre-defined by the JavaScript engine, so we don’t need to create them. We should only call one of them when ready.
 
   After one second of “processing”, the executor calls resolve("done") to produce the result. This changes the state of the promise object:
 
   ![alt text](./screenshots/promise2.PNG)
-  That was an example of a successful job completion, a “fulfilled promise”.
+  - That was an example of a successful job completion, a “fulfilled promise”.
 
 - And now an example of the executor rejecting the promise with an error:
 
