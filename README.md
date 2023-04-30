@@ -9,8 +9,8 @@
 - [Callback Functions](#Callback-Functions)
 - [Higher Order Functions](#Higher-Order-Functions)
 - [Promises in js](#Promises-in-js)
-- [Promises (then() Catch() finally())](#Promises-(then()-Catch()-finally()))
-- [Fetch()](#Fetch())
+- [Promises (then() Catch() finally())](#Promises-then-Catch-finally)
+- [Fetch()](#Fetch)
 - [Async](#Async)
 - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
@@ -459,7 +459,7 @@ let promise = new Promise(function (resolve, reject) {
 
   ![alt text](./screenshots/promise3.PNG)
 
-## Promises (then() Catch() finally())
+## Promises-then-Catch-finally
 
 - A `Promise` object serves as a link between the `executor` (the “producing code”) and the `consuming functions`, which will receive the result or error.
 - Consuming functions can be registered (subscribed) using methods `.then`, `.catch` and `.finally`.
@@ -560,7 +560,7 @@ let promise = new Promise(function (resolve, reject) {
     .catch((err) => alert(err)); // <-- .catch handles the error object
   ```
 
-## Fetch()
+## Fetch
 
 - In frontend programming, promises are often used for network requests.
 - The Fetch API provides an interface for fetching resources.
