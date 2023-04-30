@@ -4,13 +4,13 @@
 
 ## Table of contents
 
-- [Types of functions in JS](#Types_of_functions-in-JS)
+- [Types of functions in JS](#Types-of-functions-in-JS)
 - [Functions are First Class Objects](#Functions-are-First-Class-Objects)
 - [Callback Functions](#Callback-Functions)
-- [Higher Order Functions](#Higher_Order-Functions)
+- [Higher Order Functions](#Higher-Order-Functions)
 - [Promises in js](#Promises-in-js)
-- [Promises (then() Catch() finally())](<#Promises-(then()-Catch()-finally())>)
-- [Fetch()](<#Fetch()>)
+- [Promises (then() Catch() finally())](#Promises-(then()-Catch()-finally()))
+- [Fetch()](#Fetch())
 - [Async](#Async)
 - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
