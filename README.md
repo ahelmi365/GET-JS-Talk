@@ -191,16 +191,16 @@ Some examples of different types of functions in JavaScript based on their behav
     ```
 
 ## JS is single-threaded programming language
-- JS is `single-threaded` programming language, which means it can only execute one task at a time. 
-- This is because it has only one `call stack`, which is responsible for executing the code.
-- This means that if a function is currently executing, no other code can run until the call stack is clear. 
-- This can be a problem if a function takes a long time to execute, because it will block the call stack and prevent other code from running. This is known as `blocking code`.
-- Blocking code can be a problem in JavaScript because it can make the user interface unresponsive. 
-- For example, if a function takes a long time to execute, the user will not be able to interact with the page until the function is finished executing. 
-- This can be a problem if the function is doing something that is not related to the user interface, such as fetching data from a server or performing a complex calculation.
-- To solve this problem, JavaScript developers often use `asynchronous programming techniques`, such as `callbacks`, `promises`, and `async/await`, to allow the application to continue running while it waits for long-running tasks to complete. 
-- This allows the user interface to remain responsive while the application is performing long-running tasks.
 
+- JS is `single-threaded` programming language, which means it can only execute one task at a time.
+- This is because it has only one `call stack`, which is responsible for executing the code.
+- This means that if a function is currently executing, no other code can run until the call stack is clear.
+- This can be a problem if a function takes a long time to execute, because it will block the call stack and prevent other code from running. This is known as `blocking code`.
+- Blocking code can be a problem in JavaScript because it can make the user interface unresponsive.
+- For example, if a function takes a long time to execute, the user will not be able to interact with the page until the function is finished executing.
+- This can be a problem if the function is doing something that is not related to the user interface, such as fetching data from a server or performing a complex calculation.
+- To solve this problem, JavaScript developers often use `asynchronous programming techniques`, such as `callbacks`, `promises`, and `async/await`, to allow the application to continue running while it waits for long-running tasks to complete.
+- This allows the user interface to remain responsive while the application is performing long-running tasks.
 
 ## Callback Functions
 
@@ -226,7 +226,7 @@ Some examples of different types of functions in JavaScript based on their behav
     }
     return output;
   }
-  const numbers1= copyArrayAndMultiplyByTwo(nums); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+  const numbers1 = copyArrayAndMultiplyByTwo(nums); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
   function copyArrayAndDivideByTwo(array) {
     const output = [];
@@ -235,7 +235,7 @@ Some examples of different types of functions in JavaScript based on their behav
     }
     return output;
   }
-  const numbers2= copyArrayAndDivideByTwo(nums); // [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+  const numbers2 = copyArrayAndDivideByTwo(nums); // [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
 
   function copyArrayAndAddTwo(array) {
     const output = [];
@@ -244,7 +244,7 @@ Some examples of different types of functions in JavaScript based on their behav
     }
     return output;
   }
-  const numbers3= copyArrayAndAddTwo(nums); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const numbers3 = copyArrayAndAddTwo(nums); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   ```
 
 - The solution using callback function
@@ -293,23 +293,26 @@ Some examples of different types of functions in JavaScript based on their behav
     return number + 2;
   });
   console.log(newNumbers4); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
- 
+
   // Passing arrow function as arguments to another function
   const newNumbers5 = copyArray(numbers, (number) => number + 2);
   console.log(newNumbers5); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   ```
+
 ### 2. Callback function to handle events in the browser
+
 - Example to show how to use callback function to handle events in the browser
 
   ```js
-  const button = document.querySelector('button');
+  const button = document.querySelector("button");
 
   function handleClick(event) {
-    console.log('Button clicked!');
+    console.log("Button clicked!");
   }
 
-  button.addEventListener('click', handleClick);
+  button.addEventListener("click", handleClick);
   ```
+
 ### 3. Asynchronous programming
 
 - In asynchronous programming, a function may take some time to complete its operation. This can cause the program to pause or become unresponsive.
@@ -329,12 +332,14 @@ Some examples of different types of functions in JavaScript based on their behav
 
   getData(processData); // Output after 1 second: Name: John Doe, Age: 30
   ```
+
 - The above example shows how callbacks can be used to handle asynchronous operations in JavaScript.
 - The `getData()` function takes a callback function as an argument and executes it after one second.
 - The `processData()` function is passed as an argument to the `getData()` function and is executed after one second.
 - The `processData()` function receives the data object as an argument and logs it to the console.
 - The `getData()` function is called with the `processData()` function as an argument.
 - The `getData()` function executes the `processData()` function after one second and passes the data object as an argument.
+
 ## Higher Order Functions
 
 - Higher order function is a function that takes a function as an argument
@@ -404,22 +409,23 @@ Examples of built-in higher-order functions in JavaScript:
     console.log(evenNumbers); // Output: [2, 4]
     ```
 
-3.  `Array.reduce()`: 
-- The goal of the `reduce` method is to reduce the array to a single value by applying a function to each element in that array (from left to right). 
-- The function that is passed to `reduce()` takes two arguments: an `accumulator` and the `current value` in the array. 
-- The function returns the updated `accumulator`, which is used as the `accumulator` for the next iteration. 
+3.  `Array.reduce()`:
+
+- The goal of the `reduce` method is to reduce the array to a single value by applying a function to each element in that array (from left to right).
+- The function that is passed to `reduce()` takes two arguments: an `accumulator` and the `current value` in the array.
+- The function returns the updated `accumulator`, which is used as the `accumulator` for the next iteration.
 - The function is called once for each element in the array.
-    <br/><br/>
+  <br/><br/>
 
-    ````js
-    const numbers = [1, 2, 3, 4, 5];
+  ```js
+  const numbers = [1, 2, 3, 4, 5];
 
-    const sumOfNumbers = numbers.reduce(function(acc, num) {
-      return acc + num;
-    }, 0);
+  const sumOfNumbers = numbers.reduce(function (acc, num) {
+    return acc + num;
+  }, 0);
 
-    console.log(sumOfNumbers); // Output: 15
-    ````
+  console.log(sumOfNumbers); // Output: 15
+  ```
 
 These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
 
@@ -448,7 +454,7 @@ let promise = new Promise(function (resolve, reject) {
   - `resolve(value)` — if the job finished successfully, with result `value`.
   - `reject(error)` — if an error occurred, `error` is the error object.
 
-- So to summarize: the executor runs automatically and attempts to perform a job. 
+- So to summarize: the executor runs automatically and attempts to perform a job.
 - When it is finished with the attempt, it calls `resolve` if it was successful or `reject` if there was an error.
 - The promise object returned by the `new Promise` constructor has these internal properties:
 
@@ -478,6 +484,7 @@ let promise = new Promise(function (resolve, reject) {
   After one second of “processing”, the executor calls resolve("done") to produce the result. This changes the state of the promise object:
 
   ![alt text](./screenshots/promise2.PNG)
+
   - That was an example of a successful job completion, a `“fulfilled promise”`.
 
 - And now an example of the executor rejecting the promise with an error:
@@ -603,10 +610,10 @@ let promise = new Promise(function (resolve, reject) {
 - For making a request and fetching a resource, use the `fetch()` method.
 - It is a global method in Window object.
 - The `fetch()` method takes one mandatory argument, the `path` to the resource you want to fetch.
--  The `fetch()` method does not directly return the `JSON response body` but instead it returns a `promise` that resolves with a `Response object`.
+- The `fetch()` method does not directly return the `JSON response body` but instead it returns a `promise` that resolves with a `Response object`.
 - The `Response object`, in turn, does not directly contain the actual `JSON response` body but is instead a representation of the entire `HTTP response`.
 - So, to extract the JSON body content from the Response object, we use the `json()` method
--  The `json()` returns a second promise that resolves with the `result` of parsing the response body text as `JSON`.
+- The `json()` returns a second promise that resolves with the `result` of parsing the response body text as `JSON`.
 - `json()` is a method on the response object that returns a `promise` to parse the body text as JSON
 
   ```js
@@ -636,66 +643,69 @@ let promise = new Promise(function (resolve, reject) {
       console.log(firstProduct.title);
     });
   ```
+
 - POST requests
+
   ```js
   let user = {
-    name: 'John',
-    surname: 'Smith'
+    name: "John",
+    surname: "Smith",
   };
 
-  let response = await fetch('/article/fetch/post/user', {
-    method: 'POST',
+  let response = await fetch("/article/fetch/post/user", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json;charset=utf-8'
+      "Content-Type": "application/json;charset=utf-8",
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(user),
   });
 
   let result = await response.json();
   alert(result.message);
-
   ```
+
   - Explanation of the code:
 
   - We first create an object called `user` with two properties, `name` and `surname`.
-  
+
     ```js
     let user = {
-      name: 'John',
-      surname: 'Smith'
+      name: "John",
+      surname: "Smith",
     };
     ```
 
-  - We then use the `fetch()` function to make a POST request to a URL endpoint (`/article/fetch/post/user` in this case) and pass in an `options object` that specifies the `method`, `headers`, and `body` of the request. 
+  - We then use the `fetch()` function to make a POST request to a URL endpoint (`/article/fetch/post/user` in this case) and pass in an `options object` that specifies the `method`, `headers`, and `body` of the request.
   - In this case, we are sending the `user` object as the request `body` after converting it to a `JSON` string using `JSON.stringify()`.
-  
+
     ```js
-    let response = await fetch('/article/fetch/post/user', {
-      method: 'POST',
+    let response = await fetch("/article/fetch/post/user", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        "Content-Type": "application/json;charset=utf-8",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
     ```
 
   - We then use the `json()` method on the `response` object to parse the response body as JSON and return a JavaScript object. We store the parsed object in the `result` variable using `await` since the `json()` method returns a Promise.
-  
+
     ```js
     let result = await response.json();
     ```
 
   - Finally, we display a message from the parsed JSON data using the `alert()` function. In this case, we assume that the response body has a property called `message`.
-  
+
     ```js
     alert(result.message);
     ```
 
-  
 ## Async
+
 - There’s a special syntax to work with promises in a more comfortable fashion, called “async/await”. It’s surprisingly easy to understand and use.
 - The word `“async”` before a function means one simple thing: a function always returns a `promise`. Other values are wrapped in a resolved promise automatically.
 - let's check this function:
+
   ```js
   function getEmployeesData() {
     const employees = ["John", "Jane", "Jack"];
@@ -714,17 +724,18 @@ let promise = new Promise(function (resolve, reject) {
     (rejectValue) => console.error(rejectValue)
   );
   ```
+
 - We can rewrite the previous function as:
 
-    ```js
-    function getEmployeesData() {
-      const employees = ["John", "Jane", "Jack"];
+  ```js
+  function getEmployeesData() {
+    const employees = ["John", "Jane", "Jack"];
 
-      if (employees.length > 0) {
-        return Promise.resolve("Employees exist");
-      } else {
-        return Promise.reject("Employees does not exist");
-      }
+    if (employees.length > 0) {
+      return Promise.resolve("Employees exist");
+    } else {
+      return Promise.reject("Employees does not exist");
+    }
   }
   // call the function
   getEmployeesData().then(
@@ -732,8 +743,9 @@ let promise = new Promise(function (resolve, reject) {
     (rejectValue) => console.error(rejectValue)
   );
   ```
+
 - We can rewrite the previous function using `async` as:
-  
+
   ```js
   async function getEmployeesData() {
     const employees = ["John", "Jane", "Jack"];
@@ -750,12 +762,15 @@ let promise = new Promise(function (resolve, reject) {
     (rejectValue) => console.error(rejectValue)
   );
   ```
+
 ## Await
+
 - `await` is a keyword that is used inside an `async` function.
 - `await` waits for the promise to `resolve` and returns the result.
 - We use the `await` keyword to wait for the response to come back before moving on to the next line of code
 - `await` only works inside `async` functions within regular JavaScript code, however it can be used on its own with JavaScript modules.
 - Example
+
   ```js
   function getEmployeesData() {
     console.log("Start of getEmployeesData()");
@@ -775,6 +790,7 @@ let promise = new Promise(function (resolve, reject) {
 
   getEmployeesData();
   ```
+
 - The above function can be rewritten using `async` and `await` as:
 
   ```js
@@ -783,8 +799,8 @@ let promise = new Promise(function (resolve, reject) {
 
     const URL = "https://dummyjson.com/products";
 
-    const response = await fetch(URL);
-    const json = await response.json();
+    const response = await fetch(URL); // wait for this promise to resolve before moving on to the next line of code.
+    const json = await response.json(); // wait until the resolved promise is pasred to json
 
     const products = json.products;
     const firstProduct = products[0];
@@ -797,58 +813,62 @@ let promise = new Promise(function (resolve, reject) {
 
   getEmployeesData();
   ```
+
 - The keyword `await` makes JavaScript wait until that `promise` settles and returns its result.
--  `await` literally suspends the function execution until the `promise` settles, and then resumes it with the `promise` result. 
+- `await` literally suspends the function execution until the `promise` settles, and then resumes it with the `promise` result.
 - That doesn’t cost any CPU resources, because the `JavaScript` engine can do other jobs in the meantime: execute other scripts, handle events, etc.
 - It’s just a more elegant syntax of getting the `promise` result than `promise.then`. And, it’s easier to read and write.
 - In modern browsers, `await` on top level works just fine, when we’re inside a `module`. But if the code is not inside a module, then `await` will produce an `error`.
 - Example:
+
   ```js
   // we assume this code runs at top level, inside a module
-  let response = await fetch('/article/promise-chaining/user.json');
+  let response = await fetch("/article/promise-chaining/user.json");
   let user = await response.json();
 
   console.log(user);
   ```
 
 ## Callback Hell and how to avoid it
+
 - callback hell is a situation where you have a lot of nested callbacks
+
 ```js
-loadScript('/my/script.js', function(script) {
-
-  loadScript('/my/script2.js', function(script) {
-
-    loadScript('/my/script3.js', function(script) {
+loadScript("/my/script.js", function (script) {
+  loadScript("/my/script2.js", function (script) {
+    loadScript("/my/script3.js", function (script) {
       // ...continue after all scripts are loaded
     });
-
   });
-
 });
 ```
+
 - This code uses callbacks to load three scripts in sequence. Each time a script is loaded, the next script is loaded in the callback function.
-- This creates a "pyramid of doom" structure where the code becomes nested and hard to read. It also makes error handling difficult
-- To solve this, we can use Promises and async/await. Here's an example of how to refactor the code using Promises and async/await:
+- This creates a "`pyramid of doom`" structure where the code becomes nested and hard to read. It also makes error handling difficult
+- To solve this, we can use `Promises` and `async/await`. Here's an example of how to refactor the code using Promises and async/await:
+
 ```js
 function loadScript(src) {
   return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = src;
-    script.onload = () => resolve(script);
+    script.onload = () => {
+      document.head.appendChild(script);
+      resolve(script);
+    };
     script.onerror = () => reject(new Error(`Failed to load script ${src}`));
-    document.head.appendChild(script);
   });
 }
 
 async function start() {
   try {
-    const script1 = await loadScript('/my/script.js');
+    const script1 = await loadScript("/my/script.js");
     console.log(`${script1.src} loaded`);
 
-    const script2 = await loadScript('/my/script2.js');
+    const script2 = await loadScript("/my/script2.js");
     console.log(`${script2.src} loaded`);
 
-    const script3 = await loadScript('/my/script3.js');
+    const script3 = await loadScript("/my/script3.js");
     console.log(`${script3.src} loaded`);
 
     // continue after all scripts are loaded
@@ -858,10 +878,9 @@ async function start() {
 }
 
 start();
-
 ```
-- This refactored code uses `Promises` to load the scripts, and `async/await` to wait for each Promise to `resolve` before continuing with the next statement. 
+
+- This refactored code uses `Promises` to load the scripts, and `async/await` to wait for each Promise to `resolve` before continuing with the next statement.
 - This approach makes the code much more readable and maintainable, and avoids the "`pyramid of doom`" structure of callback hell.
 
 ## Questions
-
