@@ -66,6 +66,16 @@
 // prototype
 // **proto**
 
+// naming convention in javascript:
+// https://www.w3schools.com/js/js_conventions.asp
+// https://www.robinwieruch.de/javascript-naming-conventions
+
+// camelCase
+// PascalCase
+// snake_case
+// kebab-case
+
+
 // Meeting Monday
 // Hour: 2:30 pm
 // Invite:
