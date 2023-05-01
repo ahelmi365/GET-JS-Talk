@@ -6,6 +6,7 @@
 
 - [Types of functions in JS](#Types-of-functions-in-JS)
 - [Functions are First Class Objects](#Functions-are-First-Class-Objects)
+- [JS is single-threaded programming language](#JS-is-single-threaded-programming-language)
 - [Callback Functions](#Callback-Functions)
 - [Higher Order Functions](#Higher-Order-Functions)
 - [Promises in js](#Promises-in-js)
@@ -189,6 +190,18 @@ Some examples of different types of functions in JavaScript based on their behav
     // Greeting complete.
     ```
 
+## JS is single-threaded programming language
+- JS is `single-threaded` programming language, which means it can only execute one task at a time. 
+- This is because it has only one `call stack`, which is responsible for executing the code.
+- This means that if a function is currently executing, no other code can run until the call stack is clear. 
+- This can be a problem if a function takes a long time to execute, because it will block the call stack and prevent other code from running. This is known as `blocking code`.
+- Blocking code can be a problem in JavaScript because it can make the user interface unresponsive. 
+- For example, if a function takes a long time to execute, the user will not be able to interact with the page until the function is finished executing. 
+- This can be a problem if the function is doing something that is not related to the user interface, such as fetching data from a server or performing a complex calculation.
+- To solve this problem, JavaScript developers often use `asynchronous programming techniques`, such as `callbacks`, `promises`, and `async/await`, to allow the application to continue running while it waits for long-running tasks to complete. 
+- This allows the user interface to remain responsive while the application is performing long-running tasks.
+
+
 ## Callback Functions
 
 - A callback is a function that is passed as an argument to another function
@@ -213,6 +226,7 @@ Some examples of different types of functions in JavaScript based on their behav
     }
     return output;
   }
+  const numbers1= copyArrayAndMultiplyByTwo(nums); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
   function copyArrayAndDivideByTwo(array) {
     const output = [];
@@ -221,6 +235,8 @@ Some examples of different types of functions in JavaScript based on their behav
     }
     return output;
   }
+  const numbers2= copyArrayAndDivideByTwo(nums); // [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+
   function copyArrayAndAddTwo(array) {
     const output = [];
     for (let i = 0; i < array.length; i++) {
@@ -228,6 +244,7 @@ Some examples of different types of functions in JavaScript based on their behav
     }
     return output;
   }
+  const numbers3= copyArrayAndAddTwo(nums); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   ```
 
 - The solution using callback function
@@ -255,16 +272,16 @@ Some examples of different types of functions in JavaScript based on their behav
   }
 
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  console.log(numbers);
+  console.log(numbers); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const newNumbers = copyArray(numbers, multiplyByTwo);
-  console.log(newNumbers);
+  console.log(newNumbers); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
 
   const newNumbers2 = copyArray(numbers, divideByTwo);
-  console.log(newNumbers2);
+  console.log(newNumbers2); // [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
 
   const newNumbers3 = copyArray(numbers, addTwo);
-  console.log(newNumbers3);
+  console.log(newNumbers3); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   ```
 
   - You don't need to create a new function for each operation
@@ -272,16 +289,14 @@ Some examples of different types of functions in JavaScript based on their behav
 
   ```js
   // Passing annonymous function as arguments to another function
-
   const newNumbers4 = copyArray(numbers, function (number) {
     return number + 2;
   });
-  console.log(newNumbers4);
-
+  console.log(newNumbers4); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+ 
   // Passing arrow function as arguments to another function
-
   const newNumbers5 = copyArray(numbers, (number) => number + 2);
-  console.log(newNumbers5);
+  console.log(newNumbers5); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   ```
 
 ### 2. Asynchronous programming
@@ -301,8 +316,7 @@ Some examples of different types of functions in JavaScript based on their behav
     console.log(`Name: ${data.name}, Age: ${data.age}`);
   }
 
-  getData(processData);
-  // Output after 1 second: Name: John Doe, Age: 30
+  getData(processData); // Output after 1 second: Name: John Doe, Age: 30
   ```
 
 ## Higher Order Functions
