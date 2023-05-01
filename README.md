@@ -298,8 +298,19 @@ Some examples of different types of functions in JavaScript based on their behav
   const newNumbers5 = copyArray(numbers, (number) => number + 2);
   console.log(newNumbers5); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   ```
+### 2. Callback function to handle events in the browser
+- Example to show how to use callback function to handle events in the browser
 
-### 2. Asynchronous programming
+  ```js
+  const button = document.querySelector('button');
+
+  function handleClick(event) {
+    console.log('Button clicked!');
+  }
+
+  button.addEventListener('click', handleClick);
+  ```
+### 3. Asynchronous programming
 
 - In asynchronous programming, a function may take some time to complete its operation. This can cause the program to pause or become unresponsive.
 - Callbacks provide a way to avoid this by allowing the program to continue executing while the asynchronous function is running in the background.
@@ -318,7 +329,12 @@ Some examples of different types of functions in JavaScript based on their behav
 
   getData(processData); // Output after 1 second: Name: John Doe, Age: 30
   ```
-
+- The above example shows how callbacks can be used to handle asynchronous operations in JavaScript.
+- The `getData()` function takes a callback function as an argument and executes it after one second.
+- The `processData()` function is passed as an argument to the `getData()` function and is executed after one second.
+- The `processData()` function receives the data object as an argument and logs it to the console.
+- The `getData()` function is called with the `processData()` function as an argument.
+- The `getData()` function executes the `processData()` function after one second and passes the data object as an argument.
 ## Higher Order Functions
 
 - Higher order function is a function that takes a function as an argument
@@ -388,18 +404,21 @@ Examples of built-in higher-order functions in JavaScript:
     console.log(evenNumbers); // Output: [2, 4]
     ```
 
-3.  `Array.reduce()`: - The goal of the `reduce` method is to reduce the array to a single value by applying a function to each element in that array (from left to right). - The function that is passed to `reduce()` takes two arguments: an `accumulator` and the `current value` in the array. - The function returns the updated `accumulator`, which is used as the `accumulator` for the next iteration. - The function is called once for each element in the array.
+3.  `Array.reduce()`: 
+- The goal of the `reduce` method is to reduce the array to a single value by applying a function to each element in that array (from left to right). 
+- The function that is passed to `reduce()` takes two arguments: an `accumulator` and the `current value` in the array. 
+- The function returns the updated `accumulator`, which is used as the `accumulator` for the next iteration. 
+- The function is called once for each element in the array.
     <br/><br/>
 
     ````js
     const numbers = [1, 2, 3, 4, 5];
 
-          const sumOfNumbers = numbers.reduce(function(acc, num) {
-            return acc + num;
-          }, 0);
+    const sumOfNumbers = numbers.reduce(function(acc, num) {
+      return acc + num;
+    }, 0);
 
-          console.log(sumOfNumbers); // Output: 15
-          ```
+    console.log(sumOfNumbers); // Output: 15
     ````
 
 These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
@@ -410,9 +429,9 @@ These built-in higher-order functions make it easy to write concise and expressi
 - A Promise is an object that represents the eventual completion or failure of an asynchronous operation.
 - Promises returns an object to which you attach callbacks, instead of passing callbacks into a function.
 - A Promise is in one of these states:
-  - pending: initial state, neither fulfilled nor rejected.
-  - fulfilled: meaning that the operation was completed successfully.
-  - rejected: meaning that the operation failed.
+  - `pending`: initial state, neither fulfilled nor rejected.
+  - `fulfilled`: meaning that the operation was completed successfully.
+  - `rejected`: meaning that the operation failed.
 
 ```js
 let promise = new Promise(function (resolve, reject) {
@@ -429,7 +448,8 @@ let promise = new Promise(function (resolve, reject) {
   - `resolve(value)` — if the job finished successfully, with result `value`.
   - `reject(error)` — if an error occurred, `error` is the error object.
 
-- So to summarize: the executor runs automatically and attempts to perform a job. When it is finished with the attempt, it calls `resolve` if it was successful or `reject` if there was an error.
+- So to summarize: the executor runs automatically and attempts to perform a job. 
+- When it is finished with the attempt, it calls `resolve` if it was successful or `reject` if there was an error.
 - The promise object returned by the `new Promise` constructor has these internal properties:
 
   - `state` — initially `"pending"`, then changes to either `"fulfilled"` when `resolve` is called or `"rejected"` when `reject` is called.
@@ -451,14 +471,14 @@ let promise = new Promise(function (resolve, reject) {
 
 - We can see two things by running the code above:
 
-  - The executor is called automatically and immediately (by new Promise).
+  - The executor is called automatically and immediately (by `new Promise`).
 
   - The executor receives two arguments: `resolve` and `reject`. These functions are pre-defined by the JavaScript engine, so we don’t need to create them. We should only call one of them when ready.
 
   After one second of “processing”, the executor calls resolve("done") to produce the result. This changes the state of the promise object:
 
   ![alt text](./screenshots/promise2.PNG)
-  - That was an example of a successful job completion, a “fulfilled promise”.
+  - That was an example of a successful job completion, a `“fulfilled promise”`.
 
 - And now an example of the executor rejecting the promise with an error:
 
@@ -475,7 +495,7 @@ let promise = new Promise(function (resolve, reject) {
 
 ## Promises-then-Catch-finally
 
-- A `Promise` object serves as a link between the `executor` (the “producing code”) and the `consuming functions`, which will receive the result or error.
+- A `Promise` object serves as a link between the `executor` (the “producing code”) and the `consuming functions`, which will receive the `result` or `error`.
 - Consuming functions can be registered (subscribed) using methods `.then`, `.catch` and `.finally`.
 
 ### then()
@@ -492,9 +512,9 @@ let promise = new Promise(function (resolve, reject) {
     }
   );
   ```
-- The first argument of `.then` is a function that runs when the promise is `fulfilled`, and receives the result.
-- The second argument of `.then` is a function that runs when the promise is `rejected`, and receives the error.
-- For instance, here’s a reaction to a successfully resolved promise:
+- The first argument of `.then` is a function that runs when the promise is `fulfilled`, and receives the `result`.
+- The second argument of `.then` is a function that runs when the promise is `rejected`, and receives the `error`.
+- For instance, here’s a reaction to a `successfully` resolved promise:
 
   ```js
   let promise = new Promise(function (resolve, reject) {
@@ -508,7 +528,7 @@ let promise = new Promise(function (resolve, reject) {
   );
   ```
 
-- And in the case of a rejection, the second one:
+- And in the case of a `rejection`, the second one:
 
   ```js
   let promise = new Promise(function (resolve, reject) {
@@ -542,6 +562,7 @@ let promise = new Promise(function (resolve, reject) {
   });
 
   // .catch(f) is the same as promise.then(null, f)
+  // promise.then(null, alert); // shows "Error: Whoops!" after 1 second
   promise.catch(alert); // shows "Error: Whoops!" after 1 second
   ```
 
@@ -549,9 +570,9 @@ let promise = new Promise(function (resolve, reject) {
 
 ### finally
 
-- The call `.finally(f)` is similar to `.then(f, f)` in the sense that `f` always runs when the promise is settled: be it resolve or reject.
+- The call `.finally(f)` is similar to `.then(f, f)` in the sense that `f` always runs when the promise is `settled`: be it `resolve` or `reject`.
 - The idea of `finally` is to set up a handler for performing cleanup/finalizing after the previous operations are complete.
-- A finally handler “passes through” the `result` or `error` to the next suitable handler.
+- A `finally` handler “passes through” the `result` or `error` to the next suitable handler.
 
 - For instance, here the result is passed through finally to then:
 
@@ -579,11 +600,14 @@ let promise = new Promise(function (resolve, reject) {
 - In frontend programming, promises are often used for network requests.
 - The Fetch API provides an interface for fetching resources.
 - It is a more powerful and flexible replacement for `XMLHttpRequest`.
-- For making a request and fetching a resource, use the fetch() method.
+- For making a request and fetching a resource, use the `fetch()` method.
 - It is a global method in Window object.
-- The fetch() method takes one mandatory argument, the path to the resource you want to fetch.
-- It returns a Promise that resolves to the Response to that request
-- res.json() is a method on the response object that returns a promise to parse the body text as JSON
+- The `fetch()` method takes one mandatory argument, the `path` to the resource you want to fetch.
+-  The `fetch()` method does not directly return the `JSON response body` but instead it returns a `promise` that resolves with a `Response object`.
+- The `Response object`, in turn, does not directly contain the actual `JSON response` body but is instead a representation of the entire `HTTP response`.
+- So, to extract the JSON body content from the Response object, we use the `json()` method
+-  The `json()` returns a second promise that resolves with the `result` of parsing the response body text as `JSON`.
+- `json()` is a method on the response object that returns a `promise` to parse the body text as JSON
 
   ```js
   fetch("https://jsonplaceholder.typicode.com/todos/1")
@@ -599,7 +623,7 @@ let promise = new Promise(function (resolve, reject) {
 
   fetch(URL) // returns a promise
     .then((res) => res.json()) // returns a promise
-    .then((json) => json) // returns a promise
+    .then((json) => json) // returns a json object
     .then((data) => {
       console.log(data.products);
       return data.products; // for the next then()
@@ -612,7 +636,62 @@ let promise = new Promise(function (resolve, reject) {
       console.log(firstProduct.title);
     });
   ```
+- POST requests
+  ```js
+  let user = {
+    name: 'John',
+    surname: 'Smith'
+  };
 
+  let response = await fetch('/article/fetch/post/user', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify(user)
+  });
+
+  let result = await response.json();
+  alert(result.message);
+
+  ```
+  - Explanation of the code:
+
+  - We first create an object called `user` with two properties, `name` and `surname`.
+  
+    ```js
+    let user = {
+      name: 'John',
+      surname: 'Smith'
+    };
+    ```
+
+  - We then use the `fetch()` function to make a POST request to a URL endpoint (`/article/fetch/post/user` in this case) and pass in an `options object` that specifies the `method`, `headers`, and `body` of the request. 
+  - In this case, we are sending the `user` object as the request `body` after converting it to a `JSON` string using `JSON.stringify()`.
+  
+    ```js
+    let response = await fetch('/article/fetch/post/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(user)
+    });
+    ```
+
+  - We then use the `json()` method on the `response` object to parse the response body as JSON and return a JavaScript object. We store the parsed object in the `result` variable using `await` since the `json()` method returns a Promise.
+  
+    ```js
+    let result = await response.json();
+    ```
+
+  - Finally, we display a message from the parsed JSON data using the `alert()` function. In this case, we assume that the response body has a property called `message`.
+  
+    ```js
+    alert(result.message);
+    ```
+
+  
 ## Async
 - There’s a special syntax to work with promises in a more comfortable fashion, called “async/await”. It’s surprisingly easy to understand and use.
 - The word `“async”` before a function means one simple thing: a function always returns a `promise`. Other values are wrapped in a resolved promise automatically.
