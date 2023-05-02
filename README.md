@@ -4,6 +4,7 @@
 
 ## Table of contents
 
+- [Declaring Functions in js](#Declaring-Functions-in-js)
 - [Types of functions in JS](#Types-of-functions-in-JS)
 - [Functions are First Class Objects](#Functions-are-First-Class-Objects)
 - [JS is single-threaded programming language](#JS-is-single-threaded-programming-language)
@@ -15,6 +16,57 @@
 - [Async](#Async)
 - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
+
+## Declaring Functions in js
+
+In JavaScript, there are several ways to declare functions. Here are some of the most common ones:
+
+1. `Function Declaration`: This is the most common way to declare a function. It uses the "`function`" keyword followed by the function name, parameters, and function body.
+
+   ```javascript
+   function functionName(parameter1, parameter2) {
+     // function body
+     return something;
+   }
+   ```
+
+2. `Function Expression`: In this method, you declare a function as a variable and `assign` it a value using the "function" keyword.
+
+   ```javascript
+   var functionName = function (parameter1, parameter2) {
+     // function body
+     return something;
+   };
+   ```
+
+3. `Arrow Function`: This is a new way to declare functions in ES6 (ECMAScript 2015). Arrow functions are shorter and have a more concise syntax compared to regular functions.
+
+   ```javascript
+   var functionName = (parameter1, parameter2) => {
+     // function body
+     return something;
+   };
+
+   var functionName = parameter1 => {
+     // function body to do something and then return something
+     return something;
+   };
+
+    var functionName = (parameter1, parameter2) => return something;
+   
+
+   var functionName = parameter1 => return something;
+   ```
+4. `Method Definition`: This is used to declare a function as a `property` of an `object`.
+    ```js
+    var obj = {
+      functionName: function (parameter1, parameter2) {
+        // function body
+        return something;
+      },
+    };
+    ```
+
 
 ## Types of functions in JS
 
@@ -148,6 +200,7 @@ Some examples of different types of functions in JavaScript based on their behav
     multiply(3, 4); // 12
     multiply(3, 5); // 15
     ```
+
     ```js
     function multiplyByTwo(x) {
       return x * 2;
@@ -182,7 +235,8 @@ Some examples of different types of functions in JavaScript based on their behav
     console.log(multiplyByThree(4)); // 12
     console.log(multiplyByThree(5)); // 15
     ```
-    - When a function returns another function as its result, it is called a "`closure`". 
+
+    - When a function returns another function as its result, it is called a "`closure`".
     - A `closure` is a function that has access to variables in its outer (enclosing) scope, even after the outer function has returned.
 
   - Functions can be stored in data structures like arrays or objects:
@@ -470,6 +524,7 @@ These built-in higher-order functions make it easy to write concise and expressi
 ## Promises in js
 
 - Promises are used to handle asynchronous operations in JavaScript.
+- An `asynchronous operation` is one that doesn't block the execution of the program while it's running, but instead runs in the background and `notifies` the program when it's finished.
 - A Promise is an object that represents the eventual completion or failure of an asynchronous operation.
 - Promises returns an object to which you attach callbacks, instead of passing callbacks into a function.
 - A Promise is in one of these states:
