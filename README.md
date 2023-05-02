@@ -134,18 +134,56 @@ Some examples of different types of functions in JavaScript based on their behav
   - Functions can be returned as values from functions:
 
     ```js
+    function multiply(x, y) {
+      return x * y;
+    }
+
+    // multiply 3,4,5, by 2
+    multiply(2, 3); //6
+    multiply(2, 4); // 8
+    multiply(2, 5); // 10
+
+    // multiply 3,4,5, by 3
+    multiply(3, 3); // 9
+    multiply(3, 4); // 12
+    multiply(3, 5); // 15
+    ```
+    ```js
+    function multiplyByTwo(x) {
+      return x * 2;
+    }
+
+    function multiplyByThree(x) {
+      return x * 3;
+    }
+
+    function multiplyByFour(x) {
+      return x * 4;
+    }
+    ```
+
+    ```js
     function makeMultiplier(factor) {
       return function (number) {
         return number * factor;
       };
     }
 
-    const double = makeMultiplier(2);
-    const triple = makeMultiplier(3);
+    const multiplyByTwo = makeMultiplier(2);
 
-    console.log(double(5)); // 10
-    console.log(triple(5)); // 15
+    // multiply 3,4,5, by 2
+    console.log(multiplyByTwo(3)); // 6
+    console.log(multiplyByTwo(4)); // 8
+    console.log(multiplyByTwo(5)); // 10
+
+    const multiplyByThree = makeMultiplier(3);
+    // multiply 3,4,5, by 3
+    console.log(multiplyByThree(3)); // 9
+    console.log(multiplyByThree(4)); // 12
+    console.log(multiplyByThree(5)); // 15
     ```
+    - When a function returns another function as its result, it is called a "`closure`". 
+    - A `closure` is a function that has access to variables in its outer (enclosing) scope, even after the outer function has returned.
 
   - Functions can be stored in data structures like arrays or objects:
 
