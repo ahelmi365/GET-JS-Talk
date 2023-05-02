@@ -4,6 +4,7 @@
 
 ## Table of contents
 
+- [Spread Operator](#Sprecd-Operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
 - [Types of functions in JS](#Types-of-functions-in-JS)
 - [Functions are First Class Objects](#Functions-are-First-Class-Objects)
@@ -16,6 +17,102 @@
 - [Async](#Async)
 - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
+
+## Spread Operator
+
+- The spread operator is a new addition to the set of operators in JavaScript ES6. It takes in an iterable (e.g an array) and expands it into individual elements.
+- The spread operator is commonly used to make shallow copies of JS objects. Using this operator makes the code concise and enhances its readability.
+- Examples with Arrays:
+
+```js
+const arr = [1, 2, 3];
+console.log(...arr); 
+```
+
+```js
+const arr = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const arr3 = [...arr, ...arr2];
+log(arr3); 
+```
+
+```js
+const arr = [1, 2, 3];
+const arr2 = [...arr, 4, 5, 6];
+console.log(arr2); 
+```
+
+- Example with Objects:
+
+```js
+const person = { name: "John", age: 30 };
+const clone = { ...person };
+console.log(clone);
+```
+
+```js
+const person = { name: "John", age: 30 };
+const clone = { ...person, location: "USA" };
+console.log(clone); 
+```
+
+```js
+const person = { name: "John", age: 30 };
+const clone = { location: "USA", ...person };
+console.log(clone); 
+```
+
+```js
+const person = { name: "John", age: 30 };
+const clone = { ...person, age: 40 };
+console.log(clone); 
+```
+
+```js
+const person = { firstName: "John", lastName: "Doe", age: 30 };
+const address = { city: "New York", state: "NY", zip: "10001" };
+
+const user = { ...person, ...address };
+
+console.log(user);
+
+```
+
+```js
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  address: {
+    city: "New York",
+    state: "NY",
+    zip: "10001",
+  },
+};
+
+const user = { ...person };
+
+console.log(user);
+
+```
+
+```js
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  address: {
+    city: "New York",
+    state: "NY",
+    zip: "10001",
+  },
+};
+
+const user = { ...person, address: { ...person.address } };
+
+console.log(user);
+// Output: { firstName: 'John', lastName: 'Doe', age: 30, address: { city: 'New York', state: 'NY', zip: '10001' } }
+```
 
 ## Declaring Functions in js
 
@@ -53,20 +150,20 @@ In JavaScript, there are several ways to declare functions. Here are some of the
    };
 
     var functionName = (parameter1, parameter2) => return something;
-   
+
 
    var functionName = parameter1 => return something;
    ```
-4. `Method Definition`: This is used to declare a function as a `property` of an `object`.
-    ```js
-    var obj = {
-      functionName: function (parameter1, parameter2) {
-        // function body
-        return something;
-      },
-    };
-    ```
 
+4. `Method Definition`: This is used to declare a function as a `property` of an `object`.
+   ```js
+   var obj = {
+     functionName: function (parameter1, parameter2) {
+       // function body
+       return something;
+     },
+   };
+   ```
 
 ## Types of functions in JS
 
