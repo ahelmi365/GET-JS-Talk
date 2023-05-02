@@ -3,7 +3,7 @@
 ## JavaScript talk by GET FrontEnd Team
 
 ## Table of contents
-
+- [Copy Objects in JS](#Copy-Objects-in-JS)
 - [Spread Operator](#Sprecd-Operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
 - [Types of functions in JS](#Types-of-functions-in-JS)
@@ -18,65 +18,96 @@
 - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
 
+## Copy Objects in JS
+- There are two ways to copy objects in JS
+- Shallow Copy
+- Deep Copy
+
+In JavaScript, there are multiple ways to copy objects. Here are some examples:
+
 ## Spread Operator
 
 - The spread operator is a new addition to the set of operators in JavaScript ES6. It takes in an iterable (e.g an array) and expands it into individual elements.
 - The spread operator is commonly used to make shallow copies of JS objects. Using this operator makes the code concise and enhances its readability.
 - Examples with Arrays:
 
-```js
-const arr = [1, 2, 3];
-console.log(...arr); 
+  ```js
+  const arr = [1, 2, 3];
+  console.log(...arr); 
+  ```
+
+  ```js
+  const arr = [1, 2, 3];
+  const arr2 = [4, 5, 6];
+  const arr3 = [...arr, ...arr2];
+  log(arr3); 
+  ```
+
+  ```js
+  const arr = [1, 2, 3];
+  const arr2 = [...arr, 4, 5, 6];
+  console.log(arr2); 
+  ```
+
+  - Example with Objects:
+
+  ```js
+  const person = { name: "John", age: 30 };
+  const clone = { ...person };
+  console.log(clone);
+  ```
+
+  ```js
+  const person = { name: "John", age: 30 };
+  const clone = { ...person, location: "USA" };
+  console.log(clone); 
+  ```
+
+  ```js
+  const person = { name: "John", age: 30 };
+  const clone = { location: "USA", ...person };
+  console.log(clone); 
+  ```
+
+  ```js
+  const person = { name: "John", age: 30 };
+  const clone = { ...person, age: 40 };
+  console.log(clone); 
+  ```
+
+  ```js
+  const person = { firstName: "John", lastName: "Doe", age: 30 };
+  const address = { city: "New York", state: "NY", zip: "10001" };
+
+  const user = { ...person, ...address };
+
+  console.log(user);
+
+  ```
+
+
+**2. Object.assign()**
+
+The `Object.assign()` method can be used to copy an object. It takes one or more source objects and copies their properties into a target object. This also creates a shallow copy of the object. Here's an example:
+
+```javascript
+const original = { a: 1, b: 2 };
+const copy = Object.assign({}, original);
+console.log(copy); // Output: { a: 1, b: 2 }
 ```
 
-```js
-const arr = [1, 2, 3];
-const arr2 = [4, 5, 6];
-const arr3 = [...arr, ...arr2];
-log(arr3); 
+**3. JSON.parse() and JSON.stringify()**
+
+The `JSON.parse()` and `JSON.stringify()` methods can be used to copy an object, creating a deep copy. This method works by first serializing the original object to a JSON string using `JSON.stringify()`, and then deserializing the JSON string back into an object using `JSON.parse()`. Here's an example:
+
+```javascript
+const original = { a: 1, b: { c: 2 } };
+const copy = JSON.parse(JSON.stringify(original));
+console.log(copy); // Output: { a: 1, b: { c: 2 } }
 ```
 
-```js
-const arr = [1, 2, 3];
-const arr2 = [...arr, 4, 5, 6];
-console.log(arr2); 
-```
 
-- Example with Objects:
 
-```js
-const person = { name: "John", age: 30 };
-const clone = { ...person };
-console.log(clone);
-```
-
-```js
-const person = { name: "John", age: 30 };
-const clone = { ...person, location: "USA" };
-console.log(clone); 
-```
-
-```js
-const person = { name: "John", age: 30 };
-const clone = { location: "USA", ...person };
-console.log(clone); 
-```
-
-```js
-const person = { name: "John", age: 30 };
-const clone = { ...person, age: 40 };
-console.log(clone); 
-```
-
-```js
-const person = { firstName: "John", lastName: "Doe", age: 30 };
-const address = { city: "New York", state: "NY", zip: "10001" };
-
-const user = { ...person, ...address };
-
-console.log(user);
-
-```
 
 ```js
 const person = {

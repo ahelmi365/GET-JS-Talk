@@ -36,12 +36,47 @@ const users = [
 
 - Create a function that takes an array of `users` and returns an array of `users` with `id`, `firstName`, `lastNam` and `fullName` without using the map function
 - solution:
-
+```js
+// simple solution:
+function getUsers(users) {
+  const newUsers = [];
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    const newUser = {
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      fullName: `${user.firstName} ${user.lastName}`,
+    };
+    newUsers.push(newUser);
+  }
+  return newUsers;
+}
+// using spread operator:
+function getUsers(users) {
+  const newUsers = [];
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    const newUser = {
+      ...user,
+      fullName: `${user.firstName} ${user.lastName}`,
+    };
+    newUsers.push(newUser);
+  }
+  return newUsers;
+}
+// using map function:
+function getUsers(users) {
+  return users.map((user) => {
+    return {
+      ...user,
+      fullName: `${user.firstName} ${user.lastName}`,
+    };
+  });
+}
+```
 ### Excercise 2
 
 - Create a function called to take an array of users and id and return the user with the given id.
 
-### Excercise 3
 - create a function to take an array of users and a charachter and return new array of users with the first name starts with the given charachter.
-
-### Excercise 4
