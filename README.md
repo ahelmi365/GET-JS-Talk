@@ -4,7 +4,14 @@
 
 ## Table of contents
 - [Data types in JavaScript](#Data-types-in-JavaScript)
+  - [Primitive Data Types](#Primitive-Data-Types)
+  - [Non-Primitive Data Types](#Non-Primitive-Data-Types)
+  - [Characteristics of Primitive Data Types VS Non-Primitive Data Types](#Characteristics-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
 - [Declaring Objects in JS](#Declaring-Objects-in-JS)
+  - [Object Literal](#Object-Literal)
+  - [Object Constructor](#Object-Constructor)
+  - [Object.create()](#Objectcreate)
+  - [ES6 Classes](#ES6-Classes:)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
 - [Spread Operator](#Sprecd-Operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
