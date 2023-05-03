@@ -8,10 +8,10 @@
   - [Non-Primitive Data Types](#Non-Primitive-Data-Types)
   - [Characteristics of Primitive Data Types VS Non-Primitive Data Types](#Characteristics-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
 - [Declaring Objects in JS](#Declaring-Objects-in-JS)
-  - [Object Literal\:](#Object-Literal)
-  - [Object Constructor\:](#Object-Constructor)
-  - [Object.create()\:](#Object.create)
-  - [ES6 Classes\:](#ES6-Classes)
+  - [Object Literal](#Object-Literal)
+  - [Object Constructor](#Object-Constructor)
+  - [Object.create()](#Object.create)
+  - [ES6 Classes\(\)](#ES6-Classes-)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
 - [Spread Operator](#Sprecd-Operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
@@ -300,7 +300,7 @@
 ## Declaring Objects in JS
 In JavaScript, there are multiple ways to declare an object. Here are some common methods:
 
-1. **Object Literal:**
+1. **Object Literal**
 
     The most common way to create an object in JavaScript is to use an object literal. This is simply a comma-separated list of name-value pairs inside curly braces.
 
@@ -317,7 +317,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
     };
     ```
 
-2. **Object Constructor:**
+2. **Object Constructor**
 
     Another way to create an object is to use the Object constructor. This method creates an empty object, which you can then add properties and methods to using dot notation.
 
@@ -333,7 +333,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
     };
     ```
 
-3. **Object.create():**
+3. **Object.create()**
 
     The Object.create() method creates a new object, using an existing object as the prototype. This method allows you to create an object with a specific prototype, which can be useful for inheritance.
 
@@ -349,7 +349,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
     person.age = 30;
     ```
 
-4. **ES6 Classes:**
+4. **ES6 Classes**
 
     ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
 
