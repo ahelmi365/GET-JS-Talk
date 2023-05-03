@@ -1,7 +1,5 @@
-# JS-Talks
-
-## JavaScript talk by GET FrontEnd Team
-
+# JavaScript Talk
+In this repository, I will be talking about JavaScript and its features. I will be covering the following topics:
 ## Table of contents
 - [Data types in JavaScript](#Data-types-in-JavaScript)
   - [Primitive Data Types](#Primitive-Data-Types)
