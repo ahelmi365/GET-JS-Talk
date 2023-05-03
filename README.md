@@ -3,6 +3,8 @@
 ## JavaScript talk by GET FrontEnd Team
 
 ## Table of contents
+- [Data types in JavaScript](#Data-types-in-JavaScript)
+- [Declaring Objects in JS](#Declaring-Objects-in-JS)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
 - [Spread Operator](#Sprecd-Operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
@@ -17,6 +19,233 @@
 - [Async](#Async)
 - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
+---
+## Data types in JavaScript
+  Examples of primitive and non-primitive data types in JavaScript:
+  - **Primitive data types**
+  - **Non-primitive data types**
+
+  ### **Primitive Data types VS Non-Primitive Data Types**
+  | Primitive Data Types | Non-Primitive Data Types |
+  | :------------------: | :----------------------: |
+  | String               | Object                   |
+  | Number               | Array                    |
+  | Boolean              | Function                 |
+  | Null                 | Date                     |
+  | Undefined            |Set                       |
+  | Symbol               |Map                       |
+
+
+### Primitive Data Types
+
+1. **Boolean**: A boolean represents a logical value of either `true` or `false`.
+
+    ```javascript
+    let isRaining = true; // boolean value
+    console.log(typeof isRaining); // "boolean"
+    ```
+
+2. **Number**: A number represents a numeric value, including integers and floating-point numbers.
+
+    ```javascript
+    let age = 30; // integer
+    let price = 9.99; // floating-point number
+    console.log(typeof age); // "number"
+    console.log(typeof price); // "number"
+    ```
+
+3. **String**: A string represents a sequence of characters.
+
+    ```javascript
+    let message = 'Hello, world!'; // string
+   console.log(typeof message); // "string"
+    ```
+
+4. **Undefined**: A variable that has been declared but has not been assigned a value is `undefined`.
+
+    ```javascript
+    let firstName; // undefined
+   console.log(typeof firstName); // "undefined"
+    ```
+
+5. **Null**: A variable that is explicitly assigned the value `null` represents an intentional absence of any object value.
+
+    ```javascript
+    let middleName = null; // null
+   console.log(typeof middleName); // "object"
+    ```
+
+6. **Symbol**: A symbol represents a unique identifier.
+
+    ```javascript
+    const id = Symbol('id'); // symbol
+   console.log(typeof id); // "symbol"
+    ```
+
+### Non-Primitive Data Types
+
+1. **Object**: An object is a collection of key-value pairs and represents a complex entity or data structure.
+
+    ```javascript
+    const person = {
+      firstName: 'John',
+      lastName: 'Doe',
+      age: 30,
+      hobbies: ['reading', 'coding', 'traveling']
+    }; // object
+   console.log(typeof person); // "object"
+    ```
+
+2. **Array**: An array is an ordered list of values.
+
+    ```javascript
+    const numbers = [1, 2, 3, 4, 5]; // array
+   console.log(typeof numbers); // "object"
+    ```
+
+3. **Function**: A function is a reusable block of code that performs a specific task.
+
+    ```javascript
+    function greet(name) {
+      console.log(`Hello, ${name}!`);
+    }
+
+    greet('Alice'); // logs "Hello, Alice!"
+    greet('Bob'); // logs "Hello, Bob!"
+    ```
+
+4. **Date**: A date represents a specific moment in time.
+
+    ```javascript
+    const now = new Date(); // current date and time
+   console.log(typeof now); // "object"
+    ```
+5. **Set**: A set is a collection of unique values.
+
+    ```javascript
+    const set = new Set([1, 2, 3, 4, 5]); // set
+   console.log(typeof set); // "object"
+    ```
+6. **Map**: A map is a collection of key-value pairs.
+
+    ```js
+      const map1 = new Map();
+
+      map1.set('a', 1);
+      map1.set('b', 2);
+      map1.set('c', 3);
+
+      console.log(map1.get('a'));
+      // Expected output: 1
+
+      map1.set('a', 97);
+
+      console.log(map1.get('a'));
+      // Expected output: 97
+
+      console.log(map1.size);
+      // Expected output: 3
+
+      map1.delete('b');
+
+      console.log(map1.size);
+      // Expected output: 2
+    ```
+    ```javascript
+    const map = new Map([['a', 1], ['b', 2], ['c', 3]]); // map
+    console.log(map); // Map(3) {"a" => 1, "b" => 2, "c" => 3}
+    console.log(typeof map); // "object"
+      ```
+
+### **Characteristics of Primitive Data Types VS Non-Primitive Data Types**
+<div style="margin-left: 30px;">
+
+  | Primitive Data Types | Non-Primitive Data Types |
+  | :------------------: | :----------------------: |
+  | Immutable            | Mutable                  |
+  | Passed by value      | Passed by reference      |
+  | Stored in stack      | Stored in heap           |
+  | Copied by value      | Copied by reference      |
+  | Compared by value    | Compared by reference    |
+  | Accessed by value    | Accessed by reference    |
+
+</div>
+
+---
+## Declaring Objects in JS
+In JavaScript, there are multiple ways to declare an object. Here are some common methods:
+
+1. **Object Literal:**
+
+    The most common way to create an object in JavaScript is to use an object literal. This is simply a comma-separated list of name-value pairs inside curly braces.
+
+    ```javascript
+    const person = {
+      name: "John",
+      age: 30,
+      address: {
+        street: "123 Main St",
+        city: "Anytown",
+        state: "CA",
+        zip: "12345"
+      }
+    };
+    ```
+
+2. **Object Constructor:**
+
+    Another way to create an object is to use the Object constructor. This method creates an empty object, which you can then add properties and methods to using dot notation.
+
+    ```javascript
+    const person = new Object();
+    person.name = "John";
+    person.age = 30;
+    person.address = {
+      street: "123 Main St",
+      city: "Anytown",
+      state: "CA",
+      zip: "12345"
+    };
+    ```
+
+3. **Object.create():**
+
+    The Object.create() method creates a new object, using an existing object as the prototype. This method allows you to create an object with a specific prototype, which can be useful for inheritance.
+
+    ```javascript
+    const personProto = {
+      greeting: function() {
+        console.log("Hello, my name is " + this.name);
+      }
+    };
+
+    const person = Object.create(personProto);
+    person.name = "John";
+    person.age = 30;
+    ```
+
+4. **ES6 Classes:**
+
+    ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
+
+    ```javascript
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      
+      greeting() {
+        console.log("Hello, my name is " + this.name);
+      }
+    }
+
+    const person = new Person("John", 30);
+    ```
+
+These are some of the common ways to declare objects in JavaScript. Depending on your use case, one method may be more appropriate than the others.
+
+---
 
 ## Copy Objects in JS
 - There are two ways to copy objects in JS
@@ -40,7 +269,7 @@ In JavaScript, there are multiple ways to copy objects. Here are some examples:
   const arr = [1, 2, 3];
   const arr2 = [4, 5, 6];
   const arr3 = [...arr, ...arr2];
-  log(arr3); 
+  console.log(arr3); 
   ```
 
   ```js
@@ -82,7 +311,6 @@ In JavaScript, there are multiple ways to copy objects. Here are some examples:
   const user = { ...person, ...address };
 
   console.log(user);
-
   ```
 
 
@@ -124,7 +352,6 @@ const person = {
 const user = { ...person };
 
 console.log(user);
-
 ```
 
 ```js
@@ -144,7 +371,7 @@ const user = { ...person, address: { ...person.address } };
 console.log(user);
 // Output: { firstName: 'John', lastName: 'Doe', age: 30, address: { city: 'New York', state: 'NY', zip: '10001' } }
 ```
-
+---
 ## Declaring Functions in js
 
 In JavaScript, there are several ways to declare functions. Here are some of the most common ones:
@@ -195,7 +422,7 @@ In JavaScript, there are several ways to declare functions. Here are some of the
      },
    };
    ```
-
+---
 ## Types of functions in JS
 
 Some examples of different types of functions in JavaScript based on their behavior and side-effects:
@@ -297,7 +524,7 @@ Some examples of different types of functions in JavaScript based on their behav
    doSomething();
    console.log(gen.next().value); // 10
    ```
-
+---
 ## Functions are First Class Objects
 
 - In javaScript functions are considered first-class objects, which means they can be treated like any other value or object. This means that:
@@ -409,7 +636,7 @@ Some examples of different types of functions in JavaScript based on their behav
     // Hello, Alice!
     // Greeting complete.
     ```
-
+---
 ## JS is single-threaded programming language
 
 - JS is `single-threaded` programming language, which means it can only execute one task at a time.
@@ -421,7 +648,7 @@ Some examples of different types of functions in JavaScript based on their behav
 - This can be a problem if the function is doing something that is not related to the user interface, such as fetching data from a server or performing a complex calculation.
 - To solve this problem, JavaScript developers often use `asynchronous programming techniques`, such as `callbacks`, `promises`, and `async/await`, to allow the application to continue running while it waits for long-running tasks to complete.
 - This allows the user interface to remain responsive while the application is performing long-running tasks.
-
+---
 ## Callback Functions
 
 - A callback is a function that is passed as an argument to another function
@@ -559,7 +786,7 @@ Some examples of different types of functions in JavaScript based on their behav
 - The `processData()` function receives the data object as an argument and logs it to the console.
 - The `getData()` function is called with the `processData()` function as an argument.
 - The `getData()` function executes the `processData()` function after one second and passes the data object as an argument.
-
+---
 ## Higher Order Functions
 
 - Higher order function is a function that takes a function as an argument
@@ -600,7 +827,7 @@ Some examples of different types of functions in JavaScript based on their behav
   const addFive = createAdder(5);
   console.log(addFive(10)); // 15
   ```
-
+---
 ## JS built-in HOF
 
 Examples of built-in higher-order functions in JavaScript:
@@ -648,7 +875,7 @@ Examples of built-in higher-order functions in JavaScript:
   ```
 
 These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
-
+---
 ## Promises in js
 
 - Promises are used to handle asynchronous operations in JavaScript.
