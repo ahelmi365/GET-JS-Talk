@@ -8,10 +8,10 @@
   - [Non-Primitive Data Types](#Non-Primitive-Data-Types)
   - [Characteristics of Primitive Data Types VS Non-Primitive Data Types](#Characteristics-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
 - [Declaring Objects in JS](#Declaring-Objects-in-JS)
-  - [Object Literal](#Object-Literal)
-  - [Object Constructor](#Object-Constructor)
-  - [Object.create\(\)](#Object.create-)
-  - [ES6 Classes](#ES6-Classes)
+  - [1. Object Literal](#1-object-literal)
+  - [2. Object Constructor](#2-object-constructor)
+  - [3. Object.create()](#3-objectcreate)
+  - [4. ES6 Classes](#4-es6-classes)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
 - [Spread Operator](#Sprecd-Operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
@@ -300,73 +300,73 @@
 ## Declaring Objects in JS
 In JavaScript, there are multiple ways to declare an object. Here are some common methods:
 
-1. **Object Literal**
+#### 1. Object Literal
 
-    The most common way to create an object in JavaScript is to use an object literal. This is simply a comma-separated list of name-value pairs inside curly braces.
+  The most common way to create an object in JavaScript is to use an object literal. This is simply a comma-separated list of name-value pairs inside curly braces.
 
-    ```javascript
-    const person = {
-      name: "John",
-      age: 30,
-      address: {
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-        zip: "12345"
-      }
-    };
-    ```
-
-2. **Object Constructor**
-
-    Another way to create an object is to use the Object constructor. This method creates an empty object, which you can then add properties and methods to using dot notation.
-
-    ```javascript
-    const person = new Object();
-    person.name = "John";
-    person.age = 30;
-    person.address = {
+  ```javascript
+  const person = {
+    name: "John",
+    age: 30,
+    address: {
       street: "123 Main St",
       city: "Anytown",
       state: "CA",
       zip: "12345"
-    };
-    ```
-
-3. **Object.create()**
-
-    The Object.create() method creates a new object, using an existing object as the prototype. This method allows you to create an object with a specific prototype, which can be useful for inheritance.
-
-    ```javascript
-    const personProto = {
-      greeting: function() {
-        console.log("Hello, my name is " + this.name);
-      }
-    };
-
-    const person = Object.create(personProto);
-    person.name = "John";
-    person.age = 30;
-    ```
-
-4. **ES6 Classes**
-
-    ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
-
-    ```javascript
-    class Person {
-      constructor(name, age) {
-        this.name = name;
-        this.age = age;
-      }
-      
-      greeting() {
-        console.log("Hello, my name is " + this.name);
-      }
     }
+  };
+  ```
 
-    const person = new Person("John", 30);
-    ```
+#### 2. Object Literal
+
+  Another way to create an object is to use the Object constructor. This method creates an empty object, which you can then add properties and methods to using dot notation.
+
+  ```javascript
+  const person = new Object();
+  person.name = "John";
+  person.age = 30;
+  person.address = {
+    street: "123 Main St",
+    city: "Anytown",
+    state: "CA",
+    zip: "12345"
+  };
+  ```
+
+#### 3. Object Literal
+
+  The Object.create() method creates a new object, using an existing object as the prototype. This method allows you to create an object with a specific prototype, which can be useful for inheritance.
+
+  ```javascript
+  const personProto = {
+    greeting: function() {
+      console.log("Hello, my name is " + this.name);
+    }
+  };
+
+  const person = Object.create(personProto);
+  person.name = "John";
+  person.age = 30;
+  ```
+
+#### 4. Object Literal
+
+  ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
+
+  ```javascript
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    
+    greeting() {
+      console.log("Hello, my name is " + this.name);
+    }
+  }
+
+  const person = new Person("John", 30);
+  ```
 
 These are some of the common ways to declare objects in JavaScript. Depending on your use case, one method may be more appropriate than the others.
 
