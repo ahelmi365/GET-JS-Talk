@@ -13,7 +13,9 @@
   - [3. Object.create()](#3-objectcreate)
   - [4. ES6 Classes](#4-es6-classes)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
-- [Spread Operator](#Sprecd-Operator)
+  - [1. Shallow Copy](#1-shallow-copy)
+  - [2. Deep Copy](#2-deep-copy)
+- [Other examples to use Spread Operator](#other-examples-to-use-spread-operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
 - [Types of functions in JS](#Types-of-functions-in-JS)
 - [Functions are First Class Objects](#Functions-are-First-Class-Objects)
@@ -373,13 +375,91 @@ These are some of the common ways to declare objects in JavaScript. Depending on
 ---
 
 ## Copy Objects in JS
-- There are two ways to copy objects in JS
-- Shallow Copy
-- Deep Copy
 
-In JavaScript, there are multiple ways to copy objects. Here are some examples:
+In JavaScript, objects are non-primitive data types and are stored in the heap. When an object is assigned to a variable or passed as an argument to a function, a reference to its memory location is copied, not a copy of its value. 
 
-### 1. Spread Operator
+There are two ways to create a copy of an object: 
+- `Shallow Copy`
+- `Deep Copy`
+
+### 1. Shallow copy
+- Shallow copy creates a new object that shares the same memory references as the original object for its properties. 
+- This means that if the property value is an object, the new object will reference the same memory location as the original object. 
+- Shallow copy is achieved through the `Object.assign()` method or the `spread operator (ES6)`.
+
+  - Here's an example of shallow copying an object using `Object.assign()`:
+
+    ```javascript
+    let originalObj = {
+      name: "John",
+      age: 30,
+      address: {
+        street: "123 Main St",
+        city: "Anytown",
+        state: "CA"
+      }
+    };
+
+    let newObj = Object.assign({}, originalObj);
+
+    console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
+    console.log(originalObj === newObj); // Output: false
+    console.log(originalObj.address === newObj.address); // Output: true
+    ```
+      As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of `originalObj`.
+  - Here's an example of `shallow` copying an object using the `spread operator`:
+
+    ```js
+      let originalObj = {
+      name: "John",
+      age: 30,
+      address: {
+        street: "123 Main St",
+        city: "Anytown",
+        state: "CA"
+      }
+    };
+
+    let newObj = { ...originalObj };
+
+    console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
+    console.log(originalObj === newObj); // Output: false
+    console.log(originalObj.address === newObj.address); // Output: true
+    ```
+    As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of originalObj.
+
+### 2. Deep copy
+  - `Deep copy`, on the other hand, creates a completely new object with its own memory space for all properties, including those that are objects themselves. 
+  - This ensures that changes made to the copied object `do not affect` the original object or any other copies of the object. 
+
+  - There are different ways to achieve `deep copy`, one of which is using the `JSON.parse()` and `JSON.stringify()` methods.
+  - The `JSON.parse()` and `JSON.stringify()` methods can be used to copy an object, creating a deep copy. This method works by first serializing the original object to a JSON string using `JSON.stringify()`, and then deserializing the JSON string back into an object using `JSON.parse()`.
+
+    - Here's an example of deep copying an object using `JSON.parse()` and `JSON.stringify()`:
+
+      ```javascript
+      let originalObj = {
+        name: "John",
+        age: 30,
+        address: {
+          street: "123 Main St",
+          city: "Anytown",
+          state: "CA"
+        }
+      };
+
+      let newObj = JSON.parse(JSON.stringify(originalObj));
+
+      console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
+      console.log(originalObj === newObj); // Output: false
+      console.log(originalObj.address === newObj.address); // Output: false
+      ```
+
+      As you can see, `newObj` is a deep copy of `originalObj`. `newObj` has its own memory space for all properties, including the "`address`" property. Therefore, changes made to `newObj` will not affect the `originalObj` or any other copies of the object.
+
+      ***Note that using `JSON.parse()` and `JSON.stringify()` may not work for all cases, such as when the object contains `functions` or `symbols`. In those cases, other methods of deep copying may be necessary.
+---
+## Other examples to use Spread Operator:
 
 - The spread operator is a new addition to the set of operators in JavaScript ES6. It takes in an iterable (e.g an array) and expands it into individual elements.
 - The spread operator is commonly used to make shallow copies of JS objects. Using this operator makes the code concise and enhances its readability.
@@ -438,64 +518,6 @@ In JavaScript, there are multiple ways to copy objects. Here are some examples:
   console.log(user);
   ```
 
-
-### 2. Object.assign() ###
-
-The `Object.assign()` method can be used to copy an object. It takes one or more source objects and copies their properties into a target object. This also creates a shallow copy of the object. Here's an example:
-
-```javascript
-const original = { a: 1, b: 2 };
-const copy = Object.assign({}, original);
-console.log(copy); // Output: { a: 1, b: 2 }
-```
-
-### 3. JSON.parse() and JSON.stringify() ###
-
-The `JSON.parse()` and `JSON.stringify()` methods can be used to copy an object, creating a deep copy. This method works by first serializing the original object to a JSON string using `JSON.stringify()`, and then deserializing the JSON string back into an object using `JSON.parse()`. Here's an example:
-
-```javascript
-const original = { a: 1, b: { c: 2 } };
-const copy = JSON.parse(JSON.stringify(original));
-console.log(copy); // Output: { a: 1, b: { c: 2 } }
-```
-
-
-
-
-```js
-const person = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 30,
-  address: {
-    city: "New York",
-    state: "NY",
-    zip: "10001",
-  },
-};
-
-const user = { ...person };
-
-console.log(user);
-```
-
-```js
-const person = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 30,
-  address: {
-    city: "New York",
-    state: "NY",
-    zip: "10001",
-  },
-};
-
-const user = { ...person, address: { ...person.address } };
-
-console.log(user);
-// Output: { firstName: 'John', lastName: 'Doe', age: 30, address: { city: 'New York', state: 'NY', zip: '10001' } }
-```
 ---
 ## Declaring Functions in js
 
