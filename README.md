@@ -171,6 +171,124 @@
 
 </div>
 
+### Examples on characteristics of Primitive Data Types VS Non-Primitive Data Types
+
+  - Here are some code examples to illustrate the differences between primitive data types and non-primitive data types in JavaScript:
+
+  1. **Immutable vs Mutable**
+
+      Primitive data types are immutable, meaning their value cannot be changed after they are created:
+
+      ```javascript
+      let a = "Hello";
+      a[0] = "J"; // This has no effect, a remains "Hello"
+      console.log(a); // Output: "Hello"
+      ```
+
+      Non-primitive data types are mutable, meaning their values can be changed after they are created:
+
+      ```javascript
+      let obj = {name: "John"};
+      obj.name = "Jane"; // Changes the value of the 'name' property
+      console.log(obj); // Output: {name: "Jane"}
+      ```
+
+  2. **Passed by value vs Passed by reference**
+
+      Primitive data types are passed by value, meaning a copy of their value is passed to a function:
+
+      ```javascript
+      function changeValue(a) {
+        a = 10;
+      }
+
+      let x = 5;
+      changeValue(x);
+      console.log(x); // Output: 5
+      ```
+
+      Non-primitive data types are passed by reference, meaning a reference to their memory location is passed to a function:
+
+      ```javascript
+      function changeValue(obj) {
+        obj.name = "Jane";
+      }
+
+      let person = {name: "John"};
+      changeValue(person);
+      console.log(person); // Output: {name: "Jane"}
+      ```
+
+  3. **Stored in stack vs Stored in heap**
+
+      Primitive data types are stored in the stack:
+
+      ```javascript
+      let a = 5;
+      ```
+
+      Non-primitive data types are stored in the heap:
+
+      ```javascript
+      let obj = {name: "John"};
+      ```
+
+  4. **Copied by value vs Copied by reference**
+
+      Primitive data types are copied by value:
+
+      ```javascript
+      let a = 5;
+      let b = a; // Copies the value of a to b
+      b = 10;
+      console.log(a); // Output: 5
+      ```
+
+      Non-primitive data types are copied by reference:
+
+      ```javascript
+      let obj1 = {name: "John"};
+      let obj2 = obj1; // Copies the reference to obj1 to obj2
+      obj2.name = "Jane";
+      console.log(obj1); // Output: {name: "Jane"}
+      ```
+
+  5. **Compared by value vs Compared by reference**
+
+      Primitive data types are compared by value:
+
+      ```javascript
+      let a = 5;
+      let b = 5;
+      console.log(a === b); // Output: true
+      ```
+
+      Non-primitive data types are compared by reference:
+
+      ```javascript
+      let obj1 = {name: "John"};
+      let obj2 = {name: "John"};
+      console.log(obj1 === obj2); // Output: false
+      ```
+
+  6. **Accessed by value vs Accessed by reference**
+
+      Primitive data types are accessed by value:
+
+      ```javascript
+      let a = 5;
+      let b = a; // Copies the value of a to b
+      b = 10;
+      console.log(a); // Output: 5
+      ```
+
+      Non-primitive data types are accessed by reference:
+
+      ```javascript
+      let obj = {name: "John"};
+      console.log(obj.name); // Output: "John"
+      ```
+
 ---
 ## Declaring Objects in JS
 In JavaScript, there are multiple ways to declare an object. Here are some common methods:
