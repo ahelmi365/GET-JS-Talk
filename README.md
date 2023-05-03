@@ -300,7 +300,7 @@
 ## Declaring Objects in JS
 In JavaScript, there are multiple ways to declare an object. Here are some common methods:
 
-#### 1. Object Literal
+### 1. Object Literal
 
   The most common way to create an object in JavaScript is to use an object literal. This is simply a comma-separated list of name-value pairs inside curly braces.
 
@@ -317,7 +317,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
   };
   ```
 
-#### 2. Object Constructor
+### 2. Object Constructor
 
   Another way to create an object is to use the Object constructor. This method creates an empty object, which you can then add properties and methods to using dot notation.
 
@@ -333,7 +333,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
   };
   ```
 
-#### 3. Object.create()
+### 3. Object.create()
 
   The Object.create() method creates a new object, using an existing object as the prototype. This method allows you to create an object with a specific prototype, which can be useful for inheritance.
 
@@ -349,7 +349,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
   person.age = 30;
   ```
 
-#### 4. ES6 Classes
+### 4. ES6 Classes
 
   ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
 
@@ -379,7 +379,7 @@ These are some of the common ways to declare objects in JavaScript. Depending on
 
 In JavaScript, there are multiple ways to copy objects. Here are some examples:
 
-## Spread Operator
+### 1. Spread Operator
 
 - The spread operator is a new addition to the set of operators in JavaScript ES6. It takes in an iterable (e.g an array) and expands it into individual elements.
 - The spread operator is commonly used to make shallow copies of JS objects. Using this operator makes the code concise and enhances its readability.
@@ -439,7 +439,7 @@ In JavaScript, there are multiple ways to copy objects. Here are some examples:
   ```
 
 
-**2. Object.assign()**
+### 2. Object.assign() ###
 
 The `Object.assign()` method can be used to copy an object. It takes one or more source objects and copies their properties into a target object. This also creates a shallow copy of the object. Here's an example:
 
@@ -449,7 +449,7 @@ const copy = Object.assign({}, original);
 console.log(copy); // Output: { a: 1, b: 2 }
 ```
 
-**3. JSON.parse() and JSON.stringify()**
+### 3. JSON.parse() and JSON.stringify() ###
 
 The `JSON.parse()` and `JSON.stringify()` methods can be used to copy an object, creating a deep copy. This method works by first serializing the original object to a JSON string using `JSON.stringify()`, and then deserializing the JSON string back into an object using `JSON.parse()`. Here's an example:
 
@@ -501,7 +501,7 @@ console.log(user);
 
 In JavaScript, there are several ways to declare functions. Here are some of the most common ones:
 
-1. `Function Declaration`: This is the most common way to declare a function. It uses the "`function`" keyword followed by the function name, parameters, and function body.
+1. **`Function Declaration`**: This is the most common way to declare a function. It uses the "`function`" keyword followed by the function name, parameters, and function body.
 
    ```javascript
    function functionName(parameter1, parameter2) {
@@ -510,7 +510,7 @@ In JavaScript, there are several ways to declare functions. Here are some of the
    }
    ```
 
-2. `Function Expression`: In this method, you declare a function as a variable and `assign` it a value using the "function" keyword.
+2. **`Function Expression`**: In this method, you declare a function as a variable and `assign` it a value using the "function" keyword.
 
    ```javascript
    var functionName = function (parameter1, parameter2) {
@@ -519,7 +519,7 @@ In JavaScript, there are several ways to declare functions. Here are some of the
    };
    ```
 
-3. `Arrow Function`: This is a new way to declare functions in ES6 (ECMAScript 2015). Arrow functions are shorter and have a more concise syntax compared to regular functions.
+3. **`Arrow Function`**: This is a new way to declare functions in ES6 (ECMAScript 2015). Arrow functions are shorter and have a more concise syntax compared to regular functions.
 
    ```javascript
    var functionName = (parameter1, parameter2) => {
@@ -538,7 +538,7 @@ In JavaScript, there are several ways to declare functions. Here are some of the
    var functionName = parameter1 => return something;
    ```
 
-4. `Method Definition`: This is used to declare a function as a `property` of an `object`.
+4. **`Method Definition`**: This is used to declare a function as a `property` of an `object`.
    ```js
    var obj = {
      functionName: function (parameter1, parameter2) {
@@ -552,7 +552,7 @@ In JavaScript, there are several ways to declare functions. Here are some of the
 
 Some examples of different types of functions in JavaScript based on their behavior and side-effects:
 
-1. Pure function:
+1. **Pure function**:
 
    A pure function is a function that doesn't modify any data outside of its own scope and always returns the same result for the same input. Here is an example:
 
@@ -562,7 +562,7 @@ Some examples of different types of functions in JavaScript based on their behav
    }
    ```
 
-2. Impure function:
+2. **Impure function**:
 
    An impure function is a function that modifies data outside of its own scope or has side effects. Here is an example:
 
@@ -574,7 +574,7 @@ Some examples of different types of functions in JavaScript based on their behav
    }
    ```
 
-3. Higher-order function:
+3. **Higher-order function**:
 
    A higher-order function is a function that takes one or more functions as arguments or returns a function as its result. Here is an example:
 
@@ -589,7 +589,7 @@ Some examples of different types of functions in JavaScript based on their behav
    console.log(double(5)); // Output: 10
    ```
 
-4. Recursive function:
+4. **Recursive function**:
 
    A recursive function is a function that calls itself until a certain condition is met. Here is an example:
 
@@ -604,7 +604,7 @@ Some examples of different types of functions in JavaScript based on their behav
    console.log(factorial(5)); // Output: 120
    ```
 
-5. Arrow function:
+5. **Arrow function**:
 
    An arrow function is a more concise syntax for writing a function in JavaScript. Here is an example:
 
@@ -616,7 +616,7 @@ Some examples of different types of functions in JavaScript based on their behav
    console.log(add(2, 3)); // Output: 5
    ```
 
-6. Generator function:
+6. **Generator function**:
 
    A generator function is a function that can pause its execution and return multiple values one at a time. Here is an example:
 
@@ -654,7 +654,7 @@ Some examples of different types of functions in JavaScript based on their behav
 
 - In javaScript functions are considered first-class objects, which means they can be treated like any other value or object. This means that:
 
-  - Functions can be assigned to variables
+  - **Functions can be assigned to variables**:
 
     ```js
     const add = function (a, b) {
@@ -663,7 +663,7 @@ Some examples of different types of functions in JavaScript based on their behav
     console.log(add(2, 3)); // 5
     ```
 
-  - Functions can be returned as values from functions:
+  - **Functions can be returned as values from functions**:
 
     ```js
     function multiply(x, y) {
@@ -719,7 +719,7 @@ Some examples of different types of functions in JavaScript based on their behav
     - When a function returns another function as its result, it is called a "`closure`".
     - A `closure` is a function that has access to variables in its outer (enclosing) scope, even after the outer function has returned.
 
-  - Functions can be stored in data structures like arrays or objects:
+  - **Functions can be stored in data structures like arrays or objects**:
 
     ```js
     const operations = {
@@ -741,7 +741,7 @@ Some examples of different types of functions in JavaScript based on their behav
     console.log(operations.divide(10, 2)); // 5
     ```
 
-  - Functions can be passed as arguments to other functions:
+  - **Functions can be passed as arguments to other functions**:
 
     ```js
     function greeting(name) {
@@ -781,7 +781,7 @@ Some examples of different types of functions in JavaScript based on their behav
 
 ### Challenges solved by callback function in js:
 
-### 1. Code duplication
+#### 1. Code duplication
 
 - Example to show the problem without callback function:
 
@@ -871,7 +871,7 @@ Some examples of different types of functions in JavaScript based on their behav
   console.log(newNumbers5); // [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   ```
 
-### 2. Callback function to handle events in the browser
+#### 2. Callback function to handle events in the browser
 
 - Example to show how to use callback function to handle events in the browser
 
@@ -885,7 +885,7 @@ Some examples of different types of functions in JavaScript based on their behav
   button.addEventListener("click", handleClick);
   ```
 
-### 3. Asynchronous programming
+#### 3. Asynchronous programming
 
 - In asynchronous programming, a function may take some time to complete its operation. This can cause the program to pause or become unresponsive.
 - Callbacks provide a way to avoid this by allowing the program to continue executing while the asynchronous function is running in the background.
@@ -914,7 +914,7 @@ Some examples of different types of functions in JavaScript based on their behav
 ---
 ## Higher Order Functions
 
-- Higher order function is a function that takes a function as an argument
+- **Higher order function** is a function that takes a function as an argument
 
   ```js
   function copyArray(array, instructions) {
@@ -955,9 +955,9 @@ Some examples of different types of functions in JavaScript based on their behav
 ---
 ## JS built-in HOF
 
-Examples of built-in higher-order functions in JavaScript:
+**Examples of built-in higher-order functions in JavaScript**:
 
-1.  `Array.map()`: Returns a new array with the same number of elements as the original array, where each element is transformed according to a function that is passed as an argument.
+1. **`Array.map()`**: Returns a new array with the same number of elements as the original array, where each element is transformed according to a function that is passed as an argument.
 
     ```js
     const numbers = [1, 2, 3, 4, 5];
@@ -969,7 +969,7 @@ Examples of built-in higher-order functions in JavaScript:
     console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
     ```
 
-2.  `Array.filter()`: Returns a new array with only the elements that pass a test implemented by a function that is passed as an argument.
+2. **`Array.filter()`**: Returns a new array with only the elements that pass a test implemented by a function that is passed as an argument.
 
     ```js
     const numbers = [1, 2, 3, 4, 5];
@@ -981,7 +981,7 @@ Examples of built-in higher-order functions in JavaScript:
     console.log(evenNumbers); // Output: [2, 4]
     ```
 
-3.  `Array.reduce()`:
+3. **`Array.reduce()`**:
 
 - The goal of the `reduce` method is to reduce the array to a single value by applying a function to each element in that array (from left to right).
 - The function that is passed to `reduce()` takes two arguments: an `accumulator` and the `current value` in the array.
@@ -1003,7 +1003,7 @@ These built-in higher-order functions make it easy to write concise and expressi
 ---
 ## Promises in js
 
-- Promises are used to handle asynchronous operations in JavaScript.
+- `Promises` are used to handle asynchronous operations in JavaScript.
 - An `asynchronous operation` is one that doesn't block the execution of the program while it's running, but instead runs in the background and `notifies` the program when it's finished.
 - A Promise is an object that represents the eventual completion or failure of an asynchronous operation.
 - Promises returns an object to which you attach callbacks, instead of passing callbacks into a function.
@@ -1174,7 +1174,7 @@ let promise = new Promise(function (resolve, reject) {
     .finally(() => alert("Promise ready")) // <-- .finally handles the error
     .catch((err) => alert(err)); // <-- .catch handles the error object
   ```
-
+---
 ## Fetch
 
 - In frontend programming, promises are often used for network requests.
@@ -1272,7 +1272,7 @@ let promise = new Promise(function (resolve, reject) {
     ```js
     alert(result.message);
     ```
-
+---
 ## Async
 
 - There’s a special syntax to work with promises in a more comfortable fashion, called “async/await”. It’s surprisingly easy to understand and use.
@@ -1335,7 +1335,7 @@ let promise = new Promise(function (resolve, reject) {
     (rejectValue) => console.error(rejectValue)
   );
   ```
-
+---
 ## Await
 
 - `await` is a keyword that is used inside an `async` function.
@@ -1455,5 +1455,6 @@ start();
 
 - This refactored code uses `Promises` to load the scripts, and `async/await` to wait for each Promise to `resolve` before continuing with the next statement.
 - This approach makes the code much more readable and maintainable, and avoids the "`pyramid of doom`" structure of callback hell.
-
+---
 ## Questions
+---
