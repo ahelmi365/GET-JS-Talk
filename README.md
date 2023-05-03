@@ -317,7 +317,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
   };
   ```
 
-#### 2. Object Literal
+#### 2. Object Constructor
 
   Another way to create an object is to use the Object constructor. This method creates an empty object, which you can then add properties and methods to using dot notation.
 
@@ -333,7 +333,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
   };
   ```
 
-#### 3. Object Literal
+#### 3. Object.create()
 
   The Object.create() method creates a new object, using an existing object as the prototype. This method allows you to create an object with a specific prototype, which can be useful for inheritance.
 
@@ -349,7 +349,7 @@ In JavaScript, there are multiple ways to declare an object. Here are some commo
   person.age = 30;
   ```
 
-#### 4. Object Literal
+#### 4. ES6 Classes
 
   ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
 
