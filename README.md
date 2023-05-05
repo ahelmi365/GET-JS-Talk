@@ -1,6 +1,9 @@
 # JavaScript Talk
+
 In this repository, I will be talking about JavaScript and its features. I will be covering the following topics:
+
 ## Table of contents
+
 - [Data types in JavaScript](#Data-types-in-JavaScript)
   - [Primitive Data Types](#Primitive-Data-Types)
   - [Non-Primitive Data Types](#Non-Primitive-Data-Types)
@@ -26,347 +29,361 @@ In this repository, I will be talking about JavaScript and its features. I will 
 - [Async](#Async)
 - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
+
 ---
+
 ## Data types in JavaScript
-  Examples of primitive and non-primitive data types in JavaScript:
-  - **Primitive data types**
-  - **Non-primitive data types**
 
-  ### **Primitive Data types VS Non-Primitive Data Types**
-  | Primitive Data Types | Non-Primitive Data Types |
-  | :------------------: | :----------------------: |
-  | String               | Object                   |
-  | Number               | Array                    |
-  | Boolean              | Function                 |
-  | Null                 | Date                     |
-  | Undefined            |Set                       |
-  | Symbol               |Map                       |
+Examples of primitive and non-primitive data types in JavaScript:
 
+- **Primitive data types**
+- **Non-primitive data types**
+
+### **Primitive Data types VS Non-Primitive Data Types**
+
+| Primitive Data Types | Non-Primitive Data Types |
+| :------------------: | :----------------------: |
+|        String        |          Object          |
+|        Number        |          Array           |
+|       Boolean        |         Function         |
+|         Null         |           Date           |
+|      Undefined       |           Set            |
+|        Symbol        |           Map            |
 
 ### Primitive Data Types
 
 1. **Boolean**: A boolean represents a logical value of either `true` or `false`.
 
-    ```javascript
-    let isRaining = true; // boolean value
-    console.log(typeof isRaining); // "boolean"
-    ```
+   ```javascript
+   let isRaining = true; // boolean value
+   console.log(typeof isRaining); // "boolean"
+   ```
 
 2. **Number**: A number represents a numeric value, including integers and floating-point numbers.
 
-    ```javascript
-    let age = 30; // integer
-    let price = 9.99; // floating-point number
-    console.log(typeof age); // "number"
-    console.log(typeof price); // "number"
-    ```
+   ```javascript
+   let age = 30; // integer
+   let price = 9.99; // floating-point number
+   console.log(typeof age); // "number"
+   console.log(typeof price); // "number"
+   ```
 
 3. **String**: A string represents a sequence of characters.
 
-    ```javascript
-    let message = 'Hello, world!'; // string
+   ```javascript
+   let message = "Hello, world!"; // string
    console.log(typeof message); // "string"
-    ```
+   ```
 
 4. **Undefined**: A variable that has been declared but has not been assigned a value is `undefined`.
 
-    ```javascript
-    let firstName; // undefined
+   ```javascript
+   let firstName; // undefined
    console.log(typeof firstName); // "undefined"
-    ```
+   ```
 
 5. **Null**: A variable that is explicitly assigned the value `null` represents an intentional absence of any object value.
 
-    ```javascript
-    let middleName = null; // null
+   ```javascript
+   let middleName = null; // null
    console.log(typeof middleName); // "object"
-    ```
+   ```
 
 6. **Symbol**: A symbol represents a unique identifier.
 
-    ```javascript
-    const id = Symbol('id'); // symbol
+   ```javascript
+   const id = Symbol("id"); // symbol
    console.log(typeof id); // "symbol"
-    ```
+   ```
 
 ### Non-Primitive Data Types
 
 1. **Object**: An object is a collection of key-value pairs and represents a complex entity or data structure.
 
-    ```javascript
-    const person = {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: 30,
-      hobbies: ['reading', 'coding', 'traveling']
-    }; // object
+   ```javascript
+   const person = {
+     firstName: "John",
+     lastName: "Doe",
+     age: 30,
+     hobbies: ["reading", "coding", "traveling"],
+   }; // object
    console.log(typeof person); // "object"
-    ```
+   ```
 
 2. **Array**: An array is an ordered list of values.
 
-    ```javascript
-    const numbers = [1, 2, 3, 4, 5]; // array
+   ```javascript
+   const numbers = [1, 2, 3, 4, 5]; // array
    console.log(typeof numbers); // "object"
-    ```
+   ```
 
 3. **Function**: A function is a reusable block of code that performs a specific task.
 
-    ```javascript
-    function greet(name) {
-      console.log(`Hello, ${name}!`);
-    }
+   ```javascript
+   function greet(name) {
+     console.log(`Hello, ${name}!`);
+   }
 
-    greet('Alice'); // logs "Hello, Alice!"
-    greet('Bob'); // logs "Hello, Bob!"
-    ```
+   greet("Alice"); // logs "Hello, Alice!"
+   greet("Bob"); // logs "Hello, Bob!"
+   ```
 
 4. **Date**: A date represents a specific moment in time.
 
-    ```javascript
-    const now = new Date(); // current date and time
+   ```javascript
+   const now = new Date(); // current date and time
    console.log(typeof now); // "object"
-    ```
+   ```
+
 5. **Set**: A set is a collection of unique values.
 
-    ```javascript
-    const set = new Set([1, 2, 3, 4, 5]); // set
+   ```javascript
+   const set = new Set([1, 2, 3, 4, 5]); // set
    console.log(typeof set); // "object"
-    ```
+   ```
+
 6. **Map**: A map is a collection of key-value pairs.
 
-    ```js
-      const map1 = new Map();
+   ```js
+   const map1 = new Map();
 
-      map1.set('a', 1);
-      map1.set('b', 2);
-      map1.set('c', 3);
+   map1.set("a", 1);
+   map1.set("b", 2);
+   map1.set("c", 3);
 
-      console.log(map1.get('a'));
-      // Expected output: 1
+   console.log(map1.get("a"));
+   // Expected output: 1
 
-      map1.set('a', 97);
+   map1.set("a", 97);
 
-      console.log(map1.get('a'));
-      // Expected output: 97
+   console.log(map1.get("a"));
+   // Expected output: 97
 
-      console.log(map1.size);
-      // Expected output: 3
+   console.log(map1.size);
+   // Expected output: 3
 
-      map1.delete('b');
+   map1.delete("b");
 
-      console.log(map1.size);
-      // Expected output: 2
-    ```
-    ```javascript
-    const map = new Map([['a', 1], ['b', 2], ['c', 3]]); // map
-    console.log(map); // Map(3) {"a" => 1, "b" => 2, "c" => 3}
-    console.log(typeof map); // "object"
-      ```
+   console.log(map1.size);
+   // Expected output: 2
+   ```
+
+   ```javascript
+   const map = new Map([
+     ["a", 1],
+     ["b", 2],
+     ["c", 3],
+   ]); // map
+   console.log(map); // Map(3) {"a" => 1, "b" => 2, "c" => 3}
+   console.log(typeof map); // "object"
+   ```
 
 ### **Characteristics of Primitive Data Types VS Non-Primitive Data Types**
+
 <div style="margin-left: 30px;">
 
-  | Primitive Data Types | Non-Primitive Data Types |
-  | :------------------: | :----------------------: |
-  | Immutable            | Mutable                  |
-  | Passed by value      | Passed by reference      |
-  | Stored in stack      | Stored in heap           |
-  | Copied by value      | Copied by reference      |
-  | Compared by value    | Compared by reference    |
-  | Accessed by value    | Accessed by reference    |
+| Primitive Data Types | Non-Primitive Data Types |
+| :------------------: | :----------------------: |
+|      Immutable       |         Mutable          |
+|   Passed by value    |   Passed by reference    |
+|   Stored in stack    |      Stored in heap      |
+|   Copied by value    |   Copied by reference    |
+|  Compared by value   |  Compared by reference   |
+|  Accessed by value   |  Accessed by reference   |
 
 </div>
 
 ### Examples on characteristics of Primitive Data Types VS Non-Primitive Data Types
 
-  - Here are some code examples to illustrate the differences between primitive data types and non-primitive data types in JavaScript:
+- Here are some code examples to illustrate the differences between primitive data types and non-primitive data types in JavaScript:
 
-  1. **Immutable vs Mutable**
+1. **Immutable vs Mutable**
 
-      Primitive data types are immutable, meaning their value cannot be changed after they are created:
+   Primitive data types are immutable, meaning their value cannot be changed after they are created:
 
-      ```javascript
-      let a = "Hello";
-      a[0] = "J"; // This has no effect, a remains "Hello"
-      console.log(a); // Output: "Hello"
-      ```
+   ```javascript
+   let a = "Hello";
+   a[0] = "J"; // This has no effect, a remains "Hello"
+   console.log(a); // Output: "Hello"
+   ```
 
-      Non-primitive data types are mutable, meaning their values can be changed after they are created:
+   Non-primitive data types are mutable, meaning their values can be changed after they are created:
 
-      ```javascript
-      let obj = {name: "John"};
-      obj.name = "Jane"; // Changes the value of the 'name' property
-      console.log(obj); // Output: {name: "Jane"}
-      ```
+   ```javascript
+   let obj = { name: "John" };
+   obj.name = "Jane"; // Changes the value of the 'name' property
+   console.log(obj); // Output: {name: "Jane"}
+   ```
 
-  2. **Passed by value vs Passed by reference**
+2. **Passed by value vs Passed by reference**
 
-      Primitive data types are passed by value, meaning a copy of their value is passed to a function:
+   Primitive data types are passed by value, meaning a copy of their value is passed to a function:
 
-      ```javascript
-      function changeValue(a) {
-        a = 10;
-      }
+   ```javascript
+   function changeValue(a) {
+     a = 10;
+   }
 
-      let x = 5;
-      changeValue(x);
-      console.log(x); // Output: 5
-      ```
+   let x = 5;
+   changeValue(x);
+   console.log(x); // Output: 5
+   ```
 
-      Non-primitive data types are passed by reference, meaning a reference to their memory location is passed to a function:
+   Non-primitive data types are passed by reference, meaning a reference to their memory location is passed to a function:
 
-      ```javascript
-      function changeValue(obj) {
-        obj.name = "Jane";
-      }
+   ```javascript
+   function changeValue(obj) {
+     obj.name = "Jane";
+   }
 
-      let person = {name: "John"};
-      changeValue(person);
-      console.log(person); // Output: {name: "Jane"}
-      ```
+   let person = { name: "John" };
+   changeValue(person);
+   console.log(person); // Output: {name: "Jane"}
+   ```
 
-  3. **Stored in stack vs Stored in heap**
+3. **Stored in stack vs Stored in heap**
 
-      Primitive data types are stored in the stack:
+   Primitive data types are stored in the stack:
 
-      ```javascript
-      let a = 5;
-      ```
+   ```javascript
+   let a = 5;
+   ```
 
-      Non-primitive data types are stored in the heap:
+   Non-primitive data types are stored in the heap:
 
-      ```javascript
-      let obj = {name: "John"};
-      ```
+   ```javascript
+   let obj = { name: "John" };
+   ```
 
-  4. **Copied by value vs Copied by reference**
+4. **Copied by value vs Copied by reference**
 
-      Primitive data types are copied by value:
+   Primitive data types are copied by value:
 
-      ```javascript
-      let a = 5;
-      let b = a; // Copies the value of a to b
-      b = 10;
-      console.log(a); // Output: 5
-      ```
+   ```javascript
+   let a = 5;
+   let b = a; // Copies the value of a to b
+   b = 10;
+   console.log(a); // Output: 5
+   ```
 
-      Non-primitive data types are copied by reference:
+   Non-primitive data types are copied by reference:
 
-      ```javascript
-      let obj1 = {name: "John"};
-      let obj2 = obj1; // Copies the reference to obj1 to obj2
-      obj2.name = "Jane";
-      console.log(obj1); // Output: {name: "Jane"}
-      ```
+   ```javascript
+   let obj1 = { name: "John" };
+   let obj2 = obj1; // Copies the reference to obj1 to obj2
+   obj2.name = "Jane";
+   console.log(obj1); // Output: {name: "Jane"}
+   ```
 
-  5. **Compared by value vs Compared by reference**
+5. **Compared by value vs Compared by reference**
 
-      Primitive data types are compared by value:
+   Primitive data types are compared by value:
 
-      ```javascript
-      let a = 5;
-      let b = 5;
-      console.log(a === b); // Output: true
-      ```
+   ```javascript
+   let a = 5;
+   let b = 5;
+   console.log(a === b); // Output: true
+   ```
 
-      Non-primitive data types are compared by reference:
+   Non-primitive data types are compared by reference:
 
-      ```javascript
-      let obj1 = {name: "John"};
-      let obj2 = {name: "John"};
-      console.log(obj1 === obj2); // Output: false
-      ```
+   ```javascript
+   let obj1 = { name: "John" };
+   let obj2 = { name: "John" };
+   console.log(obj1 === obj2); // Output: false
+   ```
 
-  6. **Accessed by value vs Accessed by reference**
+6. **Accessed by value vs Accessed by reference**
 
-      Primitive data types are accessed by value:
+   Primitive data types are accessed by value:
 
-      ```javascript
-      let a = 5;
-      let b = a; // Copies the value of a to b
-      b = 10;
-      console.log(a); // Output: 5
-      ```
+   ```javascript
+   let a = 5;
+   let b = a; // Copies the value of a to b
+   b = 10;
+   console.log(a); // Output: 5
+   ```
 
-      Non-primitive data types are accessed by reference:
+   Non-primitive data types are accessed by reference:
 
-      ```javascript
-      let obj = {name: "John"};
-      console.log(obj.name); // Output: "John"
-      ```
+   ```javascript
+   let obj = { name: "John" };
+   console.log(obj.name); // Output: "John"
+   ```
 
 ---
+
 ## Declaring Objects in JS
+
 In JavaScript, there are multiple ways to declare an object. Here are some common methods:
 
 ### 1. Object Literal
 
-  The most common way to create an object in JavaScript is to use an object literal. This is simply a comma-separated list of name-value pairs inside curly braces.
+The most common way to create an object in JavaScript is to use an object literal. This is simply a comma-separated list of name-value pairs inside curly braces.
 
-  ```javascript
-  const person = {
-    name: "John",
-    age: 30,
-    address: {
-      street: "123 Main St",
-      city: "Anytown",
-      state: "CA",
-      zip: "12345"
-    }
-  };
-  ```
-
-### 2. Object Constructor
-
-  Another way to create an object is to use the Object constructor. This method creates an empty object, which you can then add properties and methods to using dot notation.
-
-  ```javascript
-  const person = new Object();
-  person.name = "John";
-  person.age = 30;
-  person.address = {
+```javascript
+const person = {
+  name: "John",
+  age: 30,
+  address: {
     street: "123 Main St",
     city: "Anytown",
     state: "CA",
-    zip: "12345"
-  };
-  ```
+    zip: "12345",
+  },
+};
+```
+
+### 2. Object Constructor
+
+Another way to create an object is to use the Object constructor. This method creates an empty object, which you can then add properties and methods to using dot notation.
+
+```javascript
+const person = new Object();
+person.name = "John";
+person.age = 30;
+person.address = {
+  street: "123 Main St",
+  city: "Anytown",
+  state: "CA",
+  zip: "12345",
+};
+```
 
 ### 3. Object.create()
 
-  The Object.create() method creates a new object, using an existing object as the prototype. This method allows you to create an object with a specific prototype, which can be useful for inheritance.
+The Object.create() method creates a new object, using an existing object as the prototype. This method allows you to create an object with a specific prototype, which can be useful for inheritance.
 
-  ```javascript
-  const personProto = {
-    greeting: function() {
-      console.log("Hello, my name is " + this.name);
-    }
-  };
+```javascript
+const personProto = {
+  greeting: function () {
+    console.log("Hello, my name is " + this.name);
+  },
+};
 
-  const person = Object.create(personProto);
-  person.name = "John";
-  person.age = 30;
-  ```
+const person = Object.create(personProto);
+person.name = "John";
+person.age = 30;
+```
 
 ### 4. ES6 Classes
 
-  ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
+ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
 
-  ```javascript
-  class Person {
-    constructor(name, age) {
-      this.name = name;
-      this.age = age;
-    }
-    
-    greeting() {
-      console.log("Hello, my name is " + this.name);
-    }
+```javascript
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
   }
 
-  const person = new Person("John", 30);
-  ```
+  greeting() {
+    console.log("Hello, my name is " + this.name);
+  }
+}
+
+const person = new Person("John", 30);
+```
 
 These are some of the common ways to declare objects in JavaScript. Depending on your use case, one method may be more appropriate than the others.
 
@@ -374,15 +391,17 @@ These are some of the common ways to declare objects in JavaScript. Depending on
 
 ## Copy Objects in JS
 
-In JavaScript, objects are non-primitive data types and are stored in the heap. When an object is assigned to a variable or passed as an argument to a function, a reference to its memory location is copied, not a copy of its value. 
+In JavaScript, objects are non-primitive data types and are stored in the heap. When an object is assigned to a variable or passed as an argument to a function, a reference to its memory location is copied, not a copy of its value.
 
-There are two ways to create a copy of an object: 
+There are two ways to create a copy of an object:
+
 - `Shallow Copy`
 - `Deep Copy`
 
 ### 1. Shallow copy
-- Shallow copy creates a new object that shares the same memory references as the original object for its properties. 
-- This means that if the property value is an object, the new object will reference the same memory location as the original object. 
+
+- Shallow copy creates a new object that shares the same memory references as the original object for its properties.
+- This means that if the property value is an object, the new object will reference the same memory location as the original object.
 - Shallow copy is achieved through the `Object.assign()` method or the `spread operator (ES6)`.
 
   - Here's an example of shallow copying an object using `Object.assign()`:
@@ -394,8 +413,8 @@ There are two ways to create a copy of an object:
       address: {
         street: "123 Main St",
         city: "Anytown",
-        state: "CA"
-      }
+        state: "CA",
+      },
     };
 
     let newObj = Object.assign({}, originalObj);
@@ -404,18 +423,20 @@ There are two ways to create a copy of an object:
     console.log(originalObj === newObj); // Output: false
     console.log(originalObj.address === newObj.address); // Output: true
     ```
-      As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of `originalObj`.
+
+    As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of `originalObj`.
+
   - Here's an example of `shallow` copying an object using the `spread operator`:
 
     ```js
-      let originalObj = {
+    let originalObj = {
       name: "John",
       age: 30,
       address: {
         street: "123 Main St",
         city: "Anytown",
-        state: "CA"
-      }
+        state: "CA",
+      },
     };
 
     let newObj = { ...originalObj };
@@ -424,39 +445,43 @@ There are two ways to create a copy of an object:
     console.log(originalObj === newObj); // Output: false
     console.log(originalObj.address === newObj.address); // Output: true
     ```
+
     As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of originalObj.
 
 ### 2. Deep copy
-  - `Deep copy`, on the other hand, creates a completely new object with its own memory space for all properties, including those that are objects themselves. 
-  - This ensures that changes made to the copied object `do not affect` the original object or any other copies of the object. 
 
-  - There are different ways to achieve `deep copy`, one of which is using the `JSON.parse()` and `JSON.stringify()` methods.
-  - The `JSON.parse()` and `JSON.stringify()` methods can be used to copy an object, creating a deep copy. This method works by first serializing the original object to a JSON string using `JSON.stringify()`, and then deserializing the JSON string back into an object using `JSON.parse()`.
+- `Deep copy`, on the other hand, creates a completely new object with its own memory space for all properties, including those that are objects themselves.
+- This ensures that changes made to the copied object `do not affect` the original object or any other copies of the object.
 
-    - Here's an example of deep copying an object using `JSON.parse()` and `JSON.stringify()`:
+- There are different ways to achieve `deep copy`, one of which is using the `JSON.parse()` and `JSON.stringify()` methods.
+- The `JSON.parse()` and `JSON.stringify()` methods can be used to copy an object, creating a deep copy. This method works by first serializing the original object to a JSON string using `JSON.stringify()`, and then deserializing the JSON string back into an object using `JSON.parse()`.
 
-      ```javascript
-      let originalObj = {
-        name: "John",
-        age: 30,
-        address: {
-          street: "123 Main St",
-          city: "Anytown",
-          state: "CA"
-        }
-      };
+  - Here's an example of deep copying an object using `JSON.parse()` and `JSON.stringify()`:
 
-      let newObj = JSON.parse(JSON.stringify(originalObj));
+    ```javascript
+    let originalObj = {
+      name: "John",
+      age: 30,
+      address: {
+        street: "123 Main St",
+        city: "Anytown",
+        state: "CA",
+      },
+    };
 
-      console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
-      console.log(originalObj === newObj); // Output: false
-      console.log(originalObj.address === newObj.address); // Output: false
-      ```
+    let newObj = JSON.parse(JSON.stringify(originalObj));
 
-      As you can see, `newObj` is a deep copy of `originalObj`. `newObj` has its own memory space for all properties, including the "`address`" property. Therefore, changes made to `newObj` will not affect the `originalObj` or any other copies of the object.
+    console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
+    console.log(originalObj === newObj); // Output: false
+    console.log(originalObj.address === newObj.address); // Output: false
+    ```
 
-      ***Note that using `JSON.parse()` and `JSON.stringify()` may not work for all cases, such as when the object contains `functions` or `symbols`. In those cases, other methods of deep copying may be necessary.
+    As you can see, `newObj` is a deep copy of `originalObj`. `newObj` has its own memory space for all properties, including the "`address`" property. Therefore, changes made to `newObj` will not affect the `originalObj` or any other copies of the object.
+
+    \*\*\*Note that using `JSON.parse()` and `JSON.stringify()` may not work for all cases, such as when the object contains `functions` or `symbols`. In those cases, other methods of deep copying may be necessary.
+
 ---
+
 ## Other examples to use Spread Operator:
 
 - The spread operator is a new addition to the set of operators in JavaScript ES6. It takes in an iterable (e.g an array) and expands it into individual elements.
@@ -465,20 +490,20 @@ There are two ways to create a copy of an object:
 
   ```js
   const arr = [1, 2, 3];
-  console.log(...arr); 
+  console.log(...arr);
   ```
 
   ```js
   const arr = [1, 2, 3];
   const arr2 = [4, 5, 6];
   const arr3 = [...arr, ...arr2];
-  console.log(arr3); 
+  console.log(arr3);
   ```
 
   ```js
   const arr = [1, 2, 3];
   const arr2 = [...arr, 4, 5, 6];
-  console.log(arr2); 
+  console.log(arr2);
   ```
 
   - Example with Objects:
@@ -492,19 +517,19 @@ There are two ways to create a copy of an object:
   ```js
   const person = { name: "John", age: 30 };
   const clone = { ...person, location: "USA" };
-  console.log(clone); 
+  console.log(clone);
   ```
 
   ```js
   const person = { name: "John", age: 30 };
   const clone = { location: "USA", ...person };
-  console.log(clone); 
+  console.log(clone);
   ```
 
   ```js
   const person = { name: "John", age: 30 };
   const clone = { ...person, age: 40 };
-  console.log(clone); 
+  console.log(clone);
   ```
 
   ```js
@@ -517,6 +542,7 @@ There are two ways to create a copy of an object:
   ```
 
 ---
+
 ## Declaring Functions in js
 
 In JavaScript, there are several ways to declare functions. Here are some of the most common ones:
@@ -567,7 +593,9 @@ In JavaScript, there are several ways to declare functions. Here are some of the
      },
    };
    ```
+
 ---
+
 ## Types of functions in JS
 
 Some examples of different types of functions in JavaScript based on their behavior and side-effects:
@@ -669,7 +697,9 @@ Some examples of different types of functions in JavaScript based on their behav
    doSomething();
    console.log(gen.next().value); // 10
    ```
+
 ---
+
 ## Functions are First Class Objects
 
 - In javaScript functions are considered first-class objects, which means they can be treated like any other value or object. This means that:
@@ -781,7 +811,9 @@ Some examples of different types of functions in JavaScript based on their behav
     // Hello, Alice!
     // Greeting complete.
     ```
+
 ---
+
 ## JS is single-threaded programming language
 
 - JS is `single-threaded` programming language, which means it can only execute one task at a time.
@@ -793,7 +825,9 @@ Some examples of different types of functions in JavaScript based on their behav
 - This can be a problem if the function is doing something that is not related to the user interface, such as fetching data from a server or performing a complex calculation.
 - To solve this problem, JavaScript developers often use `asynchronous programming techniques`, such as `callbacks`, `promises`, and `async/await`, to allow the application to continue running while it waits for long-running tasks to complete.
 - This allows the user interface to remain responsive while the application is performing long-running tasks.
+
 ---
+
 ## Callback Functions
 
 - A callback is a function that is passed as an argument to another function
@@ -931,7 +965,9 @@ Some examples of different types of functions in JavaScript based on their behav
 - The `processData()` function receives the data object as an argument and logs it to the console.
 - The `getData()` function is called with the `processData()` function as an argument.
 - The `getData()` function executes the `processData()` function after one second and passes the data object as an argument.
+
 ---
+
 ## Higher Order Functions
 
 - **Higher order function** is a function that takes a function as an argument
@@ -972,34 +1008,36 @@ Some examples of different types of functions in JavaScript based on their behav
   const addFive = createAdder(5);
   console.log(addFive(10)); // 15
   ```
+
 ---
+
 ## JS built-in HOF
 
 **Examples of built-in higher-order functions in JavaScript**:
 
 1. **`Array.map()`**: Returns a new array with the same number of elements as the original array, where each element is transformed according to a function that is passed as an argument.
 
-    ```js
-    const numbers = [1, 2, 3, 4, 5];
+   ```js
+   const numbers = [1, 2, 3, 4, 5];
 
-    const doubledNumbers = numbers.map(function (num) {
-      return num * 2;
-    });
+   const doubledNumbers = numbers.map(function (num) {
+     return num * 2;
+   });
 
-    console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
-    ```
+   console.log(doubledNumbers); // Output: [2, 4, 6, 8, 10]
+   ```
 
 2. **`Array.filter()`**: Returns a new array with only the elements that pass a test implemented by a function that is passed as an argument.
 
-    ```js
-    const numbers = [1, 2, 3, 4, 5];
+   ```js
+   const numbers = [1, 2, 3, 4, 5];
 
-    const evenNumbers = numbers.filter(function (num) {
-      return num % 2 === 0;
-    });
+   const evenNumbers = numbers.filter(function (num) {
+     return num % 2 === 0;
+   });
 
-    console.log(evenNumbers); // Output: [2, 4]
-    ```
+   console.log(evenNumbers); // Output: [2, 4]
+   ```
 
 3. **`Array.reduce()`**:
 
@@ -1019,8 +1057,8 @@ Some examples of different types of functions in JavaScript based on their behav
   console.log(sumOfNumbers); // Output: 15
   ```
 
-These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
----
+## These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
+
 ## Promises in js
 
 - `Promises` are used to handle asynchronous operations in JavaScript.
@@ -1194,7 +1232,9 @@ let promise = new Promise(function (resolve, reject) {
     .finally(() => alert("Promise ready")) // <-- .finally handles the error
     .catch((err) => alert(err)); // <-- .catch handles the error object
   ```
+
 ---
+
 ## Fetch
 
 - In frontend programming, promises are often used for network requests.
@@ -1292,7 +1332,9 @@ let promise = new Promise(function (resolve, reject) {
     ```js
     alert(result.message);
     ```
+
 ---
+
 ## Async
 
 - There’s a special syntax to work with promises in a more comfortable fashion, called “async/await”. It’s surprisingly easy to understand and use.
@@ -1355,7 +1397,9 @@ let promise = new Promise(function (resolve, reject) {
     (rejectValue) => console.error(rejectValue)
   );
   ```
+
 ---
+
 ## Await
 
 - `await` is a keyword that is used inside an `async` function.
@@ -1422,6 +1466,53 @@ let promise = new Promise(function (resolve, reject) {
   console.log(user);
   ```
 
+## Another example:
+
+```js
+async function fetchData(URL) {
+  try {
+    const response = await fetch(URL);
+    console.log(response);
+    if (!response.ok) {
+      console.log(response.status);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+fetchData("https://dummyjson.com/products")
+  .then((data) => console.log(data?.products))
+  .then((error) => console.log(error));
+```
+
+```js
+async function postJSON(data) {
+  try {
+    const response = await fetch("https://example.com/profile", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+const data = { username: "example" };
+postJSON(data);
+```
+
+---
+
 ## Callback Hell and how to avoid it
 
 - callback hell is a situation where you have a lot of nested callbacks
@@ -1475,6 +1566,9 @@ start();
 
 - This refactored code uses `Promises` to load the scripts, and `async/await` to wait for each Promise to `resolve` before continuing with the next statement.
 - This approach makes the code much more readable and maintainable, and avoids the "`pyramid of doom`" structure of callback hell.
+
 ---
+
 ## Questions
+
 ---
