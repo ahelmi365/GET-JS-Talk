@@ -429,47 +429,7 @@ In JavaScript, a function constructor is a function that is used to create objec
 - Adding methods to the prototype object of a function constructor allows all objects created by the constructor to inherit those methods. This can be more memory-efficient than adding methods directly to each object, as the methods are shared among all objects created by the constructor.
 
 ### 4.2 Excersise on Function Constructor
-### 4.2.1 Excersise 1
-- Create a `Car` function constructor that takes three parameters: `make`, `model`, and `year`. 
-- The function constructor should set these properties on the object created by it.
-- Add a method to the Car function constructor's prototype object called `start()`. This method should log a message to the console indicating that the car has started.
-- Add a method to the Car function constructor's prototype object called `stop()`. This method should log a message to the console indicating that the car has stopped.
-- Create two Car objects and call their `start()` and `stop()` methods.
-- Here's some example code to get you started:
-  
-  ```js
-  const car1 = new Car("Toyota", "Corolla", 2020);
-  const car2 = new Car("Honda", "Civic", 2019);
 
-  car1.start(); // Output: "The Toyota Corolla has started."
-  car2.start(); // Output: "The Honda Civic has started."
-  ```
-
-### 4.2.2 Excersise 2
-- Create a `BankAccount` function constructor that takes one parameter: `balance`. 
-- The function constructor should set the balance property on the object created by it.
-
-- Add three methods to the BankAccount function constructor's prototype object: `deposit()`, `withdraw()`, and `getBalance()`.
-
-- The `deposit()` method should take a parameter `amount` and add it to the `balance` property.
-
-- The `withdraw()` method should take a parameter `amount` and subtract it from the `balance` property.
-
-- The `getBalance()` method should `return` the current `balance`.
-
-- Create a `BankAccount` object and call its` deposit()`, `withdraw()`, and `getBalance()` methods.
-- Here's some example code to get you started:
-  ```js
-  const account = new BankAccount(1000);
-
-  console.log(account.getBalance()); // Output: 1000
-
-  account.deposit(500);
-  console.log(account.getBalance()); // Output: 1500
-
-  account.withdraw(200);
-  console.log(account.getBalance()); // Output: 1300
-  ```
 
 ### 5. ES6 Classes
 
