@@ -1,4 +1,56 @@
 ### Excercise 1
+- Write a function `filterArray` that takes an `array` of values and a `callback` function as arguments. 
+- The `filterArray` function should use the `callback` function to filter the array and `return` a new `array` with only the elements that pass the filter.
+
+- The `callback` function should take a single `argument` (an array element) and `return` `true` or `false` depending on whether the element should be included in the filtered array.
+
+```js
+const myArray = [1, 2, 3, 4, 5, 6];
+
+function isEven(num) {
+  return num % 2 === 0;
+}
+
+const filteredArray = filterArray(myArray, isEven);
+
+console.log(filteredArray); // [2, 4, 6]
+
+```
+
+### Excercise 2
+- Write a function `doubleArray` that takes an `array` of numbers as an argument and `returns` a new array where each element is twice the value of the corresponding element in the original array. 
+
+```js
+const myArray = [1, 2, 3, 4, 5];
+
+function doubleNum(num) {
+  return num * 2;
+}
+
+const doubledArray = doubleArray(myArray, doubleNum);
+
+console.log(doubledArray); // [2, 4, 6, 8, 10]
+
+```
+
+### Excercise 3
+- Write a function `sumArray` that takes an `array` of numbers as an argument and `returns` the sum of all the elements in the array. 
+
+```js
+const myArray = [1, 2, 3, 4, 5];
+
+function sum(acc, num) {
+  return acc + num;
+}
+
+const sumOfArray = sumArray(myArray, sum);
+
+console.log(sumOfArray); // 15
+
+```
+---
+
+### Excercise 4
 
 ```js
 const users = [
@@ -34,14 +86,16 @@ const users = [
 ];
 ```
 
-- Create a function that takes an array of `users` and returns an array of `users` with `id`, `firstName`, `lastNam` and `fullName` without using the map function
-- solution:
+- Create a function called `getUsersWithFullName` that takes an array of `users` and returns an array of `users` with `id`, `firstName`, `lastNam` and `fullName` without using the map function
 
-### Excercise 2
+---
 
-- Create a function called to take an array of users and id and return the user with the given id.
+### Excercise 5
 
-### Excercise 3
-- create a function to take an array of users and a charachter and return new array of users with the first name starts with the given charachter.
+- Create a function called `getUserWithId` to take an array of `users` and `id` and `return` the user with the given id.
+---
 
-### Excercise 4
+### Excercise 6
+- create a function called `getUsersFirstNameStartsWith` to take an array of `users` and a `charachter` and `return` new array of users with the first name` starts with` the given charachter.
+
+
