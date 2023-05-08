@@ -12,7 +12,8 @@ In this repository, I will be talking about JavaScript and its features. I will 
   - [1. Object Literal](#1-object-literal)
   - [2. Object Constructor](#2-object-constructor)
   - [3. Object.create()](#3-objectcreate)
-  - [4. ES6 Classes](#4-es6-classes)
+  - [4. Function Constructor](#4-function-constructor)
+  - [5. ES6 Classes](#4-es6-classes)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
   - [1. Shallow Copy](#1-shallow-copy)
   - [2. Deep Copy](#2-deep-copy)
@@ -365,8 +366,68 @@ const person = Object.create(personProto);
 person.name = "John";
 person.age = 30;
 ```
+### 4. Function Constructor
 
-### 4. ES6 Classes
+In JavaScript, a function constructor is a function that is used to create objects. 
+
+- A function constructor is defined using the `function` keyword, and it is conventionally named with an initial `uppercase` letter to differentiate it from regular functions. 
+- The function constructor is called with the `new` keyword to create new objects.
+
+- Here's an example:
+
+  ```js
+  // Function constructor
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // Creating objects using the function constructor
+  const person1 = new Person("John", 30);
+  const person2 = new Person("Jane", 25);
+
+  // Accessing the properties of the objects
+  console.log(person1.name); // Output: "John"
+  console.log(person2.age); // Output: 25
+  ```
+
+- In the example above, we define a function constructor `Person` that takes two parameters, `name` and `age`. When the function constructor is called with the `new` keyword, it creates a new object and sets the `name` and `age` properties on the object using the `this` keyword. 
+
+- We create two objects `person1` and `person2` using the `Person` function constructor and access their properties using dot notation.
+
+- Function constructors can be useful for creating multiple objects with similar properties and methods. By defining a function constructor, we can create objects with the same set of properties and methods without duplicating code. We can also add methods to the prototype object of the function constructor to allow all objects created by the constructor to inherit those methods.
+
+### 4.1 Adding Methods to the Prototype
+- In JavaScript, you can add methods to a function constructor by adding them to the `prototype` property of the constructor function.
+
+- Here's an example:
+
+  ```js
+  // Function constructor
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // Adding a method to the prototype object of the function constructor
+  Person.prototype.greet = function() {
+    console.log("Hello, my name is " + this.name);
+  };
+
+  // Creating an object using the function constructor
+  const person1 = new Person("John", 30);
+
+  // Calling the method added to the prototype object
+  person1.greet(); // Output: "Hello, my name is John"
+  ```
+
+- In this example, we define a function constructor `Person` and add a `greet` method to its prototype object. The `greet` method uses the `this` keyword to refer to the current object and logs a greeting to the console.
+
+- When we create a new object `person1` using the `Person` function constructor, the `[[Prototype]]` of the object is set to the `Person.prototype` object, so the `greet` method is available on the object. We call the `greet` method on `person1`, and it logs a greeting to the console.
+
+- Adding methods to the prototype object of a function constructor allows all objects created by the constructor to inherit those methods. This can be more memory-efficient than adding methods directly to each object, as the methods are shared among all objects created by the constructor.
+
+### 5. ES6 Classes
 
 ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
 
