@@ -78,5 +78,30 @@ function getUsers(users) {
 ### Excercise 2
 
 - Create a function called to take an array of users and id and return the user with the given id.
+- solution:
+```js
+function getUserById(users, id) {
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    if (user.id === id) {
+      return user;
+    }
+  }
+  return null;
+}
+```
 
 - create a function to take an array of users and a charachter and return new array of users with the first name starts with the given charachter.
+- solution:
+```js
+function getUsersByChar(users, char) {
+  const newUsers = [];
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    if (user.firstName[0].toLowerCase() === char.toLowerCase()) {
+      newUsers.push(user);
+    }
+  }
+  return newUsers;
+}
+```
