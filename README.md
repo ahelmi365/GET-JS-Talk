@@ -13,6 +13,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
   - [2. Object Constructor](#2-object-constructor)
   - [3. Object.create()](#3-objectcreate)
   - [4. Function Constructor](#4-function-constructor)
+  - [4.1 Adding Methods to the Prototype](#41-adding-methods-to-the-prototype)
   - [5. ES6 Classes](#4-es6-classes)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
   - [1. Shallow Copy](#1-shallow-copy)
@@ -429,12 +430,11 @@ In JavaScript, a function constructor is a function that is used to create objec
 
 ### 4.2 Excersise on Function Constructor
 ### 4.2.1 Excersise 1
-- Create a Car function constructor that takes three parameters: make, model, and year. The function constructor should set these properties on the object created by it.
-
-- Add a method to the Car function constructor's prototype object called start(). This method should log a message to the console indicating that the car has started.
-
-- Create two Car objects and call their start() method.
-
+- Create a `Car` function constructor that takes three parameters: `make`, `model`, and `year`. 
+- The function constructor should set these properties on the object created by it.
+- Add a method to the Car function constructor's prototype object called `start()`. This method should log a message to the console indicating that the car has started.
+- Add a method to the Car function constructor's prototype object called `stop()`. This method should log a message to the console indicating that the car has stopped.
+- Create two Car objects and call their `start()` and `stop()` methods.
 - Here's some example code to get you started:
   
   ```js
@@ -445,19 +445,20 @@ In JavaScript, a function constructor is a function that is used to create objec
   car2.start(); // Output: "The Honda Civic has started."
   ```
 
-4.2.2 Excersise 2
-- Create a BankAccount function constructor that takes one parameter: balance. The function constructor should set the balance property on the object created by it.
+### 4.2.2 Excersise 2
+- Create a `BankAccount` function constructor that takes one parameter: `balance`. 
+- The function constructor should set the balance property on the object created by it.
 
-- Add three methods to the BankAccount function constructor's prototype object: deposit(), withdraw(), and getBalance().
+- Add three methods to the BankAccount function constructor's prototype object: `deposit()`, `withdraw()`, and `getBalance()`.
 
-- The deposit() method should take a parameter amount and add it to the balance property.
+- The `deposit()` method should take a parameter `amount` and add it to the `balance` property.
 
-- The withdraw() method should take a parameter amount and subtract it from the balance property.
+- The `withdraw()` method should take a parameter `amount` and subtract it from the `balance` property.
 
-- The getBalance() method should return the current balance.
+- The `getBalance()` method should `return` the current `balance`.
 
-- Create a BankAccount object and call its deposit(), withdraw(), and getBalance() methods.
-
+- Create a `BankAccount` object and call its` deposit()`, `withdraw()`, and `getBalance()` methods.
+- Here's some example code to get you started:
   ```js
   const account = new BankAccount(1000);
 
