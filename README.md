@@ -13,8 +13,8 @@ In this repository, I will be talking about JavaScript and its features. I will 
   - [2. Object Constructor](#2-object-constructor)
   - [3. Object.create()](#3-objectcreate)
   - [4.0 Prototype Chain](#40-prototype-chain)
-  - [4. Function Constructor](#4-function-constructor)
-  - [4.1 Adding Methods to the Prototype](#41-adding-methods-to-the-prototype)
+  - [4.1 Function Constructor](#41-function-constructor)
+  - [4.2 Adding Methods to the Prototype](#42-adding-methods-to-the-prototype)
   - [5. ES6 Classes](#4-es6-classes)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
   - [1. Shallow Copy](#1-shallow-copy)
@@ -407,7 +407,7 @@ person.age = 30;
 
 - This example demonstrates the basics of prototype chain in JavaScript. By using prototype inheritance, we can create complex object hierarchies and easily share properties and methods between objects.
 
-### 4. Function Constructor
+### 4.1 Function Constructor
 In JavaScript, a function constructor is a function that is used to create objects. 
 
 - A function constructor is defined using the `function` keyword, and it is conventionally named with an initial `uppercase` letter to differentiate it from regular functions. 
@@ -437,7 +437,7 @@ In JavaScript, a function constructor is a function that is used to create objec
 
 - Function constructors can be useful for creating multiple objects with similar properties and methods. By defining a function constructor, we can create objects with the same set of properties and methods without duplicating code. We can also add methods to the prototype object of the function constructor to allow all objects created by the constructor to inherit those methods.
 
-### 4.1 Adding Methods to the Prototype
+### 4.2 Adding Methods to the Prototype
 - In JavaScript, you can add methods to a function constructor by adding them to the `prototype` property of the constructor function.
 
 - Here's an example:
