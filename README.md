@@ -12,6 +12,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
   - [1. Object Literal](#1-object-literal)
   - [2. Object Constructor](#2-object-constructor)
   - [3. Object.create()](#3-objectcreate)
+  - [4.0 Prototype Chain](#40-prototype-chain)
   - [4. Function Constructor](#4-function-constructor)
   - [4.1 Adding Methods to the Prototype](#41-adding-methods-to-the-prototype)
   - [5. ES6 Classes](#4-es6-classes)
@@ -367,8 +368,46 @@ const person = Object.create(personProto);
 person.name = "John";
 person.age = 30;
 ```
-### 4. Function Constructor
 
+
+### 4.0 Prototype Chain
+- `Prototype chain` is a feature of JavaScript that allows objects to inherit properties and methods from other objects. 
+- In JavaScript, every object has a `prototype` object, which is essentially another object from which the first object inherits properties and methods. 
+- When a property or method is called on an object, JavaScript first looks for that property or method on the object itself.
+- If the property or method is not found, JavaScript then looks for it on the object's prototype. 
+- If it is not found there, JavaScript looks on the prototype's prototype, and so on, creating a `chain of objects` until the property or method is found or there is no further prototype to search.
+
+- Here is an example of prototype chain in JavaScript:
+
+  ```js
+  // Create an object
+  const myObj = {
+    a: 1
+  };
+
+  // Create another object that inherits from myObj
+  const myOtherObj = Object.create(myObj);
+  myOtherObj.b = 2;
+
+  // Add a property to myObj's prototype
+  myObj.prototype.c = 3;
+
+  // Call a method on myOtherObj
+  console.log(myOtherObj.a); // Output: 1
+
+  // Call a method on myOtherObj that is not defined on it
+  console.log(myOtherObj.c); // Output: 3
+  ```
+
+- In this example, we first create an object `myObj` with a property `a` equal to `1`. We then create another object `myOtherObj` using `Object.create(myObj)`, which sets `myOtherObj`'s prototype to `myObj`. We also give `myOtherObj` its own property `b` equal to `2`.
+
+- Next, we add a property `c` to `myObj`'s prototype object by using the `.prototype` syntax. This means that `c` is now a property of `myObj`'s prototype, and therefore all objects that inherit from `myObj` will also have access to `c`.
+
+- Finally, we call `console.log(myOtherObj.a)`, which logs the value of `myOtherObj.a` to the console. Since `myOtherObj` inherits from `myObj`, it has access to the `a` property defined on `myObj`, so the output is `1`. We then call `console.log(myOtherObj.c)`, which logs the value of `myOtherObj.c` to the console. `myOtherObj` does not have its own `c` property, so JavaScript looks for `c` on `myOtherObj`'s prototype object (which is `myObj`), and finds it there. Therefore, the output is `3`.
+
+- This example demonstrates the basics of prototype chain in JavaScript. By using prototype inheritance, we can create complex object hierarchies and easily share properties and methods between objects.
+
+### 4. Function Constructor
 In JavaScript, a function constructor is a function that is used to create objects. 
 
 - A function constructor is defined using the `function` keyword, and it is conventionally named with an initial `uppercase` letter to differentiate it from regular functions. 
