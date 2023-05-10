@@ -369,12 +369,12 @@ person.name = "John";
 person.age = 30;
 ```
 
-
 ### 4.0 Prototype Chain
-- `Prototype chain` is a feature of JavaScript that allows objects to inherit properties and methods from other objects. 
-- In JavaScript, every object has a `prototype` object, which is essentially another object from which the first object inherits properties and methods. 
+
+- `Prototype chain` is a feature of JavaScript that allows objects to inherit properties and methods from other objects.
+- In JavaScript, every object has a `prototype` object, which is essentially another object from which the first object inherits properties and methods.
 - When a property or method is called on an object, JavaScript first looks for that property or method on the object itself.
-- If the property or method is not found, JavaScript then looks for it on the object's prototype. 
+- If the property or method is not found, JavaScript then looks for it on the object's prototype.
 - If it is not found there, JavaScript looks on the prototype's prototype, and so on, creating a `chain of objects` until the property or method is found or there is no further prototype to search.
 
 - Here is an example of prototype chain in JavaScript:
@@ -382,7 +382,7 @@ person.age = 30;
   ```js
   // Create an object
   const myObj = {
-    a: 1
+    a: 1,
   };
 
   // Create another object that inherits from myObj
@@ -408,9 +408,10 @@ person.age = 30;
 - This example demonstrates the basics of prototype chain in JavaScript. By using prototype inheritance, we can create complex object hierarchies and easily share properties and methods between objects.
 
 ### 4.1 Function Constructor
-In JavaScript, a function constructor is a function that is used to create objects. 
 
-- A function constructor is defined using the `function` keyword, and it is conventionally named with an initial `uppercase` letter to differentiate it from regular functions. 
+In JavaScript, a function constructor is a function that is used to create objects.
+
+- A function constructor is defined using the `function` keyword, and it is conventionally named with an initial `uppercase` letter to differentiate it from regular functions.
 - The function constructor is called with the `new` keyword to create new objects.
 
 - Here's an example:
@@ -431,13 +432,14 @@ In JavaScript, a function constructor is a function that is used to create objec
   console.log(person2.age); // Output: 25
   ```
 
-- In the example above, we define a function constructor `Person` that takes two parameters, `name` and `age`. When the function constructor is called with the `new` keyword, it creates a new object and sets the `name` and `age` properties on the object using the `this` keyword. 
+- In the example above, we define a function constructor `Person` that takes two parameters, `name` and `age`. When the function constructor is called with the `new` keyword, it creates a new object and sets the `name` and `age` properties on the object using the `this` keyword.
 
 - We create two objects `person1` and `person2` using the `Person` function constructor and access their properties using dot notation.
 
 - Function constructors can be useful for creating multiple objects with similar properties and methods. By defining a function constructor, we can create objects with the same set of properties and methods without duplicating code. We can also add methods to the prototype object of the function constructor to allow all objects created by the constructor to inherit those methods.
 
 ### 4.2 Adding Methods to the Prototype
+
 - In JavaScript, you can add methods to a function constructor by adding them to the `prototype` property of the constructor function.
 
 - Here's an example:
@@ -450,7 +452,7 @@ In JavaScript, a function constructor is a function that is used to create objec
   }
 
   // Adding a method to the prototype object of the function constructor
-  Person.prototype.greet = function() {
+  Person.prototype.greet = function () {
     console.log("Hello, my name is " + this.name);
   };
 
@@ -467,15 +469,70 @@ In JavaScript, a function constructor is a function that is used to create objec
 
 - Adding methods to the prototype object of a function constructor allows all objects created by the constructor to inherit those methods. This can be more memory-efficient than adding methods directly to each object, as the methods are shared among all objects created by the constructor.
 
-### 4.2 Excersise on Function Constructor
-### 4.2.1 Excersise 1
-- Create a `Car` function constructor that takes three parameters: `make`, `model`, and `year`. 
+### 4.3.1 What happen when we call a `function constructor` without the `new` keyword in js?
+
+- When a function constructor is called without the `new` keyword in JavaScript, it does not create a new object to serve as the `this` value for the function. Instead, the function will execute in the global context (i.e., the `window` object in the browser or the `global` object in Node.js) and any properties or methods that are defined within the function will be added to the global object.
+
+- For example, consider the following function constructor:
+
+  ```js
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  ```
+
+- If you call this constructor with the `new` keyword like this:
+
+  ```js
+  const person1 = new Person("John", 30);
+  ```
+
+- A new object will be created and `this` will refer to that object. `person1` will be an instance of the `Person` object with its own `name` and `age` properties.
+
+- However, if you call the constructor without the `new` keyword like this:
+
+  ```js
+  const person2 = Person("Jane", 25);
+  ```
+
+- The function will execute in the global context and `this` will refer to the global object. The `name` and `age` properties will be added to the global object instead of a new object. `person2` will be undefined, since the function does not return anything explicitly.
+
+- It's generally considered a best practice to always use the `new` keyword when calling function constructors in JavaScript to avoid unintended side effects and to ensure that the `this` value is set correctly.
+
+### 4.3.2 How to make sure that the `new` keyword is used to call the `function constructor`?
+
+- To ensure that the new keyword is used when calling a function constructor in JavaScript, you can use the following technique:
+- You can use the `new.target` meta property to check if the new keyword is used when calling a function constructor in JavaScript.
+- The `new.target` property is available inside a function constructor and its value will be a reference to the constructor function that was called with the `new` keyword.
+- If the function is called without the `new` keyword, `new.target` will be `undefined`.
+
+- Here's an example of how you can use `new.target` to check if the `new` keyword is used:
+
+  ```js
+  function Person(name, age) {
+    // Check if the function is called with the new keyword
+    if (!new.target) {
+      return new Person(name, age);
+    }
+
+    // Otherwise, continue with the normal constructor logic
+    this.name = name;
+    this.age = age;
+  }
+  ```
+
+### 4.4 Excersise on Function Constructor
+
+### 4.4.1 Excersise 1
+
+- Create a `Car` function constructor that takes three parameters: `make`, `model`, and `year`.
 - The function constructor should set these properties on the object created by it.
 - Add a method to the Car function constructor's prototype object called `start()`. This method should log a message to the console indicating that the car has started.
 - Add a method to the Car function constructor's prototype object called `stop()`. This method should log a message to the console indicating that the car has stopped.
 - Create two Car objects and call their `start()` and `stop()` methods.
 - Here's some example code to get you started:
-  
+
   ```js
   const car1 = new Car("Toyota", "Corolla", 2020);
   const car2 = new Car("Honda", "Civic", 2019);
@@ -484,8 +541,9 @@ In JavaScript, a function constructor is a function that is used to create objec
   car2.start(); // Output: "The Honda Civic has started."
   ```
 
-### 4.2.2 Excersise 2
-- Create a `BankAccount` function constructor that takes one parameter: `balance`. 
+### 4.4.2 Excersise 2
+
+- Create a `BankAccount` function constructor that takes one parameter: `balance`.
 - The function constructor should set the balance property on the object created by it.
 
 - Add three methods to the BankAccount function constructor's prototype object: `deposit()`, `withdraw()`, and `getBalance()`.
@@ -498,6 +556,7 @@ In JavaScript, a function constructor is a function that is used to create objec
 
 - Create a `BankAccount` object and call its` deposit()`, `withdraw()`, and `getBalance()` methods.
 - Here's some example code to get you started:
+
   ```js
   const account = new BankAccount(1000);
 
@@ -1207,9 +1266,9 @@ Some examples of different types of functions in JavaScript based on their behav
 
 - `Promises` are used to handle asynchronous operations in JavaScript.
 - An `asynchronous operation` is one that doesn't block the execution of the program while it's running, but instead runs in the background and `notifies` the program when it's finished.
-- A Promise is an object that represents the eventual completion or failure of an asynchronous operation.
-- Promises returns an object to which you attach callbacks, instead of passing callbacks into a function.
-- A Promise is in one of these states:
+- A `Promise` is an object that represents the eventual completion or failure of an asynchronous operation.
+- `Promises` returns an object to which you attach callbacks, instead of passing callbacks into a function.
+- A `Promise` is in one of these states:
   - `pending`: initial state, neither fulfilled nor rejected.
   - `fulfilled`: meaning that the operation was completed successfully.
   - `rejected`: meaning that the operation failed.
@@ -1220,36 +1279,38 @@ let promise = new Promise(function (resolve, reject) {
 });
 ```
 
-- The function passed to `new Promise` is called the `executor`. When new Promise is created, the executor runs automatically. It contains the producing code which should eventually produce the result.
+- The function passed to `new Promise` is called the `executor`.
+- When new `Promise` is created, the `executor` runs automatically. It contains the producing code which should eventually produce the result.
 
 - Its arguments `resolve` and `reject` are callbacks provided by JavaScript itself.
 
-- When the executor obtains the result, it should call one of these callbacks:
+- When the `executor` obtains the result, it should call one of these callbacks:
 
   - `resolve(value)` — if the job finished successfully, with result `value`.
   - `reject(error)` — if an error occurred, `error` is the error object.
 
-- So to summarize: the executor runs automatically and attempts to perform a job.
+- So to summarize: the `executor` runs automatically and attempts to perform a job.
 - When it is finished with the attempt, it calls `resolve` if it was successful or `reject` if there was an error.
 
-    ```js
-    const myPromise = new Promise((resolve, reject) => {
-      // Do some async operation here...
-      
-      if (/* some condition */) {
-        resolve(/* some value */); // Fulfill the promise
-      } else {
-        reject(/* some error */); // Reject the promise
-      }
-    });
+  ```js
+  const myPromise = new Promise((resolve, reject) => {
+    // Do some async operation here...
 
-    myPromise.then(result => {
-      // The promise was fulfilled
-    }).catch(error => {
-      // The promise was rejected
-    });
+    if (/* some condition */) {
+      resolve(/* some value */); // Fulfill the promise
+    } else {
+      reject(/* some error */); // Reject the promise
+    }
+  });
+
+  myPromise.then(result => {
+    // The promise was fulfilled
+  }).catch(error => {
+    // The promise was rejected
+  });
   ```
-- The promise object returned by the `new Promise` constructor has these internal properties:
+
+- The `promise` object returned by the `new Promise` constructor has these internal properties:
 
   - `state` — initially `"pending"`, then changes to either `"fulfilled"` when `resolve` is called or `"rejected"` when `reject` is called.
   - `result` — initially `undefined`, then changes to `value` when `resolve(value)` called or to `error` when `reject(error)` is called.
@@ -1257,36 +1318,38 @@ let promise = new Promise(function (resolve, reject) {
 
     ![alt text](./screenshots/promise.PNG)
 
-- Here’s an example of a promise constructor and a simple executor function with “producing code” that takes time (via setTimeout):
+- Here’s an example of a `promise` constructor and a simple `executor` function with “producing code” that takes time (via `setTimeout`):
 
   ```js
   let promise = new Promise(function (resolve, reject) {
     // the function is executed automatically when the promise is constructed
 
-    // after 1 second signal that the job is done with the result "done"
-    setTimeout(() => resolve("done"), 1000);
+    // after 5 second signal that the job is done with the result "done"
+    setTimeout(() => resolve("done"), 5000);
   });
+  console.log(promise); // Promise { <pending> }
   ```
 
 - We can see two things by running the code above:
 
-  - The executor is called automatically and immediately (by `new Promise`).
+  - The `executor` is called automatically and immediately (by `new Promise`).
 
-  - The executor receives two arguments: `resolve` and `reject`. These functions are pre-defined by the JavaScript engine, so we don’t need to create them. We should only call one of them when ready.
+  - The `executor` receives two arguments: `resolve` and `reject`. These functions are pre-defined by the JavaScript engine, so we don’t need to create them. We should only call one of them when ready.
 
-  After one second of “processing”, the executor calls resolve("done") to produce the result. This changes the state of the promise object:
+  After 5 seconds of “processing”, the `executor` calls `resolve("done")` to produce the result. This changes the `state` of the `promise` object:
 
   ![alt text](./screenshots/promise2.PNG)
 
   - That was an example of a successful job completion, a `“fulfilled promise”`.
 
-- And now an example of the executor rejecting the promise with an error:
+- And now an example of the `executor` rejecting the `promise` with an `error`:
 
   ```js
   let promise = new Promise(function (resolve, reject) {
-    // after 1 second signal that the job is finished with an error
-    setTimeout(() => reject(new Error("Whoops!")), 1000);
+    // after 5 seconds signal that the job is finished with an error
+    setTimeout(() => reject(new Error("Whoops!")), 5000);
   });
+  console.log(promise); // Promise { <pending> }
   ```
 
   - The call to `reject(...)` moves the promise object to "rejected" state:
@@ -1296,7 +1359,7 @@ let promise = new Promise(function (resolve, reject) {
 ## Promises-then-Catch-finally
 
 - A `Promise` object serves as a link between the `executor` (the “producing code”) and the `consuming functions`, which will receive the `result` or `error`.
-- Consuming functions can be registered (subscribed) using methods `.then`, `.catch` and `.finally`.
+- `Consuming functions` can be registered (subscribed) using methods `.then`, `.catch` and `.finally`.
 
 ### then()
 
@@ -1354,7 +1417,7 @@ let promise = new Promise(function (resolve, reject) {
 
 ### catch
 
-- If we’re interested only in errors, then we can use null as the first argument: `.then(null, errorHandlingFunction)`, which is exactly the same:
+- If we’re interested only in `errors`, then we can use `null` as the first argument: `.then(null, errorHandlingFunction)`, which is exactly the same:
 
   ```js
   let promise = new Promise((resolve, reject) => {
@@ -1374,7 +1437,7 @@ let promise = new Promise(function (resolve, reject) {
 - The idea of `finally` is to set up a handler for performing cleanup/finalizing after the previous operations are complete.
 - A `finally` handler “passes through” the `result` or `error` to the next suitable handler.
 
-- For instance, here the result is passed through finally to then:
+- For instance, here the `result` is passed through `finally` to `then`:
 
   ```js
   new Promise((resolve, reject) => {
@@ -1384,8 +1447,8 @@ let promise = new Promise(function (resolve, reject) {
     .then((result) => alert(result)); // <-- .then shows "value"
   ```
 
-- As you can see, the `value` returned by the first promise is passed through `finally` to the next `then`.
-- And here’s an example of an error, for us to see how it’s passed through finally to catch:
+- As you can see, the `value` returned by the first `promise` is passed through `finally` to the next `then`.
+- And here’s an example of an `error`, for us to see how it’s passed through `finally` to `catch`:
 
   ```js
   new Promise((resolve, reject) => {
@@ -1399,17 +1462,17 @@ let promise = new Promise(function (resolve, reject) {
 
 ## Fetch
 
-- In frontend programming, promises are often used for network requests.
-- The Fetch API provides an interface for fetching resources.
+- In frontend programming, `promises` are often used for `network requests`.
+- The `Fetch API` provides an interface for fetching resources.
 - It is a more powerful and flexible replacement for `XMLHttpRequest`.
 - For making a request and fetching a resource, use the `fetch()` method.
 - It is a global method in Window object.
 - The `fetch()` method takes one mandatory argument, the `path` to the resource you want to fetch.
 - The `fetch()` method does not directly return the `JSON response body` but instead it returns a `promise` that resolves with a `Response object`.
 - The `Response object`, in turn, does not directly contain the actual `JSON response` body but is instead a representation of the entire `HTTP response`.
-- So, to extract the JSON body content from the Response object, we use the `json()` method
-- The `json()` returns a second promise that resolves with the `result` of parsing the response body text as `JSON`.
-- `json()` is a method on the response object that returns a `promise` to parse the body text as JSON
+- So, to extract the `JSON body content` from the `Response object`, we use the `json()` method.
+- The `json()` returns a second `promise` that `resolves` with the `result` of parsing the `response body text` as `JSON`.
+- `json()` is a method on the `response object` that returns a `promise` to parse the body text as `JSON`.
 
   ```js
   fetch("https://jsonplaceholder.typicode.com/todos/1")
@@ -1470,8 +1533,8 @@ let promise = new Promise(function (resolve, reject) {
     };
     ```
 
-  - We then use the `fetch()` function to make a POST request to a URL endpoint (`/article/fetch/post/user` in this case) and pass in an `options object` that specifies the `method`, `headers`, and `body` of the request.
-  - In this case, we are sending the `user` object as the request `body` after converting it to a `JSON` string using `JSON.stringify()`.
+  - We then use the `fetch()` function to make a `POST` request to a URL endpoint (`/article/fetch/post/user` in this case) and pass in an `options object` that specifies the `method`, `headers`, and `body` of the request.
+  - In this case, we are sending the `user` object as the request `body` after converting it to a `JSON string` using `JSON.stringify()`.
 
     ```js
     let response = await fetch("/article/fetch/post/user", {
@@ -1483,7 +1546,38 @@ let promise = new Promise(function (resolve, reject) {
     });
     ```
 
-  - We then use the `json()` method on the `response` object to parse the response body as JSON and return a JavaScript object. We store the parsed object in the `result` variable using `await` since the `json()` method returns a Promise.
+  - The `Content-Type header` is used to indicate the media type or `format` of the data being sent in the `body` of an `HTTP request`.
+  - It informs the server about how to interpret and process the data in the `request body`.
+  - In the provided code, the `Content-Type header` is set to `"application/json;charset=utf-8"`. This specifies that the body of the request contains data in `JSON` format, and the character encoding used is` UTF-8`.
+  - By setting the `Content-Type header` appropriately, you are providing a hint to the `server` on how to handle the `request body`.
+  - When the `server` receives the `request`, it checks the `Content-Type header` to determine how to parse and interpret the incoming data.
+  - In this case, the `server` can expect the body to be in `JSON` format and use appropriate parsing mechanisms to convert the `JSON string` into an `object` or perform any necessary processing.
+  - In the context of the `Content-Type header` with `"charset=utf-8"`, it indicates that the content of the request body is encoded using the `UTF-8 character encoding`. By specifying this encoding, you ensure that the `server` correctly interprets and handles the text data encoded in UTF-8 format.
+
+  - The `JSON.stringify()` method is used in this code to convert the `user` object into a JSON string representation.
+
+  - When making an` HTTP request`, the `body` of the request typically contains the data that needs to be sent to the server. However, the `HTTP protocol` itself only supports sending `textual data`.
+  - `JSON` (<em>JavaScript Object Notation</em>) is a popular data interchange format that is widely supported and understood by many programming languages and platforms.
+
+  - In order to include the `user` object as the body of the `HTTP request`, it needs to be converted into a format that can be transmitted over the network.
+  - By using `JSON.stringify(user)`, the `user` object is serialized into a `JSON string`, which is a textual representation of the object's data.
+
+  - This allows the data to be sent as the body content of the request.
+
+    ```js
+    let user = {
+      name: "John",
+      surname: "Smith",
+    };
+
+    let jsonString = JSON.stringify(user);
+    console.log(jsonString); // '{"name":"John","surname":"Smith"}'
+    ```
+
+  - On the` server side`, when the request is received, the server can then `parse` the `JSON string` back into an object and access the individual properties of the `user` object.
+  - This is commonly done using `JSON parsing libraries` or `built-in functionality `provided by the server-side programming language or framework.
+
+  - We then use the `json()` method on the `response` object to parse the response body as JSON and return a JavaScript object. We store the parsed object in the `result` variable using `await` since the `json()` method returns a `Promise`.
 
     ```js
     let result = await response.json();
@@ -1499,7 +1593,7 @@ let promise = new Promise(function (resolve, reject) {
 
 ## Async
 
-- There’s a special syntax to work with promises in a more comfortable fashion, called “async/await”. It’s surprisingly easy to understand and use.
+- There’s a special syntax to work with `promises` in a more comfortable fashion, called `“async/await”`. It’s surprisingly easy to understand and use.
 - The word `“async”` before a function means one simple thing: a function always returns a `promise`. Other values are wrapped in a resolved promise automatically.
 - let's check this function:
 
@@ -1565,9 +1659,9 @@ let promise = new Promise(function (resolve, reject) {
 ## Await
 
 - `await` is a keyword that is used inside an `async` function.
-- `await` waits for the promise to `resolve` and returns the result.
+- `await` waits for the `promise` to `resolve` and returns the result.
 - We use the `await` keyword to wait for the response to come back before moving on to the next line of code
-- `await` only works inside `async` functions within regular JavaScript code, however it can be used on its own with JavaScript modules.
+- `await` only works inside `async` functions within regular JavaScript code, however it can be used on its own with JavaScript `modules`.
 - Example
 
   ```js
@@ -1614,9 +1708,34 @@ let promise = new Promise(function (resolve, reject) {
   ```
 
 - The keyword `await` makes JavaScript wait until that `promise` settles and returns its result.
-- `await` literally suspends the function execution until the `promise` settles, and then resumes it with the `promise` result.
+- `await` literally `suspends` the function execution until the `promise` settles, and then `resumes` it with the `promise` result.
 - That doesn’t cost any CPU resources, because the `JavaScript` engine can do other jobs in the meantime: execute other scripts, handle events, etc.
 - It’s just a more elegant syntax of getting the `promise` result than `promise.then`. And, it’s easier to read and write.
+
+- The above function can be rewritten using `try` `catch`as:
+
+  ```js
+  async function getEmployeesData() {
+    console.log("Start of getEmployeesData()");
+    const URL = "https://dummyjson.com/products";
+
+    try {
+      const response = await fetch(URL);
+      const json = await response.json();
+
+      const products = json.products;
+      const firstProduct = products[0];
+      const title = firstProduct.title;
+
+      console.log(title);
+    } catch (error) {
+      console.log("error in catch", error);
+    }
+
+    console.log("End of getEmployeesData()");
+  }
+  ```
+
 - In modern browsers, `await` on top level works just fine, when we’re inside a `module`. But if the code is not inside a module, then `await` will produce an `error`.
 - Example:
 
@@ -1628,13 +1747,13 @@ let promise = new Promise(function (resolve, reject) {
   console.log(user);
   ```
 
-## Another example:
+### Another examples:
 
 ```js
 async function fetchData(URL) {
   try {
     const response = await fetch(URL);
-    console.log(response);
+    // console.log(response);
     if (!response.ok) {
       console.log(response.status);
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -1648,7 +1767,7 @@ async function fetchData(URL) {
 
 fetchData("https://dummyjson.com/products")
   .then((data) => console.log(data?.products))
-  .then((error) => console.log(error));
+  .catch((error) => console.log(error));
 ```
 
 ```js
