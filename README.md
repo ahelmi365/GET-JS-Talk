@@ -15,7 +15,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
   - [4.0 Prototype Chain](#40-prototype-chain)
   - [4.1 Function Constructor](#41-function-constructor)
   - [4.2 Adding Methods to the Prototype](#42-adding-methods-to-the-prototype)
-  - [5. ES6 Classes](#4-es6-classes)
+  - [5. ES6 Classes](#5-es6-classes)
 - [Copy Objects in JS](#Copy-Objects-in-JS)
   - [1. Shallow Copy](#1-shallow-copy)
   - [2. Deep Copy](#2-deep-copy)
