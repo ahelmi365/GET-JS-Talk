@@ -7,23 +7,48 @@
     <title>Document</title>
   </head>
   <body>
-
     <div id="userList"></div>
 
-    <script src="index.js" type="module"></script>
+    <!-- <script src="index.js" type="module"></script> -->
 
     <!-- <script src="callback.js"></script> -->
 
     <!-- <script src="promises.js"></script> -->
-    
+
     <!-- <script src="promisesThenCatchFinally.js"></script> -->
-    
+
     <!-- <script src="fetch.js"></script> -->
-    
+
     <!-- <script src="async.js"></script> -->
-    
+
     <!-- <script src="await.js"></script> -->
-    
+
     <!-- <script src="callbackHell.js"></script> -->
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      
+      async function getData() {
+        axios({
+          method: "get",
+          url: "https://dummyjson.com/products",
+          // data: {
+          //   name: "John",
+          //   age: 30,
+          // // },
+        })
+          .then((response) => {
+            console.log(response.data.products);
+            return response.data.products;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      getData();
+     
+
+    </script>
   </body>
 </html>
