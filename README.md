@@ -1459,11 +1459,11 @@ let promise = new Promise(function (resolve, reject) {
     .finally(() => alert("Promise ready")) // <-- .finally handles the error
     .catch((err) => alert(err)); // <-- .catch handles the error object
   ```
-  - A `finally` handler has no arguments. 
-  - In `finally` we don’t know whether the `promise` is successful or not. That’s all right, as our task is usually to perform `“general”` finalizing procedures.
-  - That’s very convenient, because `finally` is not meant to process a `promise result`. As said, it’s a place to do `generic cleanup`, no matter what the outcome was.
-  - A `finally` handler also shouldn’t return anything. If it does, the returned value is silently ignored.
-  - The only `exception` to this rule is when a `finally` handler throws an `error`. Then this `error` goes to the `next handler`, instead of any `previous outcome`.
+- A `finally` handler has no arguments. 
+- In `finally` we don’t know whether the `promise` is successful or not. That’s all right, as our task is usually to perform `“general”` finalizing procedures.
+- That’s very convenient, because `finally` is not meant to process a `promise result`. As said, it’s a place to do `generic cleanup`, no matter what the outcome was.
+- A `finally` handler also shouldn’t return anything. If it does, the returned value is silently ignored.
+- The only `exception` to this rule is when a `finally` handler throws an `error`. Then this `error` goes to the `next handler`, instead of any `previous outcome`.
 
 ---
 
