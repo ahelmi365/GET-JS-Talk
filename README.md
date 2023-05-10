@@ -1231,6 +1231,24 @@ let promise = new Promise(function (resolve, reject) {
 
 - So to summarize: the executor runs automatically and attempts to perform a job.
 - When it is finished with the attempt, it calls `resolve` if it was successful or `reject` if there was an error.
+
+  ```js
+  const myPromise = new Promise((resolve, reject) => {
+    // Do some async operation here...
+    
+    if (/* some condition */) {
+      resolve(/* some value */); // Fulfill the promise
+    } else {
+      reject(/* some error */); // Reject the promise
+    }
+  });
+
+  myPromise.then(result => {
+    // The promise was fulfilled
+  }).catch(error => {
+    // The promise was rejected
+  });
+```
 - The promise object returned by the `new Promise` constructor has these internal properties:
 
   - `state` — initially `"pending"`, then changes to either `"fulfilled"` when `resolve` is called or `"rejected"` when `reject` is called.
