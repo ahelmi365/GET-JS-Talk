@@ -1747,7 +1747,7 @@ let promise = new Promise(function (resolve, reject) {
   console.log(user);
   ```
 
-### Another examples:
+### Other examples:
 
 ```js
 async function fetchData(URL) {
@@ -1765,15 +1765,19 @@ async function fetchData(URL) {
   }
 }
 
-fetchData("https://dummyjson.com/products")
-  .then((data) => console.log(data?.products))
-  .catch((error) => console.log(error));
+try {
+  const response = await fetchData("https://dummyjson.com/products");
+  const data = response?.products;
+  console.log(data);
+} catch (error) {
+  console.error("Error outer catch:", error);
+}
 ```
 
 ```js
-async function postJSON(data) {
+async function postJSON(URL, data) {
   try {
-    const response = await fetch("https://example.com/profile", {
+    const response = await fetch(URL, {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -1783,13 +1787,14 @@ async function postJSON(data) {
 
     const result = await response.json();
     console.log("Success:", result);
+    return result;
   } catch (error) {
     console.error("Error:", error);
   }
 }
-
+const URL = "https://example.com/profile";
 const data = { username: "example" };
-postJSON(data);
+const response = await postJSON(URL, data);
 ```
 
 ---
