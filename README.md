@@ -1260,7 +1260,7 @@ Some examples of different types of functions in JavaScript based on their behav
   console.log(sumOfNumbers); // Output: 15
   ```
 
-## These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
+-  These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
 
 ## Promises in js
 
@@ -1274,6 +1274,7 @@ Some examples of different types of functions in JavaScript based on their behav
   - `rejected`: meaning that the operation failed.
 
 ```js
+// example of creating a promise using the Promise constructor:
 let promise = new Promise(function (resolve, reject) {
   // executor (the producing code, "singer")
 });
