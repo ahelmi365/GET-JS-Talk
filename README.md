@@ -1436,6 +1436,7 @@ let promise = new Promise(function (resolve, reject) {
 
 - The call `.finally(f)` is similar to `.then(f, f)` in the sense that `f` always runs when the promise is `settled`: be it `resolve` or `reject`.
 - The idea of `finally` is to set up a handler for performing cleanup/finalizing after the previous operations are complete.
+- E.g. stopping loading indicators, closing no longer needed connections, etc.
 - A `finally` handler “passes through” the `result` or `error` to the next suitable handler.
 
 - For instance, here the `result` is passed through `finally` to `then`:
@@ -1458,6 +1459,11 @@ let promise = new Promise(function (resolve, reject) {
     .finally(() => alert("Promise ready")) // <-- .finally handles the error
     .catch((err) => alert(err)); // <-- .catch handles the error object
   ```
+  - A `finally` handler has no arguments. 
+  - In `finally` we don’t know whether the `promise` is successful or not. That’s all right, as our task is usually to perform `“general”` finalizing procedures.
+  - That’s very convenient, because `finally` is not meant to process a `promise result`. As said, it’s a place to do `generic cleanup`, no matter what the outcome was.
+  - A `finally` handler also shouldn’t return anything. If it does, the returned value is silently ignored.
+  - The only `exception` to this rule is when a `finally` handler throws an `error`. Then this `error` goes to the `next handler`, instead of any `previous outcome`.
 
 ---
 
