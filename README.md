@@ -8,6 +8,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
   - [Primitive Data Types](#Primitive-Data-Types)
   - [Non-Primitive Data Types](#Non-Primitive-Data-Types)
   - [Characteristics of Primitive Data Types VS Non-Primitive Data Types](#Characteristics-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
+  - [Examples of Primitive Data Types VS Non-Primitive Data Types](#Examples-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
 - [Declaring Objects in JS](#Declaring-Objects-in-JS)
   - [1. Object Literal](#1-object-literal)
   - [2. Object Constructor](#2-object-constructor)
@@ -22,15 +23,32 @@ In this repository, I will be talking about JavaScript and its features. I will 
 - [Other examples to use Spread Operator](#other-examples-to-use-spread-operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
 - [Types of functions in JS](#Types-of-functions-in-JS)
+  - [1. Pure Functions](#1-pure-function)
+  - [2. Impure Functions](#2-impure-function)
+  - [3. Higher Order Functions](#3-higher-order-function)
+  - [4. Recursive Functions](#4-recursive-function)
+  - [5. Arrow Functions](#5-arrow-function)
+  - [6. Generator Functions](#6-generator-function)  
 - [Functions are First Class Objects](#Functions-are-First-Class-Objects)
 - [JS is single-threaded programming language](#JS-is-single-threaded-programming-language)
 - [Callback Functions](#Callback-Functions)
 - [Higher Order Functions](#Higher-Order-Functions)
+- [JS built-in HOF](#JS-built-in-HOF)
+  - [1. Array.map()](#1-arraymap)
+  - [2. Array.filter()](#2-arrayfilter)
+  - [3. Array.reduce()](#3-arrayreduce)
 - [Promises in js](#Promises-in-js)
-- [Promises (then() Catch() finally())](#Promises-then-Catch-finally)
-- [Fetch()](#Fetch)
-- [Async](#Async)
-- [Await](#Await)
+  - [Promises (then() Catch() finally())](#Promises-then-Catch-finally)
+    - [1. then()](#1-then)
+    - [2. catch()](#2-catch)
+    - [3. finally()](#3-finally)
+  - [Fetch()](#Fetch)
+    - [1. Fetch to GET data](#1-Fetch-to-GET-data)
+    - [2. Fetch to GET data with async/await](#Fetch-to-GET-data-with-asyncawait)
+    - [3. Fetch to POST data](#2-Fetch-to-POST-data)
+    - [Fetch to POST data](#3-Fetch-to-POST-data)
+  - [Async](#Async)
+  - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
 
 ---
@@ -1262,7 +1280,7 @@ Some examples of different types of functions in JavaScript based on their behav
 
 -  These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
 
-## Promises in js
+# Promises in js
 
 - `Promises` are used to handle asynchronous operations in JavaScript.
 - An `asynchronous operation` is one that doesn't block the execution of the program while it's running, but instead runs in the background and `notifies` the program when it's finished.
@@ -1357,193 +1375,165 @@ let promise = new Promise(function (resolve, reject) {
 
   ![alt text](./screenshots/promise3.PNG)
 
-## Promises-then-Catch-finally
+  ## Promises-then-Catch-finally
 
-- A `Promise` object serves as a link between the `executor` (the “producing code”) and the `consuming functions`, which will receive the `result` or `error`.
-- `Consuming functions` can be registered (subscribed) using methods `.then`, `.catch` and `.finally`.
+  - A `Promise` object serves as a link between the `executor` (the “producing code”) and the `consuming functions`, which will receive the `result` or `error`.
+  - `Consuming functions` can be registered (subscribed) using methods `.then`, `.catch` and `.finally`.
 
-### then()
+  ### 1. then()
 
-- The most important, fundamental one is .then.
-- The syntax is:
-  ```js
-  promise.then(
-    function (result) {
-      /* handle a successful result */
-    },
-    function (error) {
-      /* handle an error */
-    }
-  );
-  ```
-- The first argument of `.then` is a function that runs when the promise is `fulfilled`, and receives the `result`.
-- The second argument of `.then` is a function that runs when the promise is `rejected`, and receives the `error`.
-- For instance, here’s a reaction to a `successfully` resolved promise:
+  - The most important, fundamental one is .then.
+  - The syntax is:
+    ```js
+    promise.then(
+      function (result) {
+        /* handle a successful result */
+      },
+      function (error) {
+        /* handle an error */
+      }
+    );
+    ```
+  - The first argument of `.then` is a function that runs when the promise is `fulfilled`, and receives the `result`.
+  - The second argument of `.then` is a function that runs when the promise is `rejected`, and receives the `error`.
+  - For instance, here’s a reaction to a `successfully` resolved promise:
 
-  ```js
-  let promise = new Promise(function (resolve, reject) {
-    setTimeout(() => resolve("done!"), 1000);
-  });
-
-  // resolve runs the first function in .then
-  promise.then(
-    (result) => alert(result), // shows "done!" after 1 second
-    (error) => alert(error) // doesn't run
-  );
-  ```
-
-- And in the case of a `rejection`, the second one:
-
-  ```js
-  let promise = new Promise(function (resolve, reject) {
-    setTimeout(() => reject(new Error("Whoops!")), 1000);
-  });
-
-  // reject runs the second function in .then
-  promise.then(
-    (result) => alert(result), // doesn't run
-    (error) => alert(error) // shows "Error: Whoops!" after 1 second
-  );
-  ```
-
-- If we’re interested only in successful completions, then we can provide only one function argument to `.then`:
-
-  ```js
-  let promise = new Promise((resolve) => {
-    setTimeout(() => resolve("done!"), 1000);
-  });
-
-  promise.then(alert); // shows "done!" after 1 second
-  ```
-
-### catch
-
-- If we’re interested only in `errors`, then we can use `null` as the first argument: `.then(null, errorHandlingFunction)`, which is exactly the same:
-
-  ```js
-  let promise = new Promise((resolve, reject) => {
-    setTimeout(() => reject(new Error("Whoops!")), 1000);
-  });
-
-  // .catch(f) is the same as promise.then(null, f)
-  // promise.then(null, alert); // shows "Error: Whoops!" after 1 second
-  promise.catch(alert); // shows "Error: Whoops!" after 1 second
-  ```
-
-- The call `.catch(f)` is a complete analog of `.then(null, f)`, it’s just a shorthand.
-
-### finally
-
-- The call `.finally(f)` is similar to `.then(f, f)` in the sense that `f` always runs when the promise is `settled`: be it `resolve` or `reject`.
-- The idea of `finally` is to set up a handler for performing cleanup/finalizing after the previous operations are complete.
-- E.g. stopping loading indicators, closing no longer needed connections, etc.
-- A `finally` handler “passes through” the `result` or `error` to the next suitable handler.
-
-- For instance, here the `result` is passed through `finally` to `then`:
-
-  ```js
-  new Promise((resolve, reject) => {
-    setTimeout(() => resolve("value"), 2000);
-  })
-    .finally(() => alert("Promise ready")) // triggers first
-    .then((result) => alert(result)); // <-- .then shows "value"
-  ```
-
-- As you can see, the `value` returned by the first `promise` is passed through `finally` to the next `then`.
-- And here’s an example of an `error`, for us to see how it’s passed through `finally` to `catch`:
-
-  ```js
-  new Promise((resolve, reject) => {
-    throw new Error("error");
-  })
-    .finally(() => alert("Promise ready")) // <-- .finally handles the error
-    .catch((err) => alert(err)); // <-- .catch handles the error object
-  ```
-- A `finally` handler has no arguments. 
-- In `finally` we don’t know whether the `promise` is successful or not. That’s all right, as our task is usually to perform `“general”` finalizing procedures.
-- That’s very convenient, because `finally` is not meant to process a `promise result`. As said, it’s a place to do `generic cleanup`, no matter what the outcome was.
-- A `finally` handler also shouldn’t return anything. If it does, the returned value is silently ignored.
-- The only `exception` to this rule is when a `finally` handler throws an `error`. Then this `error` goes to the `next handler`, instead of any `previous outcome`.
-
----
-
-## Fetch
-
-- In frontend programming, `promises` are often used for `network requests`.
-- The `Fetch API` provides an interface for fetching resources.
-- It is a more powerful and flexible replacement for `XMLHttpRequest`.
-- For making a request and fetching a resource, use the `fetch()` method.
-- It is a global method in Window object.
-- The `fetch()` method takes one mandatory argument, the `path` to the resource you want to fetch.
-- The `fetch()` method does not directly return the `JSON response body` but instead it returns a `promise` that resolves with a `Response object`.
-- The `Response object`, in turn, does not directly contain the actual `JSON response` body but is instead a representation of the entire `HTTP response`.
-- So, to extract the `JSON body content` from the `Response object`, we use the `json()` method.
-- The `json()` returns a second `promise` that `resolves` with the `result` of parsing the `response body text` as `JSON`.
-- `json()` is a method on the `response object` that returns a `promise` to parse the body text as `JSON`.
-
-  ```js
-  fetch("https://jsonplaceholder.typicode.com/todos/1")
-    //  reads the remote data and parses it as JSON
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-  ```
-
-- Another example:
-
-  ```js
-  const URL = "https://dummyjson.com/products";
-
-  fetch(URL) // returns a promise
-    .then((res) => res.json()) // returns a promise
-    .then((json) => json) // returns a json object
-    .then((data) => {
-      console.log(data.products);
-      return data.products; // for the next then()
-    })
-    .then((products) => {
-      console.log(products[0]);
-      return products[0]; // for the next then()
-    })
-    .then((firstProduct) => {
-      console.log(firstProduct.title);
+    ```js
+    let promise = new Promise(function (resolve, reject) {
+      setTimeout(() => resolve("done!"), 1000);
     });
-  ```
 
-- POST requests
+    // resolve runs the first function in .then
+    promise.then(
+      (result) => alert(result), // shows "done!" after 1 second
+      (error) => alert(error) // doesn't run
+    );
+    ```
 
-  ```js
-  let user = {
-    name: "John",
-    surname: "Smith",
-  };
+  - And in the case of a `rejection`, the second one:
 
-  let response = await fetch("/article/fetch/post/user", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify(user),
-  });
+    ```js
+    let promise = new Promise(function (resolve, reject) {
+      setTimeout(() => reject(new Error("Whoops!")), 1000);
+    });
 
-  let result = await response.json();
-  alert(result.message);
-  ```
+    // reject runs the second function in .then
+    promise.then(
+      (result) => alert(result), // doesn't run
+      (error) => alert(error) // shows "Error: Whoops!" after 1 second
+    );
+    ```
 
-  - Explanation of the code:
+  - If we’re interested only in successful completions, then we can provide only one function argument to `.then`:
 
-  - We first create an object called `user` with two properties, `name` and `surname`.
+    ```js
+    let promise = new Promise((resolve) => {
+      setTimeout(() => resolve("done!"), 1000);
+    });
+
+    promise.then(alert); // shows "done!" after 1 second
+    ```
+
+  ### 2. catch
+
+  - If we’re interested only in `errors`, then we can use `null` as the first argument: `.then(null, errorHandlingFunction)`, which is exactly the same:
+
+    ```js
+    let promise = new Promise((resolve, reject) => {
+      setTimeout(() => reject(new Error("Whoops!")), 1000);
+    });
+
+    // .catch(f) is the same as promise.then(null, f)
+    // promise.then(null, alert); // shows "Error: Whoops!" after 1 second
+    promise.catch(alert); // shows "Error: Whoops!" after 1 second
+    ```
+
+  - The call `.catch(f)` is a complete analog of `.then(null, f)`, it’s just a shorthand.
+
+  ### 3. finally
+
+  - The call `.finally(f)` is similar to `.then(f, f)` in the sense that `f` always runs when the promise is `settled`: be it `resolve` or `reject`.
+  - The idea of `finally` is to set up a handler for performing cleanup/finalizing after the previous operations are complete.
+  - E.g. stopping loading indicators, closing no longer needed connections, etc.
+  - A `finally` handler “passes through” the `result` or `error` to the next suitable handler.
+
+  - For instance, here the `result` is passed through `finally` to `then`:
+
+    ```js
+    new Promise((resolve, reject) => {
+      setTimeout(() => resolve("value"), 2000);
+    })
+      .finally(() => alert("Promise ready")) // triggers first
+      .then((result) => alert(result)); // <-- .then shows "value"
+    ```
+
+  - As you can see, the `value` returned by the first `promise` is passed through `finally` to the next `then`.
+  - And here’s an example of an `error`, for us to see how it’s passed through `finally` to `catch`:
+
+    ```js
+    new Promise((resolve, reject) => {
+      throw new Error("error");
+    })
+      .finally(() => alert("Promise ready")) // <-- .finally handles the error
+      .catch((err) => alert(err)); // <-- .catch handles the error object
+    ```
+  - A `finally` handler has no arguments. 
+  - In `finally` we don’t know whether the `promise` is successful or not. That’s all right, as our task is usually to perform `“general”` finalizing procedures.
+  - That’s very convenient, because `finally` is not meant to process a `promise result`. As said, it’s a place to do `generic cleanup`, no matter what the outcome was.
+  - A `finally` handler also shouldn’t return anything. If it does, the returned value is silently ignored.
+  - The only `exception` to this rule is when a `finally` handler throws an `error`. Then this `error` goes to the `next handler`, instead of any `previous outcome`.
+
+  ---
+
+  ## Fetch
+
+  - In frontend programming, `promises` are often used for `network requests`.
+  - The `Fetch API` provides an interface for fetching resources.
+  - It is a more powerful and flexible replacement for `XMLHttpRequest`.
+  - For making a request and fetching a resource, use the `fetch()` method.
+  - It is a global method in Window object.
+  - The `fetch()` method takes one mandatory argument, the `path` to the resource you want to fetch.
+  - The `fetch()` method does not directly return the `JSON response body` but instead it returns a `promise` that resolves with a `Response object`.
+  - The `Response object`, in turn, does not directly contain the actual `JSON response` body but is instead a representation of the entire `HTTP response`.
+  - So, to extract the `JSON body content` from the `Response object`, we use the `json()` method.
+  - The `json()` returns a second `promise` that `resolves` with the `result` of parsing the `response body text` as `JSON`.
+  - `json()` is a method on the `response object` that returns a `promise` to parse the body text as `JSON`.
+
+    ### 1. Fetch to GET data:
+      ```js
+      fetch("https://jsonplaceholder.typicode.com/todos/1")
+        //  reads the remote data and parses it as JSON
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+      ```
+    ### 2. Fetch to GET data with async/await:
+      ```js
+      const URL = "https://dummyjson.com/products";
+
+      fetch(URL) // returns a promise
+        .then((res) => res.json()) // returns a promise
+        .then((json) => json) // returns a json object
+        .then((data) => {
+          console.log(data.products);
+          return data.products; // for the next then()
+        })
+        .then((products) => {
+          console.log(products[0]);
+          return products[0]; // for the next then()
+        })
+        .then((firstProduct) => {
+          console.log(firstProduct.title);
+        });
+      ```
+
+    ### 3. Fetch to POST data:
 
     ```js
     let user = {
       name: "John",
       surname: "Smith",
     };
-    ```
 
-  - We then use the `fetch()` function to make a `POST` request to a URL endpoint (`/article/fetch/post/user` in this case) and pass in an `options object` that specifies the `method`, `headers`, and `body` of the request.
-  - In this case, we are sending the `user` object as the request `body` after converting it to a `JSON string` using `JSON.stringify()`.
-
-    ```js
     let response = await fetch("/article/fetch/post/user", {
       method: "POST",
       headers: {
@@ -1551,262 +1541,289 @@ let promise = new Promise(function (resolve, reject) {
       },
       body: JSON.stringify(user),
     });
-    ```
 
-  - The `Content-Type header` is used to indicate the media type or `format` of the data being sent in the `body` of an `HTTP request`.
-  - It informs the server about how to interpret and process the data in the `request body`.
-  - In the provided code, the `Content-Type header` is set to `"application/json;charset=utf-8"`. This specifies that the body of the request contains data in `JSON` format, and the character encoding used is` UTF-8`.
-  - By setting the `Content-Type header` appropriately, you are providing a hint to the `server` on how to handle the `request body`.
-  - When the `server` receives the `request`, it checks the `Content-Type header` to determine how to parse and interpret the incoming data.
-  - In this case, the `server` can expect the body to be in `JSON` format and use appropriate parsing mechanisms to convert the `JSON string` into an `object` or perform any necessary processing.
-  - In the context of the `Content-Type header` with `"charset=utf-8"`, it indicates that the content of the request body is encoded using the `UTF-8 character encoding`. By specifying this encoding, you ensure that the `server` correctly interprets and handles the text data encoded in UTF-8 format.
-
-  - The `JSON.stringify()` method is used in this code to convert the `user` object into a JSON string representation.
-
-  - When making an` HTTP request`, the `body` of the request typically contains the data that needs to be sent to the server. However, the `HTTP protocol` itself only supports sending `textual data`.
-  - `JSON` (<em>JavaScript Object Notation</em>) is a popular data interchange format that is widely supported and understood by many programming languages and platforms.
-
-  - In order to include the `user` object as the body of the `HTTP request`, it needs to be converted into a format that can be transmitted over the network.
-  - By using `JSON.stringify(user)`, the `user` object is serialized into a `JSON string`, which is a textual representation of the object's data.
-
-  - This allows the data to be sent as the body content of the request.
-
-    ```js
-    let user = {
-      name: "John",
-      surname: "Smith",
-    };
-
-    let jsonString = JSON.stringify(user);
-    console.log(jsonString); // '{"name":"John","surname":"Smith"}'
-    ```
-
-  - On the` server side`, when the request is received, the server can then `parse` the `JSON string` back into an object and access the individual properties of the `user` object.
-  - This is commonly done using `JSON parsing libraries` or `built-in functionality `provided by the server-side programming language or framework.
-
-  - We then use the `json()` method on the `response` object to parse the response body as JSON and return a JavaScript object. We store the parsed object in the `result` variable using `await` since the `json()` method returns a `Promise`.
-
-    ```js
     let result = await response.json();
-    ```
-
-  - Finally, we display a message from the parsed JSON data using the `alert()` function. In this case, we assume that the response body has a property called `message`.
-
-    ```js
     alert(result.message);
     ```
 
----
+    - Explanation of the code:
 
-## Async
+    - We first create an object called `user` with two properties, `name` and `surname`.
 
-- There’s a special syntax to work with `promises` in a more comfortable fashion, called `“async/await”`. It’s surprisingly easy to understand and use.
-- The word `“async”` before a function means one simple thing: a function always returns a `promise`. Other values are wrapped in a resolved promise automatically.
-- let's check this function:
+      ```js
+      let user = {
+        name: "John",
+        surname: "Smith",
+      };
+      ```
 
-  ```js
-  function getEmployeesData() {
-    const employees = ["John", "Jane", "Jack"];
+    - We then use the `fetch()` function to make a `POST` request to a URL endpoint (`/article/fetch/post/user` in this case) and pass in an `options object` that specifies the `method`, `headers`, and `body` of the request.
+    - In this case, we are sending the `user` object as the request `body` after converting it to a `JSON string` using `JSON.stringify()`.
 
-    return new Promise((resolve, reject) => {
+      ```js
+      let response = await fetch("/article/fetch/post/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(user),
+      });
+      ```
+
+    - The `Content-Type header` is used to indicate the media type or `format` of the data being sent in the `body` of an `HTTP request`.
+    - It informs the server about how to interpret and process the data in the `request body`.
+    - In the provided code, the `Content-Type header` is set to `"application/json;charset=utf-8"`. This specifies that the body of the request contains data in `JSON` format, and the character encoding used is` UTF-8`.
+    - By setting the `Content-Type header` appropriately, you are providing a hint to the `server` on how to handle the `request body`.
+    - When the `server` receives the `request`, it checks the `Content-Type header` to determine how to parse and interpret the incoming data.
+    - In this case, the `server` can expect the body to be in `JSON` format and use appropriate parsing mechanisms to convert the `JSON string` into an `object` or perform any necessary processing.
+    - In the context of the `Content-Type header` with `"charset=utf-8"`, it indicates that the content of the request body is encoded using the `UTF-8 character encoding`. By specifying this encoding, you ensure that the `server` correctly interprets and handles the text data encoded in UTF-8 format.
+
+    - The `JSON.stringify()` method is used in this code to convert the `user` object into a JSON string representation.
+
+    - When making an` HTTP request`, the `body` of the request typically contains the data that needs to be sent to the server. However, the `HTTP protocol` itself only supports sending `textual data`.
+    - `JSON` (<em>JavaScript Object Notation</em>) is a popular data interchange format that is widely supported and understood by many programming languages and platforms.
+
+    - In order to include the `user` object as the body of the `HTTP request`, it needs to be converted into a format that can be transmitted over the network.
+    - By using `JSON.stringify(user)`, the `user` object is serialized into a `JSON string`, which is a textual representation of the object's data.
+
+    - This allows the data to be sent as the body content of the request.
+
+      ```js
+      let user = {
+        name: "John",
+        surname: "Smith",
+      };
+
+      let jsonString = JSON.stringify(user);
+      console.log(jsonString); // '{"name":"John","surname":"Smith"}'
+      ```
+
+    - On the` server side`, when the request is received, the server can then `parse` the `JSON string` back into an object and access the individual properties of the `user` object.
+    - This is commonly done using `JSON parsing libraries` or `built-in functionality `provided by the server-side programming language or framework.
+
+    - We then use the `json()` method on the `response` object to parse the response body as JSON and return a JavaScript object. We store the parsed object in the `result` variable using `await` since the `json()` method returns a `Promise`.
+
+      ```js
+      let result = await response.json();
+      ```
+
+    - Finally, we display a message from the parsed JSON data using the `alert()` function. In this case, we assume that the response body has a property called `message`.
+
+      ```js
+      alert(result.message);
+      ```
+
+  ---
+
+  ## Async
+
+  - There’s a special syntax to work with `promises` in a more comfortable fashion, called `“async/await”`. It’s surprisingly easy to understand and use.
+  - The word `“async”` before a function means one simple thing: a function always returns a `promise`. Other values are wrapped in a resolved promise automatically.
+  - let's check this function:
+
+    ```js
+    function getEmployeesData() {
+      const employees = ["John", "Jane", "Jack"];
+
+      return new Promise((resolve, reject) => {
+        if (employees.length > 0) {
+          resolve("Employees exist");
+        } else {
+          reject("Employees does not exist");
+        }
+      });
+    }
+    // call the function
+    getEmployeesData().then(
+      (reolveValue) => console.log(reolveValue),
+      (rejectValue) => console.error(rejectValue)
+    );
+    ```
+
+  - We can rewrite the previous function as:
+
+    ```js
+    function getEmployeesData() {
+      const employees = ["John", "Jane", "Jack"];
+
       if (employees.length > 0) {
-        resolve("Employees exist");
+        return Promise.resolve("Employees exist");
       } else {
-        reject("Employees does not exist");
+        return Promise.reject("Employees does not exist");
       }
-    });
-  }
-  // call the function
-  getEmployeesData().then(
-    (reolveValue) => console.log(reolveValue),
-    (rejectValue) => console.error(rejectValue)
-  );
-  ```
-
-- We can rewrite the previous function as:
-
-  ```js
-  function getEmployeesData() {
-    const employees = ["John", "Jane", "Jack"];
-
-    if (employees.length > 0) {
-      return Promise.resolve("Employees exist");
-    } else {
-      return Promise.reject("Employees does not exist");
     }
-  }
-  // call the function
-  getEmployeesData().then(
-    (reolveValue) => console.log(reolveValue),
-    (rejectValue) => console.error(rejectValue)
-  );
-  ```
+    // call the function
+    getEmployeesData().then(
+      (reolveValue) => console.log(reolveValue),
+      (rejectValue) => console.error(rejectValue)
+    );
+    ```
 
-- We can rewrite the previous function using `async` as:
+  - We can rewrite the previous function using `async` as:
 
-  ```js
-  async function getEmployeesData() {
-    const employees = ["John", "Jane", "Jack"];
+    ```js
+    async function getEmployeesData() {
+      const employees = ["John", "Jane", "Jack"];
 
-    if (employees.length > 0) {
-      return "Employees exist";
-    } else {
-      throw "Employees does not exist";
+      if (employees.length > 0) {
+        return "Employees exist";
+      } else {
+        throw "Employees does not exist";
+      }
     }
-  }
-  // call the function
-  getEmployeesData().then(
-    (reolveValue) => console.log(reolveValue),
-    (rejectValue) => console.error(rejectValue)
-  );
-  ```
+    // call the function
+    getEmployeesData().then(
+      (reolveValue) => console.log(reolveValue),
+      (rejectValue) => console.error(rejectValue)
+    );
+    ```
 
----
+  ---
 
-## Await
+  ## Await
 
-- `await` is a keyword that is used inside an `async` function.
-- `await` waits for the `promise` to `resolve` and returns the result.
-- We use the `await` keyword to wait for the response to come back before moving on to the next line of code
-- `await` only works inside `async` functions within regular JavaScript code, however it can be used on its own with JavaScript `modules`.
-- Example
+  - `await` is a keyword that is used inside an `async` function.
+  - `await` waits for the `promise` to `resolve` and returns the result.
+  - We use the `await` keyword to wait for the response to come back before moving on to the next line of code
+  - `await` only works inside `async` functions within regular JavaScript code, however it can be used on its own with JavaScript `modules`.
+  - Example
 
-  ```js
-  function getEmployeesData() {
-    console.log("Start of getEmployeesData()");
+    ```js
+    function getEmployeesData() {
+      console.log("Start of getEmployeesData()");
 
-    const URL = "https://dummyjson.com/products";
+      const URL = "https://dummyjson.com/products";
 
-    const response = fetch(URL);
-    response
-      .then((res) => res.json())
-      .then((json) => json.products)
-      .then((products) => products[0])
-      .then((firstProduct) => firstProduct.title)
-      .then((title) => console.log(title));
+      const response = fetch(URL);
+      response
+        .then((res) => res.json())
+        .then((json) => json.products)
+        .then((products) => products[0])
+        .then((firstProduct) => firstProduct.title)
+        .then((title) => console.log(title));
 
-    console.log("End of getEmployeesData()");
-  }
+      console.log("End of getEmployeesData()");
+    }
 
-  getEmployeesData();
-  ```
+    getEmployeesData();
+    ```
 
-- The above function can be rewritten using `async` and `await` as:
+  - The above function can be rewritten using `async` and `await` as:
 
-  ```js
-  async function getEmployeesData() {
-    console.log("Start of getEmployeesData()");
+    ```js
+    async function getEmployeesData() {
+      console.log("Start of getEmployeesData()");
 
-    const URL = "https://dummyjson.com/products";
+      const URL = "https://dummyjson.com/products";
 
-    const response = await fetch(URL); // wait for this promise to resolve before moving on to the next line of code.
-    const json = await response.json(); // wait until the resolved promise is pasred to json
-
-    const products = json.products;
-    const firstProduct = products[0];
-    const title = firstProduct.title;
-
-    console.log(title);
-
-    console.log("End of getEmployeesData()");
-  }
-
-  getEmployeesData();
-  ```
-
-- The keyword `await` makes JavaScript wait until that `promise` settles and returns its result.
-- `await` literally `suspends` the function execution until the `promise` settles, and then `resumes` it with the `promise` result.
-- That doesn’t cost any CPU resources, because the `JavaScript` engine can do other jobs in the meantime: execute other scripts, handle events, etc.
-- It’s just a more elegant syntax of getting the `promise` result than `promise.then`. And, it’s easier to read and write.
-
-- The above function can be rewritten using `try` `catch`as:
-
-  ```js
-  async function getEmployeesData() {
-    console.log("Start of getEmployeesData()");
-    const URL = "https://dummyjson.com/products";
-
-    try {
-      const response = await fetch(URL);
-      const json = await response.json();
+      const response = await fetch(URL); // wait for this promise to resolve before moving on to the next line of code.
+      const json = await response.json(); // wait until the resolved promise is pasred to json
 
       const products = json.products;
       const firstProduct = products[0];
       const title = firstProduct.title;
 
       console.log(title);
+
+      console.log("End of getEmployeesData()");
+    }
+
+    getEmployeesData();
+    ```
+
+  - The keyword `await` makes JavaScript wait until that `promise` settles and returns its result.
+  - `await` literally `suspends` the function execution until the `promise` settles, and then `resumes` it with the `promise` result.
+  - That doesn’t cost any CPU resources, because the `JavaScript` engine can do other jobs in the meantime: execute other scripts, handle events, etc.
+  - It’s just a more elegant syntax of getting the `promise` result than `promise.then`. And, it’s easier to read and write.
+
+  - The above function can be rewritten using `try` `catch`as:
+
+    ```js
+    async function getEmployeesData() {
+      console.log("Start of getEmployeesData()");
+      const URL = "https://dummyjson.com/products";
+
+      try {
+        const response = await fetch(URL);
+        const json = await response.json();
+
+        const products = json.products;
+        const firstProduct = products[0];
+        const title = firstProduct.title;
+
+        console.log(title);
+      } catch (error) {
+        console.log("error in catch", error);
+      }
+
+      console.log("End of getEmployeesData()");
+    }
+    ```
+
+  - In modern browsers, `await` on top level works just fine, when we’re inside a `module`. But if the code is not inside a module, then `await` will produce an `error`.
+  - Example:
+
+    ```js
+    // we assume this code runs at top level, inside a module
+    let response = await fetch("/article/promise-chaining/user.json");
+    let user = await response.json();
+
+    console.log(user);
+    ```
+
+    ### Async/Await Other examples:
+
+    ```js
+    async function fetchData(URL) {
+      try {
+        const response = await fetch(URL);
+        // console.log(response);
+        if (!response.ok) {
+          console.log(response.status);
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+
+    try {
+      const response = await fetchData("https://dummyjson.com/products");
+      const data = response?.products;
+      console.log(data);
     } catch (error) {
-      console.log("error in catch", error);
+      console.error("Error outer catch:", error);
     }
+    ```
 
-    console.log("End of getEmployeesData()");
-  }
-  ```
+    ```js
+    async function postJSON(URL, data) {
+      try {
+        const response = await fetch(URL, {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
-- In modern browsers, `await` on top level works just fine, when we’re inside a `module`. But if the code is not inside a module, then `await` will produce an `error`.
-- Example:
-
-  ```js
-  // we assume this code runs at top level, inside a module
-  let response = await fetch("/article/promise-chaining/user.json");
-  let user = await response.json();
-
-  console.log(user);
-  ```
-
-### Other examples:
-
-```js
-async function fetchData(URL) {
-  try {
-    const response = await fetch(URL);
-    // console.log(response);
-    if (!response.ok) {
-      console.log(response.status);
-      throw new Error(`HTTP error! status: ${response.status}`);
+        const result = await response.json();
+        console.log("Success:", result);
+        return result;
+      } catch (error) {
+        console.error("Error:", error);
+      }
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
-
-try {
-  const response = await fetchData("https://dummyjson.com/products");
-  const data = response?.products;
-  console.log(data);
-} catch (error) {
-  console.error("Error outer catch:", error);
-}
-```
-
-```js
-async function postJSON(URL, data) {
-  try {
-    const response = await fetch(URL, {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await response.json();
-    console.log("Success:", result);
-    return result;
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
-const URL = "https://example.com/profile";
-const data = { username: "example" };
-const response = await postJSON(URL, data);
-```
+    const URL = "https://example.com/profile";
+    const data = { username: "example" };
+    const response = await postJSON(URL, data);
+    ```
 
 ---
 
-## Callback Hell and how to avoid it
+# Callback Hell and how to avoid it
 
 - callback hell is a situation where you have a lot of nested callbacks
 
