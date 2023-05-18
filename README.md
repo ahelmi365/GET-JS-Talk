@@ -10,7 +10,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
   - [Characteristics of Primitive Data Types VS Non-Primitive Data Types](#Characteristics-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
   - [Examples of Primitive Data Types VS Non-Primitive Data Types](#Examples-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
 - [Strings in JavaScript](#Strings-in-JavaScript)
-  - [String Methods](#String-Methods)
+  - [String Methods in JavaScript](#String-Methods-in-JavaScript)
     - [charAt()](#charAt)
     - [charCodeAt()](#charCodeAt)
     - [concat()](#concat)
@@ -78,7 +78,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Data types in JavaScript
 
@@ -90,20 +90,7 @@ Examples of primitive and non-primitive data types in JavaScript:
   ### **Primitive Data types VS Non-Primitive Data Types**
 
   | Primitive Data Types | Non-Primitive Data Types |
-  | :---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents): | :---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)-: |
+  | :------------------: | :----------------------: |
   |        String        |          Object          |
   |        Number        |          Array           |
   |       Boolean        |         Function         |
@@ -244,20 +231,7 @@ Examples of primitive and non-primitive data types in JavaScript:
   <div style="margin-left: 30px;">
 
   | Primitive Data Types | Non-Primitive Data Types |
-  | :---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents): | :---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)-: |
+  | :------------------: | :----------------------: |
   |      Immutable       |         Mutable          |
   |   Passed by value    |   Passed by reference    |
   |   Stored in stack    |      Stored in heap      |
@@ -386,7 +360,7 @@ Examples of primitive and non-primitive data types in JavaScript:
   ```
 
   ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Strings in JavaScript
 
@@ -563,8 +537,7 @@ Examples of primitive and non-primitive data types in JavaScript:
       let str = "Hello World";
       console.log(str.padStart(15, " ")); // Output: "     Hello World"
       console.log(str.padStart(15, "Hello ")); // Output: "Hello Hello World"
-      console.log(str.padStart(15, "*")); // Output: "---
-[&#8679; Table of Contents](#table-of-contents)**Hello World"
+      console.log(str.padStart(15, "*")); // Output: "---**Hello World"
       ```
 
     #### **padEnd()**
@@ -575,8 +548,7 @@ Examples of primitive and non-primitive data types in JavaScript:
       let str = "Hello World";
       console.log(str.padEnd(15, " ")); // Output: "Hello World     "
       console.log(str.padEnd(15, " World")); // Output: "Hello World World"
-      console.log(str.padEnd(15, "*")); // Output: "Hello World---
-[&#8679; Table of Contents](#table-of-contents)**"
+      console.log(str.padEnd(15, "*")); // Output: "Hello World---**"
       ```
 
     #### **repeat()**
@@ -634,11 +606,7 @@ Examples of primitive and non-primitive data types in JavaScript:
       const maskedNumber = last4Digits.padStart(fullNumber.length, "*");
 
       console.log(maskedNumber);
-      // Expected output: "---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)5581"
+      // Expected output: "---5581"
       ```
 
     - Using `padEnd()` with `slice()` to mask a string:
@@ -650,10 +618,6 @@ Examples of primitive and non-primitive data types in JavaScript:
 
       console.log(maskedNumber);
       // Expected output: "5581---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)---
-[&#8679; Table of Contents](#table-of-contents)"
       ```
 
     #### **split()**
@@ -742,7 +706,7 @@ Examples of primitive and non-primitive data types in JavaScript:
       ```
 
   ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Declaring Objects in JS
 
@@ -1019,7 +983,7 @@ const person = new Person("John", 30);
 These are some of the common ways to declare objects in JavaScript. Depending on your use case, one method may be more appropriate than the others.
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Copy Objects in JS
 
@@ -1113,7 +1077,7 @@ There are two ways to create a copy of an object:
       \*\*\*Note that using `JSON.parse()` and `JSON.stringify()` may not work for all cases, such as when the object contains `functions` or `symbols`. In those cases, other methods of deep copying may be necessary.
 
   ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
   ### Other examples to use Spread Operator:
 
@@ -1175,7 +1139,7 @@ There are two ways to create a copy of an object:
     ```
 
   ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 
 ## Declaring Functions in js
@@ -1230,7 +1194,7 @@ In JavaScript, there are several ways to declare functions. Here are some of the
    ```
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Types of functions in JS
 
@@ -1335,7 +1299,7 @@ console.log(gen.next().value); // 10
 ```
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Functions are First Class Objects
 
@@ -1450,7 +1414,7 @@ console.log(gen.next().value); // 10
     ```
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## JS is single-threaded programming language
 
@@ -1465,7 +1429,7 @@ console.log(gen.next().value); // 10
 - This allows the user interface to remain responsive while the application is performing long-running tasks.
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Callback Functions
 
@@ -1606,7 +1570,7 @@ console.log(gen.next().value); // 10
 - The `getData()` function executes the `processData()` function after one second and passes the data object as an argument.
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Higher Order Functions
 
@@ -1650,7 +1614,7 @@ console.log(gen.next().value); // 10
   ```
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## JS built-in HOF
 
@@ -1905,7 +1869,7 @@ let promise = new Promise(function (resolve, reject) {
   - The only `exception` to this rule is when a `finally` handler throws an `error`. Then this `error` goes to the `next handler`, instead of any `previous outcome`.
 
   ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
   ### Fetch
 
@@ -2039,7 +2003,7 @@ let promise = new Promise(function (resolve, reject) {
       ```
 
   ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
   ### Async
 
@@ -2105,7 +2069,7 @@ let promise = new Promise(function (resolve, reject) {
     ```
 
   ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
   ### Await
 
@@ -2249,7 +2213,7 @@ let promise = new Promise(function (resolve, reject) {
     ```
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Callback Hell and how to avoid it
 
@@ -2305,10 +2269,10 @@ start();
 - This refactored code uses `Promises` to load the scripts, and `async/await` to wait for each Promise to `resolve` before continuing with the next statement.
 - This approach makes the code much more readable and maintainable, and avoids the "`pyramid of doom`" structure of callback hell.
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 
 ## Questions
 
 ---
-[&#8679; Table of Contents](#table-of-contents)
+[&#8679; Back to Table of Contents](#table-of-contents)
