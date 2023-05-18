@@ -937,7 +937,7 @@ In JavaScript, a function constructor is a function that is used to create objec
   ```
 
      <details>
-     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+     <summary> <span style="color:#90EE90;">Click to show/hide solution </span></summary>
 
   ```javascript
   // Solution:
@@ -996,7 +996,7 @@ In JavaScript, a function constructor is a function that is used to create objec
   ```
 
      <details>
-     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+     <summary> <span style="color:#90EE90;">Click to show/hide solution </span></summary>
 
   ```javascript
   // Solution:
@@ -1062,7 +1062,7 @@ In JavaScript, a function constructor is a function that is used to create objec
 - Convert the `Car` function constructor from the previous exercise to an ES6 class.
 
      <details>
-     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+     <summary> <span style="color:#90EE90;">Click to show/hide solution </span></summary>
 
   ```javascript
   class Car {
@@ -1087,7 +1087,7 @@ In JavaScript, a function constructor is a function that is used to create objec
 
 - Create two `Car` objects and call their `start()` and `stop()` methods.
      <details>
-     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+     <summary> <span style="color:#90EE90;">Click to show/hide solution </span></summary>
 
   ```javascript
   // Solution:
@@ -1107,7 +1107,7 @@ In JavaScript, a function constructor is a function that is used to create objec
 
 - Convert the `BankAccount` function constructor from the previous exercise to an ES6 class.
      <details>
-     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+     <summary> <span style="color:#90EE90;">Click to show/hide solution </span></summary>
 
   ```javascript
   // Solution:
@@ -1139,7 +1139,7 @@ In JavaScript, a function constructor is a function that is used to create objec
 
 - Create a `BankAccount` object and call its` deposit()`, `withdraw()`, and `getBalance()` methods.
      <details>
-     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+     <summary> <span style="color:#90EE90;">Click to show/hide solution </span></summary>
 
   ```javascript
   // Solution:
