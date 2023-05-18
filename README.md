@@ -78,6 +78,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Data types in JavaScript
@@ -228,7 +229,7 @@ Examples of primitive and non-primitive data types in JavaScript:
 
   ### **Characteristics of Primitive Data Types VS Non-Primitive Data Types**
 
-  <div style="margin-left: 30px;">
+    <div style="margin-left: 30px;">
 
   | Primitive Data Types | Non-Primitive Data Types |
   | :------------------: | :----------------------: |
@@ -239,7 +240,7 @@ Examples of primitive and non-primitive data types in JavaScript:
   |  Compared by value   |  Compared by reference   |
   |  Accessed by value   |  Accessed by reference   |
 
-  </div>
+    </div>
 
   ### Examples on characteristics of Primitive Data Types VS Non-Primitive Data Types
 
@@ -359,8 +360,9 @@ Examples of primitive and non-primitive data types in JavaScript:
   console.log(obj.name); // Output: "John"
   ```
 
-  ---
-[&#8679; Back to Table of Contents](#table-of-contents)
+  ***
+
+  [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Strings in JavaScript
 
@@ -705,8 +707,9 @@ Examples of primitive and non-primitive data types in JavaScript:
       console.log(str.trimEnd()); // Output: "   Hello World"
       ```
 
-  ---
-[&#8679; Back to Table of Contents](#table-of-contents)
+  ***
+
+  [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Declaring Objects in JS
 
@@ -933,6 +936,37 @@ In JavaScript, a function constructor is a function that is used to create objec
   car2.start(); // Output: "The Honda Civic has started."
   ```
 
+     <details>
+     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+
+  ```javascript
+  // Solution:
+  function Car(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+
+  Car.prototype.start = function () {
+    console.log(`The ${this.make} ${this.model} has started.`);
+  };
+
+  Car.prototype.stop = function () {
+    console.log(`The ${this.make} ${this.model} has stopped.`);
+  };
+
+  const car1 = new Car("Toyota", "Corolla", 2020);
+  const car2 = new Car("Honda", "Civic", 2019);
+
+  car1.start(); // Output: "The Toyota Corolla has started."
+  car2.start(); // Output: "The Honda Civic has started."
+
+  car1.stop(); // Output: "The Toyota Corolla has stopped."
+  car2.stop(); // Output: "The Honda Civic has stopped."
+  ```
+
+     </details>
+
 ### 4.4.2 Excersise 2
 
 - Create a `BankAccount` function constructor that takes one parameter: `balance`.
@@ -961,28 +995,171 @@ In JavaScript, a function constructor is a function that is used to create objec
   console.log(account.getBalance()); // Output: 1300
   ```
 
+     <details>
+     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+
+  ```javascript
+  // Solution:
+  function BankAccount(balance) {
+    this.balance = balance;
+  }
+
+  BankAccount.prototype.deposit = function (amount) {
+    this.balance += amount;
+  };
+
+  BankAccount.prototype.withdraw = function (amount) {
+    if (amount > this.balance) {
+      console.log("Insufficient funds.");
+      return;
+    }
+
+    this.balance -= amount;
+  };
+
+  BankAccount.prototype.getBalance = function () {
+    return this.balance;
+  };
+
+  const account = new BankAccount(1000);
+
+  console.log(account.getBalance()); // Output: 1000
+
+  account.deposit(500);
+  console.log(account.getBalance()); // Output: 1500
+
+  account.withdraw(200);
+  console.log(account.getBalance()); // Output: 1300
+
+  account.withdraw(2000); // Output: "Insufficient funds."
+  ```
+
+     </details>
+
 ### 5. ES6 Classes
 
-ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
+- ES6 introduced the class syntax, which provides a more traditional object-oriented programming approach to creating objects.
 
-```javascript
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
+  ```javascript
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    greeting() {
+      console.log("Hello, my name is " + this.name);
+    }
   }
 
-  greeting() {
-    console.log("Hello, my name is " + this.name);
+  const person = new Person("John", 30);
+  ```
+
+- These are some of the common ways to declare objects in JavaScript. Depending on your use case, one method may be more appropriate than the others.
+
+#### 5.1 Excersise on ES6 Classes
+
+- Convert the `Car` function constructor from the previous exercise to an ES6 class.
+
+     <details>
+     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+
+  ```javascript
+  class Car {
+    // Your code here
+    constructor(make, model, year) {
+      this.make = make;
+      this.model = model;
+      this.year = year;
+    }
+
+    start() {
+      console.log(`The ${this.make} ${this.model} has started.`);
+    }
+
+    stop() {
+      console.log(`The ${this.make} ${this.model} has stopped.`);
+    }
   }
-}
+  ```
 
-const person = new Person("John", 30);
-```
+     </details>
 
-These are some of the common ways to declare objects in JavaScript. Depending on your use case, one method may be more appropriate than the others.
+- Create two `Car` objects and call their `start()` and `stop()` methods.
+     <details>
+     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+
+  ```javascript
+  // Solution:
+  const car1 = new Car("Toyota", "Corolla", 2020);
+  const car2 = new Car("Honda", "Civic", 2019);
+
+  car1.start(); // Output: "The Toyota Corolla has started."
+  car2.start(); // Output: "The Honda Civic has started."
+
+  car1.stop(); // Output: "The Toyota Corolla has stopped."
+  car2.stop(); // Output: "The Honda Civic has stopped."
+  ```
+
+     </details>
+
+#### 5.2 Excersise on ES6 Classes
+
+- Convert the `BankAccount` function constructor from the previous exercise to an ES6 class.
+     <details>
+     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+
+  ```javascript
+  // Solution:
+  class BankAccount {
+    constructor(balance) {
+      this.balance = balance;
+    }
+
+    deposit(amount) {
+      this.balance += amount;
+    }
+
+    withdraw(amount) {
+      if (amount > this.balance) {
+        console.log("Insufficient funds.");
+        return;
+      }
+
+      this.balance -= amount;
+    }
+
+    getBalance() {
+      return this.balance;
+    }
+  }
+  ```
+
+     </details>
+
+- Create a `BankAccount` object and call its` deposit()`, `withdraw()`, and `getBalance()` methods.
+     <details>
+     <summary> <span style="color:lightgreen">Click to show/hide solution </span></summary>
+
+  ```javascript
+  // Solution:
+  const account = new BankAccount(1000);
+
+  console.log(account.getBalance()); // Output: 1000
+
+  account.deposit(500);
+  console.log(account.getBalance()); // Output: 1500
+
+  account.withdraw(200);
+  console.log(account.getBalance()); // Output: 1300
+
+  account.withdraw(2000); // Output: "Insufficient funds."
+  ```
+
+     </details>
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Copy Objects in JS
@@ -1076,8 +1253,9 @@ There are two ways to create a copy of an object:
 
       \*\*\*Note that using `JSON.parse()` and `JSON.stringify()` may not work for all cases, such as when the object contains `functions` or `symbols`. In those cases, other methods of deep copying may be necessary.
 
-  ---
-[&#8679; Back to Table of Contents](#table-of-contents)
+  ***
+
+  [&#8679; Back to Table of Contents](#table-of-contents)
 
   ### Other examples to use Spread Operator:
 
@@ -1138,9 +1316,9 @@ There are two ways to create a copy of an object:
     console.log(user);
     ```
 
-  ---
-[&#8679; Back to Table of Contents](#table-of-contents)
+  ***
 
+  [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Declaring Functions in js
 
@@ -1194,6 +1372,7 @@ In JavaScript, there are several ways to declare functions. Here are some of the
    ```
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Types of functions in JS
@@ -1299,6 +1478,7 @@ console.log(gen.next().value); // 10
 ```
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Functions are First Class Objects
@@ -1414,6 +1594,7 @@ console.log(gen.next().value); // 10
     ```
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## JS is single-threaded programming language
@@ -1429,6 +1610,7 @@ console.log(gen.next().value); // 10
 - This allows the user interface to remain responsive while the application is performing long-running tasks.
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Callback Functions
@@ -1570,6 +1752,7 @@ console.log(gen.next().value); // 10
 - The `getData()` function executes the `processData()` function after one second and passes the data object as an argument.
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Higher Order Functions
@@ -1614,6 +1797,7 @@ console.log(gen.next().value); // 10
   ```
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## JS built-in HOF
@@ -1868,8 +2052,9 @@ let promise = new Promise(function (resolve, reject) {
   - A `finally` handler also shouldn’t return anything. If it does, the returned value is silently ignored.
   - The only `exception` to this rule is when a `finally` handler throws an `error`. Then this `error` goes to the `next handler`, instead of any `previous outcome`.
 
-  ---
-[&#8679; Back to Table of Contents](#table-of-contents)
+  ***
+
+  [&#8679; Back to Table of Contents](#table-of-contents)
 
   ### Fetch
 
@@ -2002,8 +2187,9 @@ let promise = new Promise(function (resolve, reject) {
       alert(result.message);
       ```
 
-  ---
-[&#8679; Back to Table of Contents](#table-of-contents)
+  ***
+
+  [&#8679; Back to Table of Contents](#table-of-contents)
 
   ### Async
 
@@ -2068,8 +2254,9 @@ let promise = new Promise(function (resolve, reject) {
     );
     ```
 
-  ---
-[&#8679; Back to Table of Contents](#table-of-contents)
+  ***
+
+  [&#8679; Back to Table of Contents](#table-of-contents)
 
   ### Await
 
@@ -2213,6 +2400,7 @@ let promise = new Promise(function (resolve, reject) {
     ```
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Callback Hell and how to avoid it
@@ -2268,11 +2456,13 @@ start();
 
 - This refactored code uses `Promises` to load the scripts, and `async/await` to wait for each Promise to `resolve` before continuing with the next statement.
 - This approach makes the code much more readable and maintainable, and avoids the "`pyramid of doom`" structure of callback hell.
----
-[&#8679; Back to Table of Contents](#table-of-contents)
 
+---
+
+[&#8679; Back to Table of Contents](#table-of-contents)
 
 ## Questions
 
 ---
+
 [&#8679; Back to Table of Contents](#table-of-contents)
