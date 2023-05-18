@@ -1,14 +1,58 @@
+<style>
+html {
+  scroll-behavior: smooth;
+}
+#scroll-up{
+  position: fixed;
+  bottom: 15px;
+  right:10px;
+  background-color: #fff;
+  /* color: blue; */
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+
+}
+</style>
+
 # JavaScript Talk
 
 In this repository, I will be talking about JavaScript and its features. I will be covering the following topics:
 
-## Table of contents
+<h2 id="table-of-contents">Table of contents</h2>
 
 - [Data types in JavaScript](#Data-types-in-JavaScript)
   - [Primitive Data Types](#Primitive-Data-Types)
   - [Non-Primitive Data Types](#Non-Primitive-Data-Types)
   - [Characteristics of Primitive Data Types VS Non-Primitive Data Types](#Characteristics-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
   - [Examples of Primitive Data Types VS Non-Primitive Data Types](#Examples-of-Primitive-Data-Types-VS-Non-Primitive-Data-Types)
+- [Strings in JavaScript](#Strings-in-JavaScript)
+  - [String Methods](#String-Methods)
+    - [charAt()](#charAt)
+    - [charCodeAt()](#charCodeAt)
+    - [concat()](#concat)
+    - [endsWith()](#endsWith)
+    - [includes()](#includes)
+    - [indexOf()](#indexOf)
+    - [lastIndexOf()](#lastIndexOf)
+    - [match()](#match)
+    - [matchAll()](#matchAll)
+    - [padStart()](#padStart)
+    - [padEnd()](#padEnd)
+    - [repeat()](#repeat)
+    - [replace()](#replace)
+    - [replaceAll()](#replaceAll)
+    - [search()](#search)
+    - [slice()](#slice)
+    - [split()](#split)
+    - [startsWith()](#startsWith)
+    - [substr()](#substr)
+    - [substring()](#substring)
+    - [toLowerCase()](#toLowerCase)
+    - [toUpperCase()](#toUpperCase)
+    - [trim()](#trim)
+    - [trimStart()](#trimStart)
+    - [trimEnd()](#trimEnd)
 - [Declaring Objects in JS](#Declaring-Objects-in-JS)
   - [1. Object Literal](#1-object-literal)
   - [2. Object Constructor](#2-object-constructor)
@@ -20,7 +64,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
 - [Copy Objects in JS](#Copy-Objects-in-JS)
   - [1. Shallow Copy](#1-shallow-copy)
   - [2. Deep Copy](#2-deep-copy)
-- [Other examples to use Spread Operator](#other-examples-to-use-spread-operator)
+  - [Other examples to use Spread Operator](#other-examples-to-use-spread-operator)
 - [Declaring Functions in js](#Declaring-Functions-in-js)
 - [Types of functions in JS](#Types-of-functions-in-JS)
   - [1. Pure Functions](#1-pure-function)
@@ -28,7 +72,7 @@ In this repository, I will be talking about JavaScript and its features. I will 
   - [3. Higher Order Functions](#3-higher-order-function)
   - [4. Recursive Functions](#4-recursive-function)
   - [5. Arrow Functions](#5-arrow-function)
-  - [6. Generator Functions](#6-generator-function)  
+  - [6. Generator Functions](#6-generator-function)
 - [Functions are First Class Objects](#Functions-are-First-Class-Objects)
 - [JS is single-threaded programming language](#JS-is-single-threaded-programming-language)
 - [Callback Functions](#Callback-Functions)
@@ -46,7 +90,6 @@ In this repository, I will be talking about JavaScript and its features. I will 
     - [1. Fetch to GET data](#1-Fetch-to-GET-data)
     - [2. Fetch to GET data with async/await](#Fetch-to-GET-data-with-asyncawait)
     - [3. Fetch to POST data](#2-Fetch-to-POST-data)
-    - [Fetch to POST data](#3-Fetch-to-POST-data)
   - [Async](#Async)
   - [Await](#Await)
 - [Callback Hell and how to avoid it](#Callback-Hell-and-how-to-avoid-it)
@@ -60,279 +103,624 @@ Examples of primitive and non-primitive data types in JavaScript:
 - **Primitive data types**
 - **Non-primitive data types**
 
-### **Primitive Data types VS Non-Primitive Data Types**
+  ### **Primitive Data types VS Non-Primitive Data Types**
 
-| Primitive Data Types | Non-Primitive Data Types |
-| :------------------: | :----------------------: |
-|        String        |          Object          |
-|        Number        |          Array           |
-|       Boolean        |         Function         |
-|         Null         |           Date           |
-|      Undefined       |           Set            |
-|        Symbol        |           Map            |
+  | Primitive Data Types | Non-Primitive Data Types |
+  | :------------------: | :----------------------: |
+  |        String        |          Object          |
+  |        Number        |          Array           |
+  |       Boolean        |         Function         |
+  |         Null         |           Date           |
+  |      Undefined       |           Set            |
+  |        Symbol        |           Map            |
 
-### Primitive Data Types
+  ### Primitive Data Types
 
-1. **Boolean**: A boolean represents a logical value of either `true` or `false`.
+  1. **Boolean**: A boolean represents a logical value of either `true` or `false`.
 
-   ```javascript
-   let isRaining = true; // boolean value
-   console.log(typeof isRaining); // "boolean"
-   ```
+  ```javascript
+  let isRaining = true; // boolean value
+  console.log(typeof isRaining); // "boolean"
+  ```
 
-2. **Number**: A number represents a numeric value, including integers and floating-point numbers.
+  2. **Number**: A number represents a numeric value, including integers and floating-point numbers.
 
-   ```javascript
-   let age = 30; // integer
-   let price = 9.99; // floating-point number
-   console.log(typeof age); // "number"
-   console.log(typeof price); // "number"
-   ```
+  ```javascript
+  let age = 30; // integer
+  let price = 9.99; // floating-point number
+  console.log(typeof age); // "number"
+  console.log(typeof price); // "number"
+  ```
 
-3. **String**: A string represents a sequence of characters.
+  3. **String**: A string represents a sequence of characters.
 
-   ```javascript
-   let message = "Hello, world!"; // string
-   console.log(typeof message); // "string"
-   ```
+  ```javascript
+  let message = "Hello, world!"; // string
+  console.log(typeof message); // "string"
+  ```
 
-4. **Undefined**: A variable that has been declared but has not been assigned a value is `undefined`.
+  4. **Undefined**: A variable that has been declared but has not been assigned a value is `undefined`.
 
-   ```javascript
-   let firstName; // undefined
-   console.log(typeof firstName); // "undefined"
-   ```
+  ```javascript
+  let firstName; // undefined
+  console.log(typeof firstName); // "undefined"
+  ```
 
-5. **Null**: A variable that is explicitly assigned the value `null` represents an intentional absence of any object value.
+  5. **Null**: A variable that is explicitly assigned the value `null` represents an intentional absence of any object value.
 
-   ```javascript
-   let middleName = null; // null
-   console.log(typeof middleName); // "object"
-   ```
+  ```javascript
+  let middleName = null; // null
+  console.log(typeof middleName); // "object"
+  ```
 
-6. **Symbol**: A symbol represents a unique identifier.
+  6. **Symbol**: A symbol represents a unique identifier.
 
-   ```javascript
-   const id = Symbol("id"); // symbol
-   console.log(typeof id); // "symbol"
-   ```
+  ```javascript
+  const id = Symbol("id"); // symbol
+  console.log(typeof id); // "symbol"
+  ```
 
-### Non-Primitive Data Types
+  ### Non-Primitive Data Types
 
-1. **Object**: An object is a collection of key-value pairs and represents a complex entity or data structure.
+  1. **Object**: An object is a collection of key-value pairs and represents a complex entity or data structure.
 
-   ```javascript
-   const person = {
-     firstName: "John",
-     lastName: "Doe",
-     age: 30,
-     hobbies: ["reading", "coding", "traveling"],
-   }; // object
-   console.log(typeof person); // "object"
-   ```
+  ```javascript
+  const person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 30,
+    hobbies: ["reading", "coding", "traveling"],
+  }; // object
+  console.log(typeof person); // "object"
+  ```
 
-2. **Array**: An array is an ordered list of values.
+  2. **Array**: An array is an ordered list of values.
 
-   ```javascript
-   const numbers = [1, 2, 3, 4, 5]; // array
-   console.log(typeof numbers); // "object"
-   ```
+  ```javascript
+  const numbers = [1, 2, 3, 4, 5]; // array
+  console.log(typeof numbers); // "object"
+  ```
 
-3. **Function**: A function is a reusable block of code that performs a specific task.
+  3. **Function**: A function is a reusable block of code that performs a specific task.
 
-   ```javascript
-   function greet(name) {
-     console.log(`Hello, ${name}!`);
-   }
+  ```javascript
+  function greet(name) {
+    console.log(`Hello, ${name}!`);
+  }
 
-   greet("Alice"); // logs "Hello, Alice!"
-   greet("Bob"); // logs "Hello, Bob!"
-   ```
+  greet("Alice"); // logs "Hello, Alice!"
+  greet("Bob"); // logs "Hello, Bob!"
+  ```
 
-4. **Date**: A date represents a specific moment in time.
+  4. **Date**: A date represents a specific moment in time.
 
-   ```javascript
-   const now = new Date(); // current date and time
-   console.log(typeof now); // "object"
-   ```
+  ```javascript
+  const now = new Date(); // current date and time
+  console.log(typeof now); // "object"
+  ```
 
-5. **Set**: A set is a collection of unique values.
+  5. **Set**: A set is a collection of unique values.
 
-   ```javascript
-   const set = new Set([1, 2, 3, 4, 5]); // set
-   console.log(typeof set); // "object"
-   ```
+  ```javascript
+  const set = new Set([1, 2, 3, 4, 5]); // set
+  console.log(typeof set); // "object"
+  ```
 
-6. **Map**: A map is a collection of key-value pairs.
+  6. **Map**: A map is a collection of key-value pairs.
 
-   ```js
-   const map1 = new Map();
+  ```js
+  const map1 = new Map();
 
-   map1.set("a", 1);
-   map1.set("b", 2);
-   map1.set("c", 3);
+  map1.set("a", 1);
+  map1.set("b", 2);
+  map1.set("c", 3);
 
-   console.log(map1.get("a"));
-   // Expected output: 1
+  console.log(map1.get("a"));
+  // Expected output: 1
 
-   map1.set("a", 97);
+  map1.set("a", 97);
 
-   console.log(map1.get("a"));
-   // Expected output: 97
+  console.log(map1.get("a"));
+  // Expected output: 97
 
-   console.log(map1.size);
-   // Expected output: 3
+  console.log(map1.size);
+  // Expected output: 3
 
-   map1.delete("b");
+  map1.delete("b");
 
-   console.log(map1.size);
-   // Expected output: 2
-   ```
+  console.log(map1.size);
+  // Expected output: 2
+  ```
 
-   ```javascript
-   const map = new Map([
-     ["a", 1],
-     ["b", 2],
-     ["c", 3],
-   ]); // map
-   console.log(map); // Map(3) {"a" => 1, "b" => 2, "c" => 3}
-   console.log(typeof map); // "object"
-   ```
+  ```javascript
+  const map = new Map([
+    ["a", 1],
+    ["b", 2],
+    ["c", 3],
+  ]); // map
+  console.log(map); // Map(3) {"a" => 1, "b" => 2, "c" => 3}
+  console.log(typeof map); // "object"
+  ```
 
-### **Characteristics of Primitive Data Types VS Non-Primitive Data Types**
+  ### **Characteristics of Primitive Data Types VS Non-Primitive Data Types**
 
-<div style="margin-left: 30px;">
+  <div style="margin-left: 30px;">
 
-| Primitive Data Types | Non-Primitive Data Types |
-| :------------------: | :----------------------: |
-|      Immutable       |         Mutable          |
-|   Passed by value    |   Passed by reference    |
-|   Stored in stack    |      Stored in heap      |
-|   Copied by value    |   Copied by reference    |
-|  Compared by value   |  Compared by reference   |
-|  Accessed by value   |  Accessed by reference   |
+  | Primitive Data Types | Non-Primitive Data Types |
+  | :------------------: | :----------------------: |
+  |      Immutable       |         Mutable          |
+  |   Passed by value    |   Passed by reference    |
+  |   Stored in stack    |      Stored in heap      |
+  |   Copied by value    |   Copied by reference    |
+  |  Compared by value   |  Compared by reference   |
+  |  Accessed by value   |  Accessed by reference   |
 
-</div>
+  </div>
 
-### Examples on characteristics of Primitive Data Types VS Non-Primitive Data Types
+  ### Examples on characteristics of Primitive Data Types VS Non-Primitive Data Types
 
-- Here are some code examples to illustrate the differences between primitive data types and non-primitive data types in JavaScript:
+  - Here are some code examples to illustrate the differences between primitive data types and non-primitive data types in JavaScript:
 
-1. **Immutable vs Mutable**
+  1. **Immutable vs Mutable**
 
-   Primitive data types are immutable, meaning their value cannot be changed after they are created:
+  Primitive data types are immutable, meaning their value cannot be changed after they are created:
 
-   ```javascript
-   let a = "Hello";
-   a[0] = "J"; // This has no effect, a remains "Hello"
-   console.log(a); // Output: "Hello"
-   ```
+  ```javascript
+  let a = "Hello";
+  a[0] = "J"; // This has no effect, a remains "Hello"
+  console.log(a); // Output: "Hello"
+  ```
 
-   Non-primitive data types are mutable, meaning their values can be changed after they are created:
+  Non-primitive data types are mutable, meaning their values can be changed after they are created:
 
-   ```javascript
-   let obj = { name: "John" };
-   obj.name = "Jane"; // Changes the value of the 'name' property
-   console.log(obj); // Output: {name: "Jane"}
-   ```
+  ```javascript
+  let obj = { name: "John" };
+  obj.name = "Jane"; // Changes the value of the 'name' property
+  console.log(obj); // Output: {name: "Jane"}
+  ```
 
-2. **Passed by value vs Passed by reference**
+  2. **Passed by value vs Passed by reference**
 
-   Primitive data types are passed by value, meaning a copy of their value is passed to a function:
+  Primitive data types are passed by value, meaning a copy of their value is passed to a function:
 
-   ```javascript
-   function changeValue(a) {
-     a = 10;
-   }
+  ```javascript
+  function changeValue(a) {
+    a = 10;
+  }
 
-   let x = 5;
-   changeValue(x);
-   console.log(x); // Output: 5
-   ```
+  let x = 5;
+  changeValue(x);
+  console.log(x); // Output: 5
+  ```
 
-   Non-primitive data types are passed by reference, meaning a reference to their memory location is passed to a function:
+  Non-primitive data types are passed by reference, meaning a reference to their memory location is passed to a function:
 
-   ```javascript
-   function changeValue(obj) {
-     obj.name = "Jane";
-   }
+  ```javascript
+  function changeValue(obj) {
+    obj.name = "Jane";
+  }
 
-   let person = { name: "John" };
-   changeValue(person);
-   console.log(person); // Output: {name: "Jane"}
-   ```
+  let person = { name: "John" };
+  changeValue(person);
+  console.log(person); // Output: {name: "Jane"}
+  ```
 
-3. **Stored in stack vs Stored in heap**
+  3. **Stored in stack vs Stored in heap**
 
-   Primitive data types are stored in the stack:
+  Primitive data types are stored in the stack:
 
-   ```javascript
-   let a = 5;
-   ```
+  ```javascript
+  let a = 5;
+  ```
 
-   Non-primitive data types are stored in the heap:
+  Non-primitive data types are stored in the heap:
 
-   ```javascript
-   let obj = { name: "John" };
-   ```
+  ```javascript
+  let obj = { name: "John" };
+  ```
 
-4. **Copied by value vs Copied by reference**
+  4. **Copied by value vs Copied by reference**
 
-   Primitive data types are copied by value:
+  Primitive data types are copied by value:
 
-   ```javascript
-   let a = 5;
-   let b = a; // Copies the value of a to b
-   b = 10;
-   console.log(a); // Output: 5
-   ```
+  ```javascript
+  let a = 5;
+  let b = a; // Copies the value of a to b
+  b = 10;
+  console.log(a); // Output: 5
+  ```
 
-   Non-primitive data types are copied by reference:
+  Non-primitive data types are copied by reference:
 
-   ```javascript
-   let obj1 = { name: "John" };
-   let obj2 = obj1; // Copies the reference to obj1 to obj2
-   obj2.name = "Jane";
-   console.log(obj1); // Output: {name: "Jane"}
-   ```
+  ```javascript
+  let obj1 = { name: "John" };
+  let obj2 = obj1; // Copies the reference to obj1 to obj2
+  obj2.name = "Jane";
+  console.log(obj1); // Output: {name: "Jane"}
+  ```
 
-5. **Compared by value vs Compared by reference**
+  5. **Compared by value vs Compared by reference**
 
-   Primitive data types are compared by value:
+  Primitive data types are compared by value:
 
-   ```javascript
-   let a = 5;
-   let b = 5;
-   console.log(a === b); // Output: true
-   ```
+  ```javascript
+  let a = 5;
+  let b = 5;
+  console.log(a === b); // Output: true
+  ```
 
-   Non-primitive data types are compared by reference:
+  Non-primitive data types are compared by reference:
 
-   ```javascript
-   let obj1 = { name: "John" };
-   let obj2 = { name: "John" };
-   console.log(obj1 === obj2); // Output: false
-   ```
+  ```javascript
+  let obj1 = { name: "John" };
+  let obj2 = { name: "John" };
+  console.log(obj1 === obj2); // Output: false
+  ```
 
-6. **Accessed by value vs Accessed by reference**
+  6. **Accessed by value vs Accessed by reference**
 
-   Primitive data types are accessed by value:
+  Primitive data types are accessed by value:
 
-   ```javascript
-   let a = 5;
-   let b = a; // Copies the value of a to b
-   b = 10;
-   console.log(a); // Output: 5
-   ```
+  ```javascript
+  let a = 5;
+  let b = a; // Copies the value of a to b
+  b = 10;
+  console.log(a); // Output: 5
+  ```
 
-   Non-primitive data types are accessed by reference:
+  Non-primitive data types are accessed by reference:
 
-   ```javascript
-   let obj = { name: "John" };
-   console.log(obj.name); // Output: "John"
-   ```
+  ```javascript
+  let obj = { name: "John" };
+  console.log(obj.name); // Output: "John"
+  ```
 
----
+  ***
+
+## Strings in JavaScript
+
+- Strings are a sequence of characters, which can be either alphabets, numbers, special characters, or a combination of all three. They are used to represent text in a program.
+- Strings are immutable, meaning their values cannot be changed after they are created.
+- Strings are primitive data types in JavaScript, which means they are copied by value.
+- Strings are stored in the stack.
+- Strings are compared by value.
+- Strings are accessed by value.
+
+  ### **Declaring Strings in JavaScript**
+
+  - Strings can be declared using single quotes, double quotes, or backticks. Here are some examples:
+
+  ```javascript
+  let str1 = "Hello";
+  let str2 = "World";
+  let str3 = `Hello World`;
+  ```
+
+  - The backtick is a new addition to JavaScript, and it allows you to use template literals. Template literals are enclosed by backticks, and they allow you to embed expressions inside a string. Here is an example:
+
+  ```javascript
+  let name = "John";
+  let str = `Hello ${name}`;
+  console.log(str); // Output: "Hello John"
+  ```
+
+  - Template literals are useful when you want to create a string that contains variables or expressions.
+  - You can also use backticks to create multi-line strings:
+
+  ```javascript
+  let str = `This is a
+  multi-line string`;
+  ```
+
+  - This is useful when you want to create a string that spans multiple lines.
+  - You can also use backticks to create strings that contain single quotes or double quotes:
+
+  ```javascript
+  let str1 = `This string contains a single quote (')`;
+  let str2 = `This string contains a double quote (")`;
+  ```
+
+  - This is useful when you want to create a string that contains single quotes or double quotes.
+  - You can also use backticks to create strings that contain backticks:
+
+  ```javascript
+  let str = `This string contains a backtick (\`)`;
+  ```
+
+  - This is useful when you want to create a string that contains backticks.
+
+  ### **String Methods in JavaScript**
+
+  - Strings have many built-in methods that allow you to perform operations on them. Here are some common string methods in alphabetical order:
+
+    #### **charAt()**
+
+    - The `charAt()` method returns the character at the specified index in a string. The index of the first character is 0, the index of the second character is 1, and so on. If the index is greater than or equal to the length of the string, `charAt()` returns an empty string.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.charAt(0)); // Output: "H"
+      console.log(str.charAt(1)); // Output: "e"
+      console.log(str.charAt(2)); // Output: "l"
+      console.log(str.charAt(3)); // Output: "l"
+      console.log(str.charAt(4)); // Output: "o"
+      console.log(str.charAt(10)); // Output: "d"
+      console.log(str.charAt(11)); // Output: ""
+      ```
+
+    #### **charCodeAt()**
+
+    - The `charCodeAt()` method returns the Unicode value of the character at the specified index in a string. The index of the first character is 0, the index of the second character is 1, and so on. If the index is greater than or equal to the length of the string, `charCodeAt()` returns NaN.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.charCodeAt(0)); // Output: 72
+      console.log(str.charCodeAt(1)); // Output: 101
+      console.log(str.charCodeAt(2)); // Output: 108
+      console.log(str.charCodeAt(3)); // Output: 108
+      console.log(str.charCodeAt(4)); // Output: 111
+      console.log(str.charCodeAt(10)); // Output: 100
+      console.log(str.charCodeAt(11)); // Output: NaN
+      ```
+
+    #### **concat()**
+
+    - The `concat()` method combines two or more strings and returns a new string. This method does not change the existing strings, but instead returns a new string.
+
+      ```javascript
+      let str1 = "Hello";
+      let str2 = "World";
+      console.log(str1.concat(" ", str2)); // Output: "Hello World"
+      ```
+
+    #### **endsWith()**
+
+    - The `endsWith()` method determines whether a string ends with the characters of a specified string. This method returns true if the string ends with the specified string, and false otherwise.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.endsWith("World")); // Output: true
+      console.log(str.endsWith("World!")); // Output: false
+      ```
+
+    #### **includes()**
+
+    - The `includes()` method determines whether a string contains the characters of a specified string. This method returns true if the string contains the specified string, and false otherwise.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.includes("World")); // Output: true
+      console.log(str.includes("World!")); // Output: false
+      ```
+
+    #### **indexOf()**
+
+    - The `indexOf()` method returns the index of the first occurrence of a specified value in a string. This method returns -1 if the value is not found.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.indexOf("World")); // Output: 6
+      console.log(str.indexOf("World!")); // Output: -1
+      ```
+
+    #### **lastIndexOf()**
+
+    - The `lastIndexOf()` method returns the index of the last occurrence of a specified value in a string. This method returns -1 if the value is not found.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.lastIndexOf("World")); // Output: 6
+      console.log(str.lastIndexOf("World!")); // Output: -1
+      ```
+
+    #### **match()**
+
+    - The `match()` method searches a string for a match against a regular expression, and returns the matches, as an Array object.
+
+      ```javascript
+      const paragraph =
+        "The quick brown fox jumps over the lazy dog. It barked.";
+      const regex = /[A-Z]/g;
+      const found = paragraph.match(regex);
+
+      console.log(found);
+      // Expected output: Array ["T", "I"]
+      ```
+
+    #### **macthAll()**
+
+    - The `matchAll()` method returns an iterator of all results matching a string against a regular expression, including capturing groups.
+
+      ```javascript
+      const regexp = /t(e)(st(\d?))/g;
+      const str = "test1test2";
+      const found = str.matchAll(regexp);
+      const array = [...found];
+
+      console.log(array[0]);
+      // Expected output: Array ["test1", "e", "st1", "1"]
+
+      console.log(array[1]);
+      // Expected output: Array ["test2", "e", "st2", "2"]
+      ```
+
+    #### **padStart()**
+
+    - The` padStart()` method pads the current string with another string until the resulting string reaches the given length. The padding is applied from the start of the current string.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.padStart(15, " ")); // Output: "     Hello World"
+      console.log(str.padStart(15, "Hello ")); // Output: "Hello Hello World"
+      console.log(str.padStart(15, "*")); // Output: "*****Hello World"
+      ```
+
+    #### **padEnd()**
+
+    - The` padEnd()` method pads the current string with another string until the resulting string reaches the given length. The padding is applied from the end of the current string.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.padEnd(15, " ")); // Output: "Hello World     "
+      console.log(str.padEnd(15, " World")); // Output: "Hello World World"
+      console.log(str.padEnd(15, "*")); // Output: "Hello World*****"
+      ```
+
+    #### **repeat()**
+
+    - The `repeat()` method returns a new string with a specified number of copies of the string it was called on.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.repeat(3)); // Output: "Hello WorldHello WorldHello World"
+      ```
+
+    #### **replace()**
+
+    - The` replace()` method searches a string for a specified value, or a regular expression, and returns a new string where the specified values are replaced.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.replace("World", "World!")); // Output: "Hello World!"
+      ```
+
+    #### **replaceAll()**
+
+    - The `replaceAll()` method returns a new string with all matches of a pattern replaced by a replacement.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.replaceAll("World", "World!")); // Output: "Hello World!"
+      ```
+
+    #### **search()**
+
+    - The `search()` method searches a string for a specified value, or regular expression, and returns the position of the match. The search value can be string or a regular expression pattern. This method returns -1 if no match is found.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.search("World")); // Output: 6
+      console.log(str.search("World!")); // Output: -1
+      ```
+
+    #### **slice()**
+
+    - The `slice()` method extracts a section of a string and returns it as a new string, without modifying the original string. This method takes two parameters: the start index and the end index (end index is not included).
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.slice(0, 5)); // Output: "Hello"
+      console.log(str.slice(6, 11)); // Output: "World"
+      ```
+
+    - Using `padStart()` with `slice()` to mask a string:
+
+      ```js
+      const fullNumber = "2034399002125581";
+      const last4Digits = fullNumber.slice(-4); // => "5581"
+      const maskedNumber = last4Digits.padStart(fullNumber.length, "*");
+
+      console.log(maskedNumber);
+      // Expected output: "************5581"
+      ```
+
+    - Using `padEnd()` with `slice()` to mask a string:
+
+      ```js
+      const fullNumber = "2034399002125581";
+      const last4Digits = fullNumber.slice(-4); // => "5581"
+      const maskedNumber = last4Digits.padEnd(fullNumber.length, "*");
+
+      console.log(maskedNumber);
+      // Expected output: "5581************"
+      ```
+
+    #### **split()**
+
+    - The `split()` method splits a string into an array of substrings, and returns the new array. This method takes two parameters: the separator and the limit.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.split(" ")); // Output: ["Hello", "World"]
+      console.log(str.split(" ", 1)); // Output: ["Hello"]
+      ```
+
+    #### **startsWith()**
+
+    - The `startsWith()` method determines whether a string begins with the characters of a specified string. This method returns true if the string begins with the specified string, and false otherwise.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.startsWith("Hello")); // Output: true
+      console.log(str.startsWith("Hello!")); // Output: false
+      ```
+
+    #### **substr()**
+
+    - The `substr()` method returns a portion of the string, starting at the specified index and extending for a given number of characters afterwards. This method takes two parameters: the start index and the length.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.substr(0, 5)); // Output: "Hello"
+      console.log(str.substr(6, 5)); // Output: "World"
+      ```
+
+    #### **substring()**
+
+    - The `substring()` method returns a portion of the string, starting at the specified index and extending for a given number of characters afterwards. This method takes two parameters: the `start index` and the `end index` (end index is not included).
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.substring(0, 5)); // Output: "Hello"
+      console.log(str.substring(6, 11)); // Output: "World"
+      ```
+
+    #### **toLowerCase()**
+
+    - The `toLowerCase()` method converts a string to lowercase letters.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.toLowerCase()); // Output: "hello world"
+      ```
+
+    #### **toUpperCase()**
+
+    - The `toUpperCase()` method converts a string to uppercase letters.
+
+      ```javascript
+      let str = "Hello World";
+      console.log(str.toUpperCase()); // Output: "HELLO WORLD"
+      ```
+
+    #### **trim()**
+
+    - The `trim()` method removes whitespace from both ends of a string.
+
+      ```javascript
+      let str = "   Hello World   ";
+      console.log(str.trim()); // Output: "Hello World"
+      ```
+
+    #### **trimStart()**
+
+    - The `trimStart()` method removes whitespace from the beginning of a string.
+
+      ```javascript
+      let str = "   Hello World   ";
+      console.log(str.trimStart()); // Output: "Hello World   "
+      ```
+
+    #### **trimEnd()**
+
+    - The `trimEnd()` method removes whitespace from the end of a string.
+
+      ```javascript
+      let str = "   Hello World   ";
+      console.log(str.trimEnd()); // Output: "   Hello World"
+      ```
+
+  ***
 
 ## Declaring Objects in JS
 
@@ -619,150 +1007,150 @@ There are two ways to create a copy of an object:
 - `Shallow Copy`
 - `Deep Copy`
 
-### 1. Shallow copy
+  #### 1. Shallow copy
 
-- Shallow copy creates a new object that shares the same memory references as the original object for its properties.
-- This means that if the property value is an object, the new object will reference the same memory location as the original object.
-- Shallow copy is achieved through the `Object.assign()` method or the `spread operator (ES6)`.
+  - Shallow copy creates a new object that shares the same memory references as the original object for its properties.
+  - This means that if the property value is an object, the new object will reference the same memory location as the original object.
+  - Shallow copy is achieved through the `Object.assign()` method or the `spread operator (ES6)`.
 
-  - Here's an example of shallow copying an object using `Object.assign()`:
+    - Here's an example of shallow copying an object using `Object.assign()`:
 
-    ```javascript
-    let originalObj = {
-      name: "John",
-      age: 30,
-      address: {
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-      },
-    };
+      ```javascript
+      let originalObj = {
+        name: "John",
+        age: 30,
+        address: {
+          street: "123 Main St",
+          city: "Anytown",
+          state: "CA",
+        },
+      };
 
-    let newObj = Object.assign({}, originalObj);
+      let newObj = Object.assign({}, originalObj);
 
-    console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
-    console.log(originalObj === newObj); // Output: false
-    console.log(originalObj.address === newObj.address); // Output: true
-    ```
+      console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
+      console.log(originalObj === newObj); // Output: false
+      console.log(originalObj.address === newObj.address); // Output: true
+      ```
 
-    As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of `originalObj`.
+      As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of `originalObj`.
 
-  - Here's an example of `shallow` copying an object using the `spread operator`:
+    - Here's an example of `shallow` copying an object using the `spread operator`:
+
+      ```js
+      let originalObj = {
+        name: "John",
+        age: 30,
+        address: {
+          street: "123 Main St",
+          city: "Anytown",
+          state: "CA",
+        },
+      };
+
+      let newObj = { ...originalObj };
+
+      console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
+      console.log(originalObj === newObj); // Output: false
+      console.log(originalObj.address === newObj.address); // Output: true
+      ```
+
+      As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of originalObj.
+
+  #### 2. Deep copy
+
+  - `Deep copy`, on the other hand, creates a completely new object with its own memory space for all properties, including those that are objects themselves.
+  - This ensures that changes made to the copied object `do not affect` the original object or any other copies of the object.
+
+  - There are different ways to achieve `deep copy`, one of which is using the `JSON.parse()` and `JSON.stringify()` methods.
+  - The `JSON.parse()` and `JSON.stringify()` methods can be used to copy an object, creating a deep copy. This method works by first serializing the original object to a JSON string using `JSON.stringify()`, and then deserializing the JSON string back into an object using `JSON.parse()`.
+
+    - Here's an example of deep copying an object using `JSON.parse()` and `JSON.stringify()`:
+
+      ```javascript
+      let originalObj = {
+        name: "John",
+        age: 30,
+        address: {
+          street: "123 Main St",
+          city: "Anytown",
+          state: "CA",
+        },
+      };
+
+      let newObj = JSON.parse(JSON.stringify(originalObj));
+
+      console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
+      console.log(originalObj === newObj); // Output: false
+      console.log(originalObj.address === newObj.address); // Output: false
+      ```
+
+      As you can see, `newObj` is a deep copy of `originalObj`. `newObj` has its own memory space for all properties, including the "`address`" property. Therefore, changes made to `newObj` will not affect the `originalObj` or any other copies of the object.
+
+      \*\*\*Note that using `JSON.parse()` and `JSON.stringify()` may not work for all cases, such as when the object contains `functions` or `symbols`. In those cases, other methods of deep copying may be necessary.
+
+  ***
+
+  ### Other examples to use Spread Operator:
+
+  - The spread operator is a new addition to the set of operators in JavaScript ES6. It takes in an iterable (e.g an array) and expands it into individual elements.
+  - The spread operator is commonly used to make shallow copies of JS objects. Using this operator makes the code concise and enhances its readability.
+  - Examples with Arrays:
 
     ```js
-    let originalObj = {
-      name: "John",
-      age: 30,
-      address: {
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-      },
-    };
-
-    let newObj = { ...originalObj };
-
-    console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
-    console.log(originalObj === newObj); // Output: false
-    console.log(originalObj.address === newObj.address); // Output: true
+    const arr = [1, 2, 3];
+    console.log(...arr);
     ```
 
-    As you can see, the `newObj` is a shallow copy of `originalObj`. `newObj` has its own memory space, but the "`address`" property of `newObj` references the same memory location as the "`address`" property of originalObj.
-
-### 2. Deep copy
-
-- `Deep copy`, on the other hand, creates a completely new object with its own memory space for all properties, including those that are objects themselves.
-- This ensures that changes made to the copied object `do not affect` the original object or any other copies of the object.
-
-- There are different ways to achieve `deep copy`, one of which is using the `JSON.parse()` and `JSON.stringify()` methods.
-- The `JSON.parse()` and `JSON.stringify()` methods can be used to copy an object, creating a deep copy. This method works by first serializing the original object to a JSON string using `JSON.stringify()`, and then deserializing the JSON string back into an object using `JSON.parse()`.
-
-  - Here's an example of deep copying an object using `JSON.parse()` and `JSON.stringify()`:
-
-    ```javascript
-    let originalObj = {
-      name: "John",
-      age: 30,
-      address: {
-        street: "123 Main St",
-        city: "Anytown",
-        state: "CA",
-      },
-    };
-
-    let newObj = JSON.parse(JSON.stringify(originalObj));
-
-    console.log(newObj); // Output: {name: "John", age: 30, address: {street: "123 Main St", city: "Anytown", state: "CA"}}
-    console.log(originalObj === newObj); // Output: false
-    console.log(originalObj.address === newObj.address); // Output: false
+    ```js
+    const arr = [1, 2, 3];
+    const arr2 = [4, 5, 6];
+    const arr3 = [...arr, ...arr2];
+    console.log(arr3);
     ```
 
-    As you can see, `newObj` is a deep copy of `originalObj`. `newObj` has its own memory space for all properties, including the "`address`" property. Therefore, changes made to `newObj` will not affect the `originalObj` or any other copies of the object.
+    ```js
+    const arr = [1, 2, 3];
+    const arr2 = [...arr, 4, 5, 6];
+    console.log(arr2);
+    ```
 
-    \*\*\*Note that using `JSON.parse()` and `JSON.stringify()` may not work for all cases, such as when the object contains `functions` or `symbols`. In those cases, other methods of deep copying may be necessary.
+    - Example with Objects:
 
----
+    ```js
+    const person = { name: "John", age: 30 };
+    const clone = { ...person };
+    console.log(clone);
+    ```
 
-## Other examples to use Spread Operator:
+    ```js
+    const person = { name: "John", age: 30 };
+    const clone = { ...person, location: "USA" };
+    console.log(clone);
+    ```
 
-- The spread operator is a new addition to the set of operators in JavaScript ES6. It takes in an iterable (e.g an array) and expands it into individual elements.
-- The spread operator is commonly used to make shallow copies of JS objects. Using this operator makes the code concise and enhances its readability.
-- Examples with Arrays:
+    ```js
+    const person = { name: "John", age: 30 };
+    const clone = { location: "USA", ...person };
+    console.log(clone);
+    ```
 
-  ```js
-  const arr = [1, 2, 3];
-  console.log(...arr);
-  ```
+    ```js
+    const person = { name: "John", age: 30 };
+    const clone = { ...person, age: 40 };
+    console.log(clone);
+    ```
 
-  ```js
-  const arr = [1, 2, 3];
-  const arr2 = [4, 5, 6];
-  const arr3 = [...arr, ...arr2];
-  console.log(arr3);
-  ```
+    ```js
+    const person = { firstName: "John", lastName: "Doe", age: 30 };
+    const address = { city: "New York", state: "NY", zip: "10001" };
 
-  ```js
-  const arr = [1, 2, 3];
-  const arr2 = [...arr, 4, 5, 6];
-  console.log(arr2);
-  ```
+    const user = { ...person, ...address };
 
-  - Example with Objects:
+    console.log(user);
+    ```
 
-  ```js
-  const person = { name: "John", age: 30 };
-  const clone = { ...person };
-  console.log(clone);
-  ```
-
-  ```js
-  const person = { name: "John", age: 30 };
-  const clone = { ...person, location: "USA" };
-  console.log(clone);
-  ```
-
-  ```js
-  const person = { name: "John", age: 30 };
-  const clone = { location: "USA", ...person };
-  console.log(clone);
-  ```
-
-  ```js
-  const person = { name: "John", age: 30 };
-  const clone = { ...person, age: 40 };
-  console.log(clone);
-  ```
-
-  ```js
-  const person = { firstName: "John", lastName: "Doe", age: 30 };
-  const address = { city: "New York", state: "NY", zip: "10001" };
-
-  const user = { ...person, ...address };
-
-  console.log(user);
-  ```
-
----
+  ***
 
 ## Declaring Functions in js
 
@@ -887,37 +1275,37 @@ Some examples of different types of functions in JavaScript based on their behav
 
 6. **Generator function**:
 
-   A generator function is a function that can pause its execution and return multiple values one at a time. Here is an example:
+A generator function is a function that can pause its execution and return multiple values one at a time. Here is an example:
 
-   ```javascript
-   function* processNumbers(numbers) {
-     for (const num of numbers) {
-       // Perform some operation on num
-       const result = num * 2;
+```javascript
+function* processNumbers(numbers) {
+  for (const num of numbers) {
+    // Perform some operation on num
+    const result = num * 2;
 
-       // Pause the iteration and yield the result
-       yield result;
-     }
-   }
+    // Pause the iteration and yield the result
+    yield result;
+  }
+}
 
-   function doSomething() {
-     console.log("Doing something...");
-   }
+function doSomething() {
+  console.log("Doing something...");
+}
 
-   const numbers = [1, 2, 3, 4, 5];
-   const gen = processNumbers(numbers);
+const numbers = [1, 2, 3, 4, 5];
+const gen = processNumbers(numbers);
 
-   // Iterate over the generator and pause after each result
-   console.log(gen.next().value); // 2
-   doSomething();
-   console.log(gen.next().value); // 4
-   doSomething();
-   console.log(gen.next().value); // 6
-   doSomething();
-   console.log(gen.next().value); // 8
-   doSomething();
-   console.log(gen.next().value); // 10
-   ```
+// Iterate over the generator and pause after each result
+console.log(gen.next().value); // 2
+doSomething();
+console.log(gen.next().value); // 4
+doSomething();
+console.log(gen.next().value); // 6
+doSomething();
+console.log(gen.next().value); // 8
+doSomething();
+console.log(gen.next().value); // 10
+```
 
 ---
 
@@ -1278,9 +1666,9 @@ Some examples of different types of functions in JavaScript based on their behav
   console.log(sumOfNumbers); // Output: 15
   ```
 
--  These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
+- These built-in higher-order functions make it easy to write concise and expressive code that manipulates arrays.
 
-# Promises in js
+## Promises in js
 
 - `Promises` are used to handle asynchronous operations in JavaScript.
 - An `asynchronous operation` is one that doesn't block the execution of the program while it's running, but instead runs in the background and `notifies` the program when it's finished.
@@ -1375,12 +1763,12 @@ let promise = new Promise(function (resolve, reject) {
 
   ![alt text](./screenshots/promise3.PNG)
 
-  ## Promises-then-Catch-finally
+  ### Promises-then-Catch-finally
 
   - A `Promise` object serves as a link between the `executor` (the “producing code”) and the `consuming functions`, which will receive the `result` or `error`.
   - `Consuming functions` can be registered (subscribed) using methods `.then`, `.catch` and `.finally`.
 
-  ### 1. then()
+  #### 1. then()
 
   - The most important, fundamental one is .then.
   - The syntax is:
@@ -1434,7 +1822,7 @@ let promise = new Promise(function (resolve, reject) {
     promise.then(alert); // shows "done!" after 1 second
     ```
 
-  ### 2. catch
+  #### 2. catch
 
   - If we’re interested only in `errors`, then we can use `null` as the first argument: `.then(null, errorHandlingFunction)`, which is exactly the same:
 
@@ -1450,7 +1838,7 @@ let promise = new Promise(function (resolve, reject) {
 
   - The call `.catch(f)` is a complete analog of `.then(null, f)`, it’s just a shorthand.
 
-  ### 3. finally
+  #### 3. finally
 
   - The call `.finally(f)` is similar to `.then(f, f)` in the sense that `f` always runs when the promise is `settled`: be it `resolve` or `reject`.
   - The idea of `finally` is to set up a handler for performing cleanup/finalizing after the previous operations are complete.
@@ -1477,15 +1865,16 @@ let promise = new Promise(function (resolve, reject) {
       .finally(() => alert("Promise ready")) // <-- .finally handles the error
       .catch((err) => alert(err)); // <-- .catch handles the error object
     ```
-  - A `finally` handler has no arguments. 
+
+  - A `finally` handler has no arguments.
   - In `finally` we don’t know whether the `promise` is successful or not. That’s all right, as our task is usually to perform `“general”` finalizing procedures.
   - That’s very convenient, because `finally` is not meant to process a `promise result`. As said, it’s a place to do `generic cleanup`, no matter what the outcome was.
   - A `finally` handler also shouldn’t return anything. If it does, the returned value is silently ignored.
   - The only `exception` to this rule is when a `finally` handler throws an `error`. Then this `error` goes to the `next handler`, instead of any `previous outcome`.
 
-  ---
+  ***
 
-  ## Fetch
+  ### Fetch
 
   - In frontend programming, `promises` are often used for `network requests`.
   - The `Fetch API` provides an interface for fetching resources.
@@ -1499,34 +1888,37 @@ let promise = new Promise(function (resolve, reject) {
   - The `json()` returns a second `promise` that `resolves` with the `result` of parsing the `response body text` as `JSON`.
   - `json()` is a method on the `response object` that returns a `promise` to parse the body text as `JSON`.
 
-    ### 1. Fetch to GET data:
-      ```js
-      fetch("https://jsonplaceholder.typicode.com/todos/1")
-        //  reads the remote data and parses it as JSON
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-      ```
-    ### 2. Fetch to GET data with async/await:
-      ```js
-      const URL = "https://dummyjson.com/products";
+    #### 1. Fetch to GET data:
 
-      fetch(URL) // returns a promise
-        .then((res) => res.json()) // returns a promise
-        .then((json) => json) // returns a json object
-        .then((data) => {
-          console.log(data.products);
-          return data.products; // for the next then()
-        })
-        .then((products) => {
-          console.log(products[0]);
-          return products[0]; // for the next then()
-        })
-        .then((firstProduct) => {
-          console.log(firstProduct.title);
-        });
-      ```
+    ```js
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+      //  reads the remote data and parses it as JSON
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+    ```
 
-    ### 3. Fetch to POST data:
+    #### 2. Fetch to GET data with async/await:
+
+    ```js
+    const URL = "https://dummyjson.com/products";
+
+    fetch(URL) // returns a promise
+      .then((res) => res.json()) // returns a promise
+      .then((json) => json) // returns a json object
+      .then((data) => {
+        console.log(data.products);
+        return data.products; // for the next then()
+      })
+      .then((products) => {
+        console.log(products[0]);
+        return products[0]; // for the next then()
+      })
+      .then((firstProduct) => {
+        console.log(firstProduct.title);
+      });
+    ```
+
+    #### 3. Fetch to POST data:
 
     ```js
     let user = {
@@ -1613,9 +2005,9 @@ let promise = new Promise(function (resolve, reject) {
       alert(result.message);
       ```
 
-  ---
+  ***
 
-  ## Async
+  ### Async
 
   - There’s a special syntax to work with `promises` in a more comfortable fashion, called `“async/await”`. It’s surprisingly easy to understand and use.
   - The word `“async”` before a function means one simple thing: a function always returns a `promise`. Other values are wrapped in a resolved promise automatically.
@@ -1678,9 +2070,9 @@ let promise = new Promise(function (resolve, reject) {
     );
     ```
 
-  ---
+  ***
 
-  ## Await
+  ### Await
 
   - `await` is a keyword that is used inside an `async` function.
   - `await` waits for the `promise` to `resolve` and returns the result.
@@ -1823,7 +2215,7 @@ let promise = new Promise(function (resolve, reject) {
 
 ---
 
-# Callback Hell and how to avoid it
+## Callback Hell and how to avoid it
 
 - callback hell is a situation where you have a lot of nested callbacks
 
@@ -1882,3 +2274,8 @@ start();
 ## Questions
 
 ---
+
+  <a href="#table-of-contents">
+  <div id="scroll-up">
+  &#8679; Table of Contents
+  </div></a>
