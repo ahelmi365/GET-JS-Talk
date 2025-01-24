@@ -784,7 +784,7 @@ person.age = 30;
   const myOtherObj = Object.create(myObj);
   myOtherObj.b = 2;
 
-  // Add a property to myObj's
+  // Add a property to myObj
   myObj.c = 3;
 
   // Call a method on myOtherObj
