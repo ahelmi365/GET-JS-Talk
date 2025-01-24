@@ -784,8 +784,8 @@ person.age = 30;
   const myOtherObj = Object.create(myObj);
   myOtherObj.b = 2;
 
-  // Add a property to myObj's prototype
-  myObj.prototype.c = 3;
+  // Add a property to myObj's
+  myObj.c = 3;
 
   // Call a method on myOtherObj
   console.log(myOtherObj.a); // Output: 1
@@ -796,7 +796,7 @@ person.age = 30;
 
 - In this example, we first create an object `myObj` with a property `a` equal to `1`. We then create another object `myOtherObj` using `Object.create(myObj)`, which sets `myOtherObj`'s prototype to `myObj`. We also give `myOtherObj` its own property `b` equal to `2`.
 
-- Next, we add a property `c` to `myObj`'s prototype object by using the `.prototype` syntax. This means that `c` is now a property of `myObj`'s prototype, and therefore all objects that inherit from `myObj` will also have access to `c`.
+- Next, we add a property `c` to `myObj` object. This means that `c` is now a property of `myObj`, and therefore all objects that inherit from `myObj` will also have access to `c`.
 
 - Finally, we call `console.log(myOtherObj.a)`, which logs the value of `myOtherObj.a` to the console. Since `myOtherObj` inherits from `myObj`, it has access to the `a` property defined on `myObj`, so the output is `1`. We then call `console.log(myOtherObj.c)`, which logs the value of `myOtherObj.c` to the console. `myOtherObj` does not have its own `c` property, so JavaScript looks for `c` on `myOtherObj`'s prototype object (which is `myObj`), and finds it there. Therefore, the output is `3`.
 
@@ -1171,7 +1171,7 @@ There are two ways to create a copy of an object:
 - `Shallow Copy`
 - `Deep Copy`
 
-  #### 1. Shallow copy
+  ### 1. Shallow copy
 
   - Shallow copy creates a new object that shares the same memory references as the original object for its properties.
   - This means that if the property value is an object, the new object will reference the same memory location as the original object.
